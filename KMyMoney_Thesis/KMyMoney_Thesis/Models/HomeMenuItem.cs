@@ -7,7 +7,8 @@ namespace KMyMoney_Thesis.Models
     public enum MenuItemType
     {
         Browse,
-        About
+        About,
+        Ledgers
     }
     public class HomeMenuItem
     {
