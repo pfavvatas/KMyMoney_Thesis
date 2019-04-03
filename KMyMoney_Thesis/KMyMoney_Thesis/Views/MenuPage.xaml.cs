@@ -20,7 +20,7 @@ namespace KMyMoney_Thesis.Views
             {
                 new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
                 new HomeMenuItem {Id = MenuItemType.About, Title="About" },
-                new HomeMenuItem {Id = MenuItemType.Ledgers, Title="Ledgers" }
+                new HomeMenuItem {Id = MenuItemType.Ledgers, Title="Ledgers Test1" }
             };
 
             ListViewMenu.ItemsSource = menuItems;
