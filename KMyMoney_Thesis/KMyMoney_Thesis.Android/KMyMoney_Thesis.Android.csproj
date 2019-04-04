@@ -15,7 +15,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
     <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
     <NuGetPackageImportStamp>
@@ -93,7 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KMyMoney_Thesis\KMyMoney_Thesis.csproj">
-      <Project>{C9097609-D793-4DF7-80E5-FD20AF881DC9}</Project>
+      <Project>{F6629406-585B-4A1A-87FE-AC68564F5964}</Project>
       <Name>KMyMoney_Thesis</Name>
     </ProjectReference>
   </ItemGroup>
