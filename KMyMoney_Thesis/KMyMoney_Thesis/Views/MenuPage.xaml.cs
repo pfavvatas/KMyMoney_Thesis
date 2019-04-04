@@ -20,7 +20,19 @@ namespace KMyMoney_Thesis.Views
             { 
                 new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
                 new HomeMenuItem {Id = MenuItemType.About, Title="About" },
-                new HomeMenuItem {Id = MenuItemType.Ledgers, Title="Ledgers" }
+                new HomeMenuItem {Id = MenuItemType.Home, Title="Home" },
+                new HomeMenuItem {Id = MenuItemType.Institutions, Title="Institutions" },
+                new HomeMenuItem {Id = MenuItemType.Accounts, Title="Accounts" },
+                new HomeMenuItem {Id = MenuItemType.Sheduled_transactions, Title="Sheduled_transactions" },
+                new HomeMenuItem {Id = MenuItemType.Categories, Title="Categories" },
+                new HomeMenuItem {Id = MenuItemType.Tags, Title="Tags" },
+                new HomeMenuItem {Id = MenuItemType.Payees, Title="Payees" },
+                new HomeMenuItem {Id = MenuItemType.Ledgers, Title="Ledgers" },
+                new HomeMenuItem {Id = MenuItemType.Investments, Title="Investments" },
+                new HomeMenuItem {Id = MenuItemType.Reports, Title="Reports" },
+                new HomeMenuItem {Id = MenuItemType.Budgets, Title="Budgets" },
+                new HomeMenuItem {Id = MenuItemType.Forecast, Title="Forecast" },
+                new HomeMenuItem {Id = MenuItemType.Outbox, Title="Outbox" }
             };
 
             ListViewMenu.ItemsSource = menuItems;
