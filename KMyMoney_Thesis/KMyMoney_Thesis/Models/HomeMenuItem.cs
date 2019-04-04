@@ -8,7 +8,19 @@ namespace KMyMoney_Thesis.Models
     {
         Browse,
         About,
-        Ledgers
+        Home,
+        Institutions,
+        Accounts,
+        Sheduled_transactions,
+        Categories,
+        Tags,
+        Payees,
+        Ledgers,
+        Investments,
+        Reports,
+        Budgets,
+        Forecast,
+        Outbox
     }
     public class HomeMenuItem
     {
