@@ -2,8 +2,8 @@
 <resources>
 
   <style name="Theme.Splash"
-         parent="Android:Theme">
-    <item name="android:windowBackground">@drawable/splashscreen</item>
+         parent="android:Theme">
+    <item name="android:windowBackground">@drawable/kmymoney1280x1920</item>
     <item name="android:windowNoTitle">true</item>
   </style>
   
@@ -34,8 +34,8 @@
     <item name="colorAccent">#FF4081</item>
   </style>
 
-  <!--Splash Screen-->
+  <!--Splash Screen
   <style name="MyTheme.Splash" parent="Theme.AppCompat.Light.NoActionBar">
     <item name="android:windowBackground">@drawable/splash_background</item>
-  </style>
+  </style>-->
 </resources>

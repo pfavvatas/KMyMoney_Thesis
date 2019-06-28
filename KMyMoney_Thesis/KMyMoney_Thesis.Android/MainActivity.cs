@@ -10,7 +10,7 @@ using Android.OS;
 namespace KMyMoney_Thesis.Droid
 {
     //@style/MainTheme
-    [Activity(Label = "KMyMoney_Thesis", Icon = "@mipmap/icon", Theme = "@style/MyTheme.Splash", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "KMyMoney_Thesis", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
