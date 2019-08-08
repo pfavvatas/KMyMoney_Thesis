@@ -13,6 +13,11 @@ namespace KMyMoney_Thesis.Views
         Dictionary<int, NavigationPage> MenuPages = new Dictionary<int, NavigationPage>();
         public MainPage()
         {
+            int test = 0;
+            if (test == 0)
+            {
+
+            }
             InitializeComponent();
 
             MasterBehavior = MasterBehavior.Popover;

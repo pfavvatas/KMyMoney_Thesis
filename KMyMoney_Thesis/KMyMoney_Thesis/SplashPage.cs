@@ -42,8 +42,8 @@ namespace KMyMoney_Thesis
             await splashImage.RotateTo(360, 1000); ;//.ScaleTo(150, 1200, Easing.Linear);
             //await splashImage.FadeTo(1, 2000);
 
-            Application.Current.MainPage = new NavigationPage(new MainPage());
-            
+            //Application.Current.MainPage = new NavigationPage(new MainPage());
+            Application.Current.MainPage = new MainPage();
 
 
         }

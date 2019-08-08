@@ -1,0 +1,16 @@
+﻿using SQLite;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace KMyMoney_Thesis.Model
+{
+    class Post
+    {
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+
+        [MaxLength(250 )]
+        public string Test1 { get; set; }
+    }
+}

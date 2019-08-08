@@ -1,13 +1,15 @@
-﻿using System;
+﻿ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using KMyMoney_Thesis.Views;
+
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace KMyMoney_Thesis
 {
     public partial class App : Application
     {
+        public static string DatabaseLocation = string.Empty;
 
         public App()
         {
@@ -16,6 +18,16 @@ namespace KMyMoney_Thesis
 
             //MainPage = new MainPage();
             MainPage = new NavigationPage(new SplashPage());
+        }
+
+        public App(string databaseLocation)
+        {
+            InitializeComponent();
+
+            MainPage = new NavigationPage(new SplashPage());
+
+            DatabaseLocation = databaseLocation;
+            new SQLiteDb(DatabaseLocation);
         }
 
         protected override void OnStart()
