@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="KMyMoney_Thesis.KmmFirstTime">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="10">
+                <Frame BorderColor="Gray"
+                   CornerRadius="5"
+                   Padding="8">
+                    <StackLayout>
+                        <Label Text="Welcome to KMyMoney"
+                           FontSize="Medium"
+                           FontAttributes="Bold" />
+                        <BoxView Color="Gray"
+                             HeightRequest="2"
+                             HorizontalOptions="Fill" />
+                        <Label Text="The free, easy to use, personal finance manager by Xamarin" />
+                    </StackLayout>
+                </Frame>
+                <Frame BorderColor="Gray" Margin="10">
+                    <StackLayout>
+                        <Label HorizontalOptions="Center" Text="Get started and setup accounts"/>
+                        <Button Text="SETUP"
+                                CornerRadius="100"                                
+                            VerticalOptions="CenterAndExpand"
+                            HorizontalOptions="Center"
+                            Clicked="SetupButtonClicked" />
+                    </StackLayout>
+                </Frame>
+                <Frame BorderColor="Gray"  Margin="10">
+                    <StackLayout>
+                        <Label Text="Open an existing data file"/>
+                        <Button Text="OPEN"
+                            VerticalOptions="CenterAndExpand"
+                            HorizontalOptions="Center"
+                            Clicked="OpenButtonClicked" />
+                    </StackLayout>                    
+                </Frame>
+                <Frame BorderColor="Gray"  Margin="10">
+                    <Label Text="Learn how to use KMyMoney"/>
+                </Frame>
+                <Frame BorderColor="Gray"  Margin="10">
+                    <Label Text="Visit our website"/>
+                </Frame>
+                <Frame BorderColor="Gray"  Margin="10">
+                    <Label Text="Get Help from our community"/>
+                </Frame>
+                <Frame BorderColor="Gray"  Margin="10">
+                    <Label Text="See what's new in this version"/>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

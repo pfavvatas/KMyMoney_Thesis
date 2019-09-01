@@ -41,7 +41,7 @@ namespace KMyMoney_Thesis.Views
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
                         break;
                     case (int)MenuItemType.Institutions:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                        MenuPages.Add(id, new NavigationPage(new Institutions()));
                         break;
                     case (int)MenuItemType.Accounts:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
