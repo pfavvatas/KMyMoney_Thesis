@@ -34,6 +34,7 @@ namespace KMyMoney_Thesis
 
         private async void Button_Clicked_To_SetupPage3(object sender, EventArgs e)
         {
+            await DisplayAlert("Alert", "" + PersonalData, "OK");
             await Navigation.PushAsync(new SetupPage3(PersonalData));
         }
     }

@@ -23,9 +23,27 @@
                     <EntryCell x:Name="OpeningBalance" Label="Opening balance" Text="{Binding PersonalData.Name}"/>
                     <EntryCell x:Name="NameOfTheInstitution" Label="Name of the institution" Text="{Binding PersonalData.Name}"/>
                     <EntryCell x:Name="RoutingNumber" Label="Routing number" Text="{Binding PersonalData.Name}"/>
-        </TableSection>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal" Padding="13, 0">
+                                    <Label  Text="Account Type" VerticalOptions="Center"></Label>
+                                    <Picker x:Name="AccountType" HorizontalOptions="FillAndExpand" 
+                                        SelectedIndexChanged="Picker_SelectedIndexChanged">
+                                        <Picker.Items>
+                                            <x:String>GR1</x:String>
+                                            <x:String>GR2</x:String>
+                                        </Picker.Items>
+                                    </Picker>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </TableSection>
             </TableRoot>
         </TableView>
+            <Button Text="Finish" 
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="End" 
+                    Clicked="Button_Clicked_To_Finish"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

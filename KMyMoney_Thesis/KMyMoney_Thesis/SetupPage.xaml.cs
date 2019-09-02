@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -79,6 +80,15 @@ namespace KMyMoney_Thesis
 
         private async void Button_Clicked_To_SetupPage2(object sender, EventArgs e)
         {
+            PersonalData.Name = Entry_Name.Text;
+            PersonalData.Street = Entry_Street.Text;
+            PersonalData.Town = Entry_Town.Text;
+            PersonalData.Country = Entry_Country.Text;
+            PersonalData.Postal_code = Entry_Postal_Code.Text;
+            PersonalData.Telephone = Entry_Telephone.Text;
+            PersonalData.Email = Entry_Email.Text;            
+            await DisplayAlert("Alert", ""+ PersonalData, "OK");
+            //Debug.WriteLine("=========================Output "+ Entry_Name.Text);
             await Navigation.PushAsync(new SetupPage2(PersonalData));
         }
     }

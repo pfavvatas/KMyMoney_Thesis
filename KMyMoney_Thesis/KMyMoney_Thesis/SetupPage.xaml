@@ -6,17 +6,60 @@
              mc:Ignorable="d"
              x:Class="KMyMoney_Thesis.SetupPage">
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout>
+            <Frame>
+                    
+                <StackLayout HorizontalOptions="FillAndExpand" 
+                             VerticalOptions="FillAndExpand" 
+                             Orientation="Vertical" 
+                             WidthRequest="20" 
+                             >
+                    
+                    <StackLayout Orientation="Vertical" Padding="10">
+                        <Label Text="Your Name"/>
+                        <Entry Placeholder="Your name" x:Name="Entry_Name" Text="{Binding PersonalData.Name}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Padding="10">
+                        <Label Text="Street"/>
+                        <Entry Placeholder="Street" x:Name="Entry_Street"  Text="{Binding PersonalData.Street}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Padding="10">
+                        <Label Text="Town"/>
+                        <Entry Placeholder="Town" x:Name="Entry_Town"  Text="{Binding PersonalData.Town}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Padding="10">
+                        <Label Text="Country"/>
+                        <Entry Placeholder="Country" x:Name="Entry_Country"  Text="{Binding PersonalData.Country}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Padding="10">
+                        <Label Text="PostalCode"/>
+                        <Entry Placeholder="Postal Code" x:Name="Entry_Postal_Code"  Text="{Binding PersonalData.Postal_Code}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Padding="10">
+                        <Label Text="Telephone"/>
+                        <Entry Placeholder="Telephone" x:Name="Entry_Telephone"  Text="{Binding PersonalData.Telephone}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Padding="10">
+                        <Label Text="Email"/>
+                        <Entry Placeholder="Email" x:Name="Entry_Email"  Text="{Binding PersonalData.Email}"/>
+                    </StackLayout>
+                        <Button Text="Submit" BackgroundColor="Red" TextColor="White"></Button>
+                </StackLayout>
+                
+            </Frame>
+            
+            <!--
             <TableView Intent="Settings" x:Name="SetupPageTable">
                 <TableRoot>
                     <TableSection Title="Personal Data" >
-                        <EntryCell Label="Your name" Text="{Binding PersonalData.Name}"/>
-                        <EntryCell Label="Street" Text="{Binding PersonalData.Name}"/>
-                        <EntryCell Label="Town" Text="{Binding PersonalData.Name}"/>
-                        <EntryCell Label="Country" Text="{Binding PersonalData.Name}"/>
-                        <EntryCell Label="Postal Code" Text="{Binding PersonalData.Name}"/>
-                        <EntryCell Label="Telephone" Text="{Binding PersonalData.Name}"/>
-                        <EntryCell Label="Email" Text="{Binding PersonalData.Name}"/>
+                        <EntryCell Label="Your name" x:Name="Entry_Name" Text="{Binding PersonalData.Name}"/>
+                        <EntryCell Label="Street" x:Name="Entry_Street"  Text="{Binding PersonalData.Street}"/>
+                        <EntryCell Label="Town" x:Name="Entry_Town"  Text="{Binding PersonalData.Town}"/>
+                        <EntryCell Label="Country" x:Name="Entry_Country"  Text="{Binding PersonalData.Country}"/>
+                        <EntryCell Label="Postal Code" x:Name="Entry_Postal_Code"  Text="{Binding PersonalData.Postal_Code}"/>
+                        <EntryCell Label="Telephone" x:Name="Entry_Telephone"  Text="{Binding PersonalData.Telephone}"/>
+                        <EntryCell Label="Email" x:Name="Entry_Email"  Text="{Binding PersonalData.Email}"/>
                     </TableSection>
 
                 </TableRoot>
@@ -24,7 +67,10 @@
             <Button Text="Next" 
                     VerticalOptions="CenterAndExpand"
                     HorizontalOptions="End" 
-                    Clicked="Button_Clicked_To_SetupPage2"/>
+                    Clicked="Button_Clicked_To_SetupPage2"/>-->
+        
+        
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>    
 </ContentPage>
