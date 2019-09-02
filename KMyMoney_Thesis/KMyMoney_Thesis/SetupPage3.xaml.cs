@@ -7,38 +7,26 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-
 namespace KMyMoney_Thesis
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SetupPage : ContentPage
+    public partial class SetupPage3 : ContentPage
     {
         public Models.PersonalData PersonalData { get; set; }
         public TableSection SelectAccountsTableSelection;
         public int SelectAccountsPosition;
-        public SetupPage()
+        public SetupPage3(Models.PersonalData PersonalData)
         {
+            this.PersonalData = PersonalData;
             InitializeComponent();
-            PersonalData = new Models.PersonalData();
-            //SelectAccountsPosition = SetupPageTable.Root.IndexOf(SelectAccountsTableSection);
-            //SelectAccountsTableSelection = SetupPageTable.Root[SetupPageTable.Root.IndexOf(SelectAccountsTableSection)];
-            //SelectAccountsFalse();
-            //SetupPageTable.Root.Remove(SelectAccountsTableSection);
-
+            //PersonalData = new Models.PersonalData();
+            SelectAccountsPosition = SetupPageTable.Root.IndexOf(SelectAccountsTableSection);
+            SelectAccountsTableSelection = SetupPageTable.Root[SetupPageTable.Root.IndexOf(SelectAccountsTableSection)];
+            SelectAccountsFalse();
+            SetupPageTable.Root.Remove(SelectAccountsTableSection);
         }
 
-        void Picker_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var picker = (Picker)sender;
-            int selectedIndex = picker.SelectedIndex;
 
-            if (selectedIndex != -1)
-            {
-                PersonalData.Currency = picker.Items[selectedIndex];
-            }
-        }
-
-        /*
         private void CheckingAccountCheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
 
@@ -52,7 +40,7 @@ namespace KMyMoney_Thesis
                 SelectAccountsTrue();
                 SetupPageTable.Root.Add(SelectAccountsTableSelection);
                 //SetupPageTable.Root.Insert(SelectAccountsPosition, SelectAccountsTableSelection);
-            }         
+            }
 
         }
 
@@ -74,12 +62,6 @@ namespace KMyMoney_Thesis
             OpeningBalance.IsEnabled = true;
             NameOfTheInstitution.IsEnabled = true;
             RoutingNumber.IsEnabled = true;
-        }
-        */
-
-        private void Button_Clicked_To_SetupPage2(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new SetupPage2(PersonalData));
         }
     }
 }

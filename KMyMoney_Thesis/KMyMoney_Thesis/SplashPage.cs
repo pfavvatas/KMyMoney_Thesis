@@ -8,7 +8,7 @@ namespace KMyMoney_Thesis
 {
     public class SplashPage : ContentPage
     {
-        Image splashImage;
+        readonly Image splashImage;
 
         public SplashPage()
         {
@@ -43,7 +43,9 @@ namespace KMyMoney_Thesis
             //await splashImage.FadeTo(1, 2000);
 
             //Application.Current.MainPage = new NavigationPage(new MainPage());
-            Application.Current.MainPage = new MainPage();
+            //Application.Current.MainPage = new MainPage();
+            Application.Current.MainPage = new SetupPage();
+
 
 
         }

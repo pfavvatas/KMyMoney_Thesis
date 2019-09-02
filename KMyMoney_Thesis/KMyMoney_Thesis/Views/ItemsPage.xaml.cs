@@ -16,7 +16,7 @@ namespace KMyMoney_Thesis.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ItemsPage : ContentPage
     {
-        ItemsViewModel viewModel;
+        readonly ItemsViewModel viewModel;
 
         public ItemsPage()
         {

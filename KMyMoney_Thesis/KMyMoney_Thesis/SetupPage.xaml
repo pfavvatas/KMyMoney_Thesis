@@ -6,65 +6,25 @@
              mc:Ignorable="d"
              x:Class="KMyMoney_Thesis.SetupPage">
     <ContentPage.Content>
-        <TableView Intent="Settings">
-            <TableRoot>
-                <TableSection Title="Personal Data" >
-                    <EntryCell Label="Your name" Text="{Binding PersonalData.Name}"/>
-                    <EntryCell Label="Street" Text="{Binding PersonalData.Name}"/>
-                    <EntryCell Label="Town" Text="{Binding PersonalData.Name}"/>
-                    <EntryCell Label="Country" Text="{Binding PersonalData.Name}"/>
-                    <EntryCell Label="Postal Code" Text="{Binding PersonalData.Name}"/>
-                    <EntryCell Label="Telephone" Text="{Binding PersonalData.Name}"/>
-                    <EntryCell Label="Email" Text="{Binding PersonalData.Name}"/>
-                </TableSection>
-                <TableSection Title="Select Currency" >
-                    <ViewCell>
-                        <ViewCell.View>
-                            <StackLayout Orientation="Horizontal" Padding="13, 0">
-                                <Label Text="Currency" VerticalOptions="Center"></Label>
-                                <Picker HorizontalOptions="FillAndExpand" 
-                                        SelectedIndexChanged="Picker_SelectedIndexChanged">
-                                    <Picker.Items>
-                                        <x:String>Euro</x:String>
-                                        <x:String>Euro2</x:String>                                        
-                                    </Picker.Items>
-                                </Picker>                                        
-                            </StackLayout>
-                        </ViewCell.View>
-                    </ViewCell>
-                </TableSection>
-                <TableSection Title="Select Accounts" >
-                    <ViewCell>
-                        <ViewCell.View>
-                            <StackLayout>
-                                <Label Text="I have a checking account thet I want to manage with KMyMoney"/>
-                                <CheckBox x:Name="CheckingAccountCheckBox"  IsChecked="True" Color="Blue" CheckedChanged="CheckingAccountCheckBox_CheckedChanged"/>
-                            </StackLayout>
-                        </ViewCell.View>
-                    </ViewCell>
-                    <EntryCell x:Name="AccountName" Label="Name of the account" Text="{Binding PersonalData.Name}"/>
-                    <EntryCell x:Name="NumberOfTheAccount" Label="Number of the account" Text="{Binding PersonalData.Name}"/>
-                    <EntryCell x:Name="OpeningDate" Label="Opening date" Text="{Binding PersonalData.Name}"/>
-                    <EntryCell x:Name="OpeningBalance" Label="Opening balance" Text="{Binding PersonalData.Name}"/>
-                    <EntryCell x:Name="NameOfTheInstitution" Label="Name of the institution" Text="{Binding PersonalData.Name}"/>
-                    <EntryCell x:Name="RoutingNumber" Label="Routing number" Text="{Binding PersonalData.Name}"/>
+        <StackLayout>
+            <TableView Intent="Settings" x:Name="SetupPageTable">
+                <TableRoot>
+                    <TableSection Title="Personal Data" >
+                        <EntryCell Label="Your name" Text="{Binding PersonalData.Name}"/>
+                        <EntryCell Label="Street" Text="{Binding PersonalData.Name}"/>
+                        <EntryCell Label="Town" Text="{Binding PersonalData.Name}"/>
+                        <EntryCell Label="Country" Text="{Binding PersonalData.Name}"/>
+                        <EntryCell Label="Postal Code" Text="{Binding PersonalData.Name}"/>
+                        <EntryCell Label="Telephone" Text="{Binding PersonalData.Name}"/>
+                        <EntryCell Label="Email" Text="{Binding PersonalData.Name}"/>
+                    </TableSection>
 
-                    <ViewCell>
-                        <ViewCell.View>
-                            <StackLayout Orientation="Horizontal" Padding="13, 0">
-                                <Label Text="Currency" VerticalOptions="Center"></Label>
-                                <Picker HorizontalOptions="FillAndExpand" 
-                                        SelectedIndexChanged="Picker_SelectedIndexChanged">
-                                    <Picker.Items>
-                                        <x:String>Euro</x:String>
-                                        <x:String>Euro2</x:String>
-                                    </Picker.Items>
-                                </Picker>
-                            </StackLayout>
-                        </ViewCell.View>
-                    </ViewCell>
-                </TableSection>
-            </TableRoot>
-        </TableView>
-    </ContentPage.Content>
+                </TableRoot>
+            </TableView>
+            <Button Text="Next" 
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="End" 
+                    Clicked="Button_Clicked_To_SetupPage2"/>
+        </StackLayout>
+    </ContentPage.Content>    
 </ContentPage>
