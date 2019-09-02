@@ -44,7 +44,8 @@ namespace KMyMoney_Thesis
 
             //Application.Current.MainPage = new NavigationPage(new MainPage());
             //Application.Current.MainPage = new MainPage();
-            Application.Current.MainPage = new SetupPage();
+            //Application.Current.MainPage = new SetupPage();
+            Application.Current.MainPage = new NavigationPage(new SetupPage());
 
 
 

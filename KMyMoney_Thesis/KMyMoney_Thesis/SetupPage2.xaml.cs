@@ -32,9 +32,9 @@ namespace KMyMoney_Thesis
             }
         }
 
-        private void Button_Clicked_To_SetupPage3(object sender, EventArgs e)
+        private async void Button_Clicked_To_SetupPage3(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new SetupPage3(PersonalData));
+            await Navigation.PushAsync(new SetupPage3(PersonalData));
         }
     }
 }
