@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="KMyMoney_Thesis.WelcomePage"
+             Title="KMyMoney">
+    <ContentPage.Content BackgroundColor="red">
+        <Grid VerticalOptions="Fill" HorizontalOptions="Fill" Padding="24" BackgroundColor="White">            
+            <StackLayout  Padding="24,0" VerticalOptions="Center">
+                <Image Source="kmymoneylogo.jpg" HeightRequest="100"/>
+            </StackLayout>
+            <StackLayout  Grid.Row="1" Padding="24,0" VerticalOptions="Center">
+                <Label Text="Welcome to KMyMoney the finance manager." 
+                       FontSize="Medium" />
+            </StackLayout>
+            <StackLayout Grid.Row="2" Padding="24,0" VerticalOptions="Center">
+                <Button BackgroundColor="#0E7DD9" Text="Get started!" TextColor="White" FontSize="Medium" Clicked="Button_Clicked"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

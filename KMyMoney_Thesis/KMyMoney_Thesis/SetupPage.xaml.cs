@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KMyMoney_Thesis.Views;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -20,7 +21,8 @@ namespace KMyMoney_Thesis
         public SetupPage()
         {
             InitializeComponent();
-            PersonalData = new Models.PersonalData();
+            //PersonalData = new Models.PersonalData();
+
             //SelectAccountsPosition = SetupPageTable.Root.IndexOf(SelectAccountsTableSection);
             //SelectAccountsTableSelection = SetupPageTable.Root[SetupPageTable.Root.IndexOf(SelectAccountsTableSection)];
             //SelectAccountsFalse();
@@ -28,7 +30,7 @@ namespace KMyMoney_Thesis
 
         }
 
-        void Picker_SelectedIndexChanged(object sender, EventArgs e)
+        void Picker_Currency2(object sender, EventArgs e)
         {
             var picker = (Picker)sender;
             int selectedIndex = picker.SelectedIndex;
@@ -89,7 +91,27 @@ namespace KMyMoney_Thesis
             PersonalData.Email = Entry_Email.Text;            
             await DisplayAlert("Alert", ""+ PersonalData, "OK");
             //Debug.WriteLine("=========================Output "+ Entry_Name.Text);
-            await Navigation.PushAsync(new SetupPage2(PersonalData));
+            //await Navigation.PushAsync(new SetupPage2(PersonalData));
+        }
+
+        private void Picker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void XamlSwitch_Toggled(object sender, ToggledEventArgs e)
+        {
+
+        }
+
+        private void Picker_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private  void Button_Clicked(object sender, EventArgs e)
+        {
+            Application.Current.MainPage = new MainPage();
         }
     }
 }

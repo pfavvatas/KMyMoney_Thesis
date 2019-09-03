@@ -4,52 +4,110 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="KMyMoney_Thesis.SetupPage">
+             x:Class="KMyMoney_Thesis.SetupPage"
+             Title="Setup your Account">
     <ContentPage.Content>
         <ScrollView>
-        <StackLayout>
-            <Frame>
-                    
-                <StackLayout HorizontalOptions="FillAndExpand" 
+            <StackLayout>
+                <Frame>
+                    <StackLayout HorizontalOptions="FillAndExpand" 
                              VerticalOptions="FillAndExpand" 
-                             Orientation="Vertical" 
-                             WidthRequest="20" 
-                             >
-                    
-                    <StackLayout Orientation="Vertical" Padding="10">
-                        <Label Text="Your Name"/>
-                        <Entry Placeholder="Your name" x:Name="Entry_Name" Text="{Binding PersonalData.Name}"/>
+                             Orientation="Vertical">
+                        <StackLayout Orientation="Vertical" Padding="10">
+                            <Label Text="Your Name"/>
+                            <Entry Placeholder="Your name" x:Name="Entry_Name" Text="{Binding PersonalData.Name}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" Padding="10">
+                            <Label Text="Street"/>
+                            <Entry Placeholder="Street" x:Name="Entry_Street"  Text="{Binding PersonalData.Street}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" Padding="10">
+                            <Label Text="Town"/>
+                            <Entry Placeholder="Town" x:Name="Entry_Town"  Text="{Binding PersonalData.Town}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" Padding="10">
+                            <Label Text="Country"/>
+                            <Entry Placeholder="Country" x:Name="Entry_Country"  Text="{Binding PersonalData.Country}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" Padding="10">
+                            <Label Text="PostalCode"/>
+                            <Entry Placeholder="Postal Code" x:Name="Entry_Postal_Code"  Text="{Binding PersonalData.Postal_Code}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" Padding="10">
+                            <Label Text="Telephone"/>
+                            <Entry Placeholder="Telephone" x:Name="Entry_Telephone"  Text="{Binding PersonalData.Telephone}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" Padding="10">
+                            <Label Text="Email"/>
+                            <Entry Placeholder="Email" x:Name="Entry_Email"  Text="{Binding PersonalData.Email}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" Padding="10">
+                            <Label Text="Currency" VerticalOptions="Center"></Label>
+                            <Picker HorizontalOptions="FillAndExpand" 
+                                        SelectedIndexChanged="Picker_SelectedIndexChanged">
+                                <Picker.Items>
+                                    <x:String>Euro</x:String>
+                                    <x:String>Euro2</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                        <StackLayout>
+                            <Label x:Name="switchStateLabel"
+                                   Text="Enable checking account!"
+                                   VerticalOptions="CenterAndExpand" 
+                                   HorizontalOptions="CenterAndExpand" />
+                             <Switch x:Name="xamlSwitch"
+                                    Toggled="XamlSwitch_Toggled"
+                                    IsToggled="False"
+                                    OnColor="Orange"
+                                    ThumbColor="Green"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="CenterAndExpand" />  
+                        </StackLayout>
+                        <StackLayout x:Name="StackLayout_CheckingAccount">
+                            <StackLayout Orientation="Vertical" Padding="10">
+                                <Label Text="Name of the account"/>
+                                <Entry Placeholder="Name of the account" x:Name="Entry_NameOfTheAccount"  Text="{Binding PersonalData.Name_Of_The_Account}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical" Padding="10">
+                                <Label Text="Number of the Account"/>
+                                <Entry Placeholder="Number of the Account" x:Name="Entry_NumberOfTheAccount"  Text="{Binding PersonalData.Number_Of_The_Account}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical" Padding="10">
+                                <Label Text="Opening date"/>
+                                <Entry Placeholder="Opening date" x:Name="Entry_OpeningDate"  Text="{Binding PersonalData.Opening_Date}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical" Padding="10">
+                                <Label Text="Opening balance"/>
+                                <Entry Placeholder="Opening balance" x:Name="Entry_OpeningBalance"  Text="{Binding PersonalData.Opening_Balance}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical" Padding="10">
+                                <Label Text="Number of the institution"/>
+                                <Entry Placeholder="Number of the institution" x:Name="Entry_NumberOfTheInstitution"  Text="{Binding PersonalData.Number_Of_The_Institution}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical" Padding="10">
+                                <Label Text="Routing Number"/>
+                                <Entry Placeholder="Routing Number" x:Name="Entry_RoutingNumber"  Text="{Binding PersonalData.Routing_Number}"/>
+                            </StackLayout>                            
+                        </StackLayout>
+                        <StackLayout>
+                            <StackLayout Orientation="Vertical" Padding="10">
+                                <Label Text="Account type"/>
+                                <Picker HorizontalOptions="FillAndExpand" 
+                                        SelectedIndexChanged="Picker_SelectedIndexChanged_1">
+                                    <Picker.Items>
+                                        <x:String>Euro</x:String>
+                                        <x:String>Euro2</x:String>
+                                    </Picker.Items>
+                                </Picker>
+                            </StackLayout>
+                        </StackLayout>
+                        <Button Text="Submit" BackgroundColor="Red" TextColor="White" Clicked="Button_Clicked"></Button>
                     </StackLayout>
-                    <StackLayout Orientation="Vertical" Padding="10">
-                        <Label Text="Street"/>
-                        <Entry Placeholder="Street" x:Name="Entry_Street"  Text="{Binding PersonalData.Street}"/>
-                    </StackLayout>
-                    <StackLayout Orientation="Vertical" Padding="10">
-                        <Label Text="Town"/>
-                        <Entry Placeholder="Town" x:Name="Entry_Town"  Text="{Binding PersonalData.Town}"/>
-                    </StackLayout>
-                    <StackLayout Orientation="Vertical" Padding="10">
-                        <Label Text="Country"/>
-                        <Entry Placeholder="Country" x:Name="Entry_Country"  Text="{Binding PersonalData.Country}"/>
-                    </StackLayout>
-                    <StackLayout Orientation="Vertical" Padding="10">
-                        <Label Text="PostalCode"/>
-                        <Entry Placeholder="Postal Code" x:Name="Entry_Postal_Code"  Text="{Binding PersonalData.Postal_Code}"/>
-                    </StackLayout>
-                    <StackLayout Orientation="Vertical" Padding="10">
-                        <Label Text="Telephone"/>
-                        <Entry Placeholder="Telephone" x:Name="Entry_Telephone"  Text="{Binding PersonalData.Telephone}"/>
-                    </StackLayout>
-                    <StackLayout Orientation="Vertical" Padding="10">
-                        <Label Text="Email"/>
-                        <Entry Placeholder="Email" x:Name="Entry_Email"  Text="{Binding PersonalData.Email}"/>
-                    </StackLayout>
-                        <Button Text="Submit" BackgroundColor="Red" TextColor="White"></Button>
-                </StackLayout>
-                
-            </Frame>
-            
-            <!--
+
+                </Frame>
+
+                <!--
             <TableView Intent="Settings" x:Name="SetupPageTable">
                 <TableRoot>
                     <TableSection Title="Personal Data" >
@@ -68,9 +126,9 @@
                     VerticalOptions="CenterAndExpand"
                     HorizontalOptions="End" 
                     Clicked="Button_Clicked_To_SetupPage2"/>-->
-        
-        
-        </StackLayout>
+
+
+            </StackLayout>
         </ScrollView>
-    </ContentPage.Content>    
+    </ContentPage.Content>
 </ContentPage>

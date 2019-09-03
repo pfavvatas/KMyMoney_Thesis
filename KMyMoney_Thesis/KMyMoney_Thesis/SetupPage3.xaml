@@ -5,45 +5,5 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="KMyMoney_Thesis.SetupPage3">
-    <ContentPage.Content>
-        <StackLayout Margin="0, 20, 15, 5">
-            
-                <Label Text="I have a checking account thet I want to manage with KMyMoney"  VerticalOptions="StartAndExpand"/>
-                
-                <CheckBox x:Name="CheckingAccountCheckBox"  IsChecked="False" Color="Blue" CheckedChanged="CheckingAccountCheckBox_CheckedChanged" />
-
-            
-            
-        <TableView Intent="Settings" x:Name="SetupPageTable">
-            <TableRoot>
-                <TableSection Title="Select Accounts" x:Name="SelectAccountsTableSection" >
-                    <EntryCell x:Name="AccountName" Label="Name of the account" Text="{Binding PersonalData.Name}"/>
-                    <EntryCell x:Name="NumberOfTheAccount" Label="Number of the account" Text="{Binding PersonalData.Name}"/>
-                    <EntryCell x:Name="OpeningDate" Label="Opening date" Text="{Binding PersonalData.Name}"/>
-                    <EntryCell x:Name="OpeningBalance" Label="Opening balance" Text="{Binding PersonalData.Name}"/>
-                    <EntryCell x:Name="NameOfTheInstitution" Label="Name of the institution" Text="{Binding PersonalData.Name}"/>
-                    <EntryCell x:Name="RoutingNumber" Label="Routing number" Text="{Binding PersonalData.Name}"/>
-                        <ViewCell>
-                            <ViewCell.View>
-                                <StackLayout Orientation="Horizontal" Padding="13, 0">
-                                    <Label  Text="Account Type" VerticalOptions="Center"></Label>
-                                    <Picker x:Name="AccountType" HorizontalOptions="FillAndExpand" 
-                                        SelectedIndexChanged="Picker_SelectedIndexChanged">
-                                        <Picker.Items>
-                                            <x:String>GR1</x:String>
-                                            <x:String>GR2</x:String>
-                                        </Picker.Items>
-                                    </Picker>
-                                </StackLayout>
-                            </ViewCell.View>
-                        </ViewCell>
-                    </TableSection>
-            </TableRoot>
-        </TableView>
-            <Button Text="Finish" 
-                    VerticalOptions="CenterAndExpand"
-                    HorizontalOptions="End" 
-                    Clicked="Button_Clicked_To_Finish"/>
-        </StackLayout>
-    </ContentPage.Content>
+    
 </ContentPage>
