@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+
+
 namespace KMyMoney_Thesis.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -40,6 +42,7 @@ namespace KMyMoney_Thesis.Views
             ListViewMenu.SelectedItem = menuItems[0];
             ListViewMenu.ItemSelected += async (sender, e) =>
             {
+                System.Console.WriteLine("====>Selected =" + e.SelectedItem);
                 if (e.SelectedItem == null)
                     return;
 

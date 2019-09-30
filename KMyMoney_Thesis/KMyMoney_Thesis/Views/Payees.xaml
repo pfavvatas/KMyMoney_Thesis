@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="KMyMoney_Thesis.Views.Payees">
+    <!--<ContentPage.Content>
+    </ContentPage.Content>-->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text="..."
+            Order="Default"
+            Name="NEW"
+            Clicked="New_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <!--x:Name="MyListViewPayees" ItemsSource="{Binding PayeeItem}" ItemTapped="Handle_PayeeItemTapped" CachingStrategy="RecycleElement"-->
+    <StackLayout>
+        <StackLayout x:Name="LayoutUpdate" Orientation="Vertical" IsVisible="false">
+            <Entry x:Name="UpdateNameEntry"/>
+            <Button Text="Update" Clicked="UpdateNameButton"/>
+        </StackLayout>
+            <ListView x:Name="lstMonkeys" ItemTapped="OnItemSelected">                 
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+    </StackLayout>
+
+
+
+</ContentPage>

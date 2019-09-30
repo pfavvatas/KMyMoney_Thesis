@@ -44,7 +44,7 @@ namespace KMyMoney_Thesis.Views
                         MenuPages.Add(id, new NavigationPage(new Institutions()));
                         break;
                     case (int)MenuItemType.Accounts:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                        MenuPages.Add(id, new NavigationPage(new Accounts()));
                         break;
                     case (int)MenuItemType.Sheduled_transactions:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
@@ -56,10 +56,10 @@ namespace KMyMoney_Thesis.Views
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
                         break;
                     case (int)MenuItemType.Payees:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                        MenuPages.Add(id, new NavigationPage(new Payees()));
                         break;
                     case (int)MenuItemType.Ledgers:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                        MenuPages.Add(id, new NavigationPage(new Ledgers()));
                         break;
                     case (int)MenuItemType.Investments:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));

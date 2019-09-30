@@ -16,6 +16,7 @@
                        FontSize="Medium" />
             </StackLayout>
             <StackLayout Grid.Row="2" Padding="24,0" VerticalOptions="Center">
+                 <Button BackgroundColor="#0E7DD9" Text="Open file!" TextColor="White" FontSize="Medium" Clicked="Button_ClickedFile"/>
                 <Button BackgroundColor="#0E7DD9" Text="Get started!" TextColor="White" FontSize="Medium" Clicked="Button_Clicked"/>
             </StackLayout>
         </Grid>

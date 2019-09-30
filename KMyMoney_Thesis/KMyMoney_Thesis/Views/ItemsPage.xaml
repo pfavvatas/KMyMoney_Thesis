@@ -3,7 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KMyMoney_Thesis.Views.ItemsPage"
               Title="{Binding Title}"
-             x:Name="BrowseItemsPage">
+             x:Name="BrowseItemsPage"
+             xmlns:feed_local="clr-namespace:KMyMoney_Thesis.FeedModel"
+             xmlns:feed_local2="clr-namespace:KMyMoney_Thesis.FeedModel"
+             xmlns:feed_local3="clr-namespace:KMyMoney_Thesis.FeedModel"
+             xmlns:feed_local4="clr-namespace:KMyMoney_Thesis.FeedModel">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Clicked="AddItem_Clicked">
             <ToolbarItem.Icon>
@@ -13,8 +17,18 @@
             </ToolbarItem.Icon>
         </ToolbarItem>
     </ContentPage.ToolbarItems>
-
+    <ScrollView>
     <StackLayout>
+    <feed_local:AssetsAndLiabilities/>
+    <feed_local2:Payments/>
+    <feed_local3:PaymentAccounts/>
+    <feed_local4:DayForecast/>
+    <feed_local4:DayForecast/>
+
+    </StackLayout>
+        </ScrollView>
+
+    <!--<StackLayout>
         <ListView x:Name="ItemsListView"
                 ItemsSource="{Binding Items}"
                 VerticalOptions="FillAndExpand"
@@ -41,5 +55,5 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-    </StackLayout>
+    </StackLayout>-->
 </ContentPage>

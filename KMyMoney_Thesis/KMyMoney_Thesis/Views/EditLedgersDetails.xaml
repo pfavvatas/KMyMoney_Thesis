@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="KMyMoney_Thesis.Views.EditLedgersDetails"
+             Title="Edit {name}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text="..."
+            Order="Default"
+            Name="ADD NEW"/>
+    </ContentPage.ToolbarItems>
+            <ScrollView>
+
+    <Grid >
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+        
+            <StackLayout Grid.Row="1" Orientation="Horizontal" Padding="20,0">
+                
+                    <StackLayout HorizontalOptions="FillAndExpand" 
+                             VerticalOptions="FillAndExpand" 
+                             Orientation="Vertical" >
+                        <StackLayout Orientation="Vertical" Padding="10">
+                            <Label Text="Date:"/>
+                            <DatePicker x:Name="startDatePicker"
+                                        Format="D"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" Padding="10">
+                            <Label Text="Amount:"/>
+                            <Entry Keyboard="Numeric" Placeholder="0.00"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" Padding="10">
+                            <Label Text="Select Method"/>
+                            <Picker Title="Select Method">
+                                <Picker.Items>
+                                    <x:String>Pay to</x:String> 
+                                    <x:String>From</x:String>
+                                </Picker.Items>
+                            </Picker> 
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" Padding="10">
+                            <Label Text="Category"/>
+                            <Picker Title="Category">
+                                <Picker.Items>
+                                    <x:String>1</x:String> 
+                                    <x:String>2</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" Padding="10">
+                            <Label Text="Tags"/>
+                            <Picker Title="Tags">
+                                <Picker.Items>
+                                    <x:String>1.1</x:String> 
+                                    <x:String>1.2</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" Padding="10">
+                            <Label Text="Memo"/>
+                            <Editor Placeholder="Enter multi-line text here"                                
+                                MaxLength="100"
+                                 />      
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" Padding="10">
+                            <Label Text="Status"/>
+                            <Picker Title="Status">
+                                <Picker.Items>
+                                    <x:String>de kserw ti einai auto 2.1</x:String> 
+                                    <x:String>de kserw ti einai auto 2.2</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                        <StackLayout >
+                            <Label Text="Extra commands:"/>
+                            <Button Text="Duplicate" HorizontalOptions="Start"/>
+                        </StackLayout>
+                    </StackLayout>
+            </StackLayout>
+        
+
+            <!--With Grid.Row="2", goes down-->
+            <!--With Padding, we've a little bit space between button and edge of display-->
+            <StackLayout Grid.Row="2" Orientation="Horizontal" Padding="20,0">
+                <StackLayout.Padding>
+                     <OnPlatform x:TypeArguments="Thickness" Android="20,0" iOS="20,20,20,30"></OnPlatform>
+                </StackLayout.Padding>
+                <!--Start of Button Update-->
+               <Button Text="Update" HorizontalOptions="StartAndExpand" >
+                   <Button.BackgroundColor>
+                               <OnPlatform x:TypeArguments="Color" Android="#FAFAFA" WinPhone="#2196F3"></OnPlatform>
+                   </Button.BackgroundColor>
+                   <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color" Android="#007AFF"></OnPlatform>
+                    </Button.TextColor>
+               </Button>
+                <!--End of Button Update-->
+
+                <!--Button Delete-->
+                <Button Text="Delete" HorizontalOptions="EndAndExpand">
+                    <Button.BackgroundColor>
+                               <OnPlatform x:TypeArguments="Color" Android="#FAFAFA" WinPhone="#2196F3" ></OnPlatform>
+                   </Button.BackgroundColor>
+                    <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color" Android="#ff6666" iOS="#ff6666"></OnPlatform>
+                    </Button.TextColor>
+                </Button>
+                <!--End of Button Delete-->
+        </StackLayout>
+        <!--End of StackLayout-->
+</Grid>
+                </ScrollView>
+</ContentPage>

@@ -21,6 +21,9 @@ namespace KMyMoney_Thesis
         public SetupPage()
         {
             InitializeComponent();
+
+            
+
             //PersonalData = new Models.PersonalData();
 
             //SelectAccountsPosition = SetupPageTable.Root.IndexOf(SelectAccountsTableSection);

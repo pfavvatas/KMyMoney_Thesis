@@ -17,13 +17,16 @@ namespace KMyMoney_Thesis
 
 
             //MainPage = new MainPage();
-            MainPage = new NavigationPage(new WelcomePage());
+            //MainPage = new NavigationPage(new WelcomePage());
+            MainPage = new NavigationPage(new Accounts());
         }
 
         public App(string databaseLocation)
         {
             InitializeComponent();
             Application.Current.MainPage = new WelcomePage();
+            //Application.Current.MainPage = new Accounts();
+
             //MainPage = new NavigationPage(new WelcomePage());
 
             DatabaseLocation = databaseLocation;

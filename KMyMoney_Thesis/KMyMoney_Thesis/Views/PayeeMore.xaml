@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="KMyMoney_Thesis.Views.PayeeMore">
+    <!--Pages can be added as references or inline-->
+
+    <!--Page Transaction-->
+    <ContentPage Title="Transactions" >        
+        <StackLayout>
+            <ListView  x:Name="AccountList2" ItemsSource="{Binding Test}" HasUnevenRows="True" CachingStrategy="RecycleElement">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+
+                            <!--<Account_local:AccountModel/>-->
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Frame HorizontalOptions="FillAndExpand" Margin="10,10,10,10">
+                                    <Grid VerticalOptions="CenterAndExpand" Padding="0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackLayout Grid.Row="0" Grid.Column="0">
+                                            <!--<Label Text="TITLE" />-->
+
+
+                                            <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Vertical">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Date :" />
+                                                    <Label Text="{Binding TestBindingString}" HorizontalOptions="EndAndExpand" />
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Account :" />
+                                                    <Label Text="{Binding TestBindingString}" HorizontalOptions="EndAndExpand" />
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Details :" />
+                                                    <Label Text="{Binding TestBindingString}" HorizontalOptions="EndAndExpand" />
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="C :" />
+                                                    <Label Text="{Binding TestBindingString}" HorizontalOptions="EndAndExpand" />
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Payment :" />
+                                                    <Label Text="{Binding TestBindingString}" HorizontalOptions="EndAndExpand" />
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Deposit :" />
+                                                    <Label Text="{Binding TestBindingString}" HorizontalOptions="EndAndExpand" />
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>
+
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label Text="Balance: $0" FontSize="Large" HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage>
+
+    <!--Page Address-->
+    <ContentPage Title="Address">
+        <ScrollView>
+        <StackLayout>
+            <Frame>
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
+                    <StackLayout Orientation="Vertical" Padding="10">
+                        <Label Text="Address: " />
+                        <Editor Placeholder="Enter multi-line text here"                                
+                                MaxLength="100"
+                                 /></StackLayout>
+                    <StackLayout Orientation="Vertical" Padding="10">
+                        <Label Text="Postal Code" />
+                        <Entry Placeholder="Postal Code"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Padding="10">
+                        <Label Text="Telephone/Fax" />
+                        <Entry Placeholder="Telephone/Fax"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Padding="10">
+                        <Label Text="E-Mail" />
+                        <Entry Placeholder="E-Mail"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Padding="10">
+                        <Label Text="Notes" />
+                        <Editor Placeholder="Enter multi-line text here"                                
+                                MaxLength="100"
+                                 />
+                    </StackLayout>
+                    <Button Text="Update" BackgroundColor="Red" TextColor="White"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+            </ScrollView>
+    </ContentPage>
+
+    <!--Page Extra-->
+    <ContentPage Title="Extra">
+    </ContentPage>
+</TabbedPage>

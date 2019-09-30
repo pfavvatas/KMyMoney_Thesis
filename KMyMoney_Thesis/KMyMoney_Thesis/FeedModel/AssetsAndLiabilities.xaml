@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="KMyMoney_Thesis.FeedModel.AssetsAndLiabilities">
+    <ContentView.Content>
+        <Frame IsClippedToBounds="True"
+               HasShadow="True"
+               Padding="0"
+               BackgroundColor="White">
+            <Frame.Margin>
+                <OnPlatform x:TypeArguments="Thickness"
+                            Android="10"
+                            iOS="10"/>
+            </Frame.Margin>
+            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                <!--<BoxView Color="Red" WidthRequest="5"/>-->
+                <Frame HorizontalOptions="FillAndExpand" Margin="0,0,0,0" HasShadow="False" BorderColor="Gainsboro" >
+                    <Grid VerticalOptions="CenterAndExpand" Padding="0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Grid.Row="0" Grid.Column="0">                            
+                                <Label Text="Assets and Liabilities" FontSize="Title" FontAttributes="Italic" TextDecorations="Underline"/>
+                        </StackLayout>
+
+
+                        <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Total Assets " FontSize="Large" />
+                                <Label Text="$ 0.00" FontSize="Large" HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Total Liabilities" FontSize="Large" />
+                                <Label Text="$ 0.00" FontSize="Large" HorizontalOptions="EndAndExpand"/>
+
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Padding="10">
+                            <StackLayout HorizontalOptions="FillAndExpand">
+                              <Button Text="More" TextColor="Black" Clicked="ButtonClicked" BackgroundColor="IndianRed" />
+                            </StackLayout>
+                        </StackLayout>
+
+                    </Grid>
+                </Frame>
+            </StackLayout>
+        </Frame>
+    </ContentView.Content>
+</ContentView>
