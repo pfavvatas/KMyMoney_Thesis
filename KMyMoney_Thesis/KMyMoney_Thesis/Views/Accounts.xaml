@@ -13,6 +13,16 @@
         <vm:AccountsViewModel />
     </ContentPage.BindingContext>
 
+    <ContentPage.ToolbarItems>  
+  <ToolbarItem IconImageSource="plussimple7.png"
+               Clicked="OnToolbarItemClickedAddNewAccount"
+                Priority="0" Order="Primary" />  
+  <!--<ToolbarItem Text ="Add Account"  
+              Priority="1" Order="Secondary" />-->  
+  <!--<ToolbarItem Text ="Item 2"  
+              Priority="1" Order="Secondary" />-->  
+  </ContentPage.ToolbarItems>  
+
     <StackLayout>
         <ListView  x:Name="AccountList" ItemsSource="{Binding Test}" HasUnevenRows="True" ItemTapped="OnItemSelected" CachingStrategy="RecycleElement">
             <ListView.ItemTemplate>

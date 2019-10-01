@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="KMyMoney_Thesis.Views.InstitutionEdit">
+    <ScrollView>
+    <Grid >
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+        
+            <StackLayout Grid.Row="1" Orientation="Horizontal" Padding="20,0">                
+                    <StackLayout HorizontalOptions="FillAndExpand" 
+                             VerticalOptions="FillAndExpand" 
+                             Orientation="Vertical" > 
+                        <StackLayout Orientation="Vertical" Padding="10">
+                            <Label Text="Name"/>
+                            <Entry Placeholder="Name"/>      
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" Padding="10">
+                            <Label Text="City"/>
+                            <Entry Placeholder="City"/>      
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" Padding="10">
+                            <Label Text="Street"/>
+                            <Entry Placeholder="Street"/>      
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" Padding="10">
+                            <Label Text="Postal Code"/>
+                            <Entry Placeholder="Postal Code"/>      
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" Padding="10">
+                            <Label Text="Telephone/Fax"/>
+                            <Entry Placeholder="Telephone/Fax"/>      
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" Padding="10">
+                            <Label Text="Routing Number"/>
+                            <Entry Placeholder="Routing Number"/>      
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" Padding="10">
+                            <Label Text="BIC"/>
+                            <Entry Placeholder="BIC"/>      
+                        </StackLayout>
+                <Button Text="Ok" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+                    <Button.BackgroundColor>
+                        <OnPlatform x:TypeArguments="Color" Android="#FAFAFA" WinPhone="#2196F3"></OnPlatform>
+                    </Button.BackgroundColor>
+                    <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color" Android="#007AFF"></OnPlatform>
+                    </Button.TextColor>
+                </Button>
+            </StackLayout>
+
+            </StackLayout>
+
+        
+
+            
+</Grid>
+        </ScrollView>
+</ContentPage>

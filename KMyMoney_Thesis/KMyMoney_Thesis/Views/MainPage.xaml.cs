@@ -53,7 +53,7 @@ namespace KMyMoney_Thesis.Views
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
                         break;
                     case (int)MenuItemType.Tags:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                        MenuPages.Add(id, new NavigationPage(new Tags()));
                         break;
                     case (int)MenuItemType.Payees:
                         MenuPages.Add(id, new NavigationPage(new Payees()));

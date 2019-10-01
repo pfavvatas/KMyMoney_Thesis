@@ -13,19 +13,27 @@ namespace KMyMoney_Thesis.Views
     public partial class Ledgers : ContentPage
     {
         public ObservableCollection<TestBinding2> Items { get; set; }
-
+        public ObservableCollection<String> ledgersItems { get; set; }
         public Ledgers()
         {
             InitializeComponent();
 
             Items = new ObservableCollection<TestBinding2>
             {
-                new TestBinding2 {Date="01/01/2001", Detais="BONUS1", Balance="1000"},
-                new TestBinding2 {Date="02/01/2001", Detais="BONUS2", Balance="2000"},
-                new TestBinding2 {Date="03/01/2001", Detais="BONUS3", Balance="3000"},
-                new TestBinding2 {Date="04/01/2001", Detais="BONUS4", Balance="4000"}
+                new TestBinding2 {Date="01/01/2001", Details="BONUS1", Balance="1000"},
+                new TestBinding2 {Date="02/01/2001", Details="BONUS2", Balance="2000"},
+                new TestBinding2 {Date="03/01/2001", Details="BONUS3", Balance="3000"},
+                new TestBinding2 {Date="04/01/2001", Details="BONUS4", Balance="4000"}
             };
-            
+
+            ledgersItems = new ObservableCollection<String>();
+            ledgersItems.Add("Ledger_1");
+            ledgersItems.Add("Ledger_2");
+            if (ledgersItems != null)
+            {
+                pickerLedgers.ItemsSource = ledgersItems;
+            }
+
             MyListView.ItemsSource = Items;
         }
 
@@ -39,6 +47,12 @@ namespace KMyMoney_Thesis.Views
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
+        }
+
+        async void OnToolbarItemClickedAddNewLedger(object sender, EventArgs args)
+        {
+            await DisplayAlert("Add", "Add new Ledger", "OK");
+            //await Navigation.PushAsync(new InstitutionEdit());
         }
     }
 }

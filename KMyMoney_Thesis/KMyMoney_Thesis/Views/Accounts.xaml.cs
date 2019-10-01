@@ -40,11 +40,17 @@ namespace KMyMoney_Thesis.Views
             if (e.Item == null)
                 return;
 
-            var details = e.Item as TestBinding;
+            //var details = e.Item as TestBinding;
             TestBinding detail = e.Item as TestBinding;
             await DisplayAlert("Alert", "=>"+detail.TestBindingString, "OK");
             //await Navigation.PushAsync(new AccountsDetail(detail));
             await Navigation.PushAsync(new Ledgers());
+        }
+
+        async void OnToolbarItemClickedAddNewAccount(object sender, EventArgs args)
+        {
+            await DisplayAlert("Add", "Add new Account", "OK");
+            //await Navigation.PushAsync(new InstitutionEdit());
         }
     }
 }

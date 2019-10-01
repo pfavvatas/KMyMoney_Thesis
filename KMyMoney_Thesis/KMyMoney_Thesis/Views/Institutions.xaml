@@ -4,15 +4,53 @@
         <vm:InstitutionViewModel />
     </ContentPage.BindingContext>
 
-    <ListView x:Name="InstitutionsList" SeparatorColor="Red">       
+    <ContentPage.ToolbarItems>  
+  <ToolbarItem IconImageSource="plussimple7.png"
+               Clicked="OnToolbarItemClickedAddNewInstitution"
+                Priority="0" Order="Primary" />  
+  <!--<ToolbarItem Text ="Add Account"  
+              Priority="1" Order="Secondary" />-->  
+  <!--<ToolbarItem Text ="Item 2"  
+              Priority="1" Order="Secondary" />-->  
+  </ContentPage.ToolbarItems>  
+
+    <Grid>
+        <ListView  Grid.Column="0" FlowDirection="LeftToRight"  x:Name="InstitutionsList"  ItemTapped="OnSelectedItem" IsPullToRefreshEnabled="True" RefreshControlColor="Red" >
+            <ListView.Margin>
+                <OnPlatform x:TypeArguments="Thickness"
+                      iOS="-18,0,0,0"
+                      Android="0,0,0,0" />
+            </ListView.Margin>
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <Label Text="{Binding TestBindingString}" Margin="10,20,0,0"/>
+                    <Grid>
+                        <FlexLayout Grid.Column="2" Direction="RowReverse">
+                            <FlexLayout.Margin>
+                                <OnPlatform x:TypeArguments="Thickness"
+                                      iOS="0"
+                                      Android="10,10,10,10" />
+                            </FlexLayout.Margin>                            
+                            <ImageButton  Source="bin7.png" Clicked="OnButtonClickedDelete" CommandParameter="{Binding TestBindingString}">
+                                <ImageButton.BackgroundColor>
+                                    <OnPlatform x:TypeArguments="Color"
+                                                Android="#FAFAFA"/>
+                                </ImageButton.BackgroundColor>
+                            </ImageButton>                           
+                            <ImageButton  Source="pencil7.png" Clicked="OnButtonClickedEdit" CommandParameter="{Binding TestBindingString}">
+                                <ImageButton.BackgroundColor>
+                                    <OnPlatform x:TypeArguments="Color"
+                                                Android="#FAFAFA"/>
+                                </ImageButton.BackgroundColor>
+                            </ImageButton>
+                        </FlexLayout>
+                        <Label Text="{Binding TestBindingString}" Margin="20,0,0,0" VerticalTextAlignment="Center"/>
+                        <Label Grid.Column="1" Text="Balance: $ 0.00" VerticalTextAlignment="Center"/>
+                    </Grid>
                 </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
-
+    </Grid>
 
 </ContentPage>

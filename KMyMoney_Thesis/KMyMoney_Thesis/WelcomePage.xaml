@@ -8,10 +8,12 @@
              Title="KMyMoney">
     <ContentPage.Content BackgroundColor="red">
         <Grid VerticalOptions="Fill" HorizontalOptions="Fill" Padding="24" BackgroundColor="White">            
-            <StackLayout  Padding="24,0" VerticalOptions="Center">
-                <Image Source="kmymoneylogo.jpg" HeightRequest="100"/>
+            <StackLayout  Padding="24,0" VerticalOptions="Center" >
+                <Frame HeightRequest="200" WidthRequest="200" CornerRadius="100" HorizontalOptions="Center" VerticalOptions="Center" Margin="0" Padding="0" BackgroundColor="#0E7DD9">
+                    <Label FontSize="150" Text="K" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                </Frame>
             </StackLayout>
-            <StackLayout  Grid.Row="1" Padding="24,0" VerticalOptions="Center">
+            <StackLayout  Grid.Row="1" Padding="24,0" VerticalOptions="Center" >
                 <Label Text="Welcome to KMyMoney the finance manager." 
                        FontSize="Medium" />
             </StackLayout>

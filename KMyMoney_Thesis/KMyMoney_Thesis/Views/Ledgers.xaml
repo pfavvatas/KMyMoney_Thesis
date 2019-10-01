@@ -1,21 +1,74 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="KMyMoney_Thesis.Views.Ledgers"
              Title="Ledgers">
-    
-        <ListView x:Name="MyListView" ItemsSource="{Binding Items}" ItemTapped="Handle_ItemTapped" CachingStrategy="RecycleElement">
+
+    <ContentPage.ToolbarItems>  
+  <ToolbarItem IconImageSource="plussimple7.png"
+               Clicked="OnToolbarItemClickedAddNewLedger"
+                Priority="0" Order="Primary" />
+     </ContentPage.ToolbarItems>
+    <StackLayout>
+    <Picker x:Name="pickerLedgers" Title="Select Ledger" TitleColor="Red" ItemsSource="{Binding .}"  HorizontalOptions="CenterAndExpand"/> 
+
+        <ListView x:Name="MyListView" ItemsSource="{Binding Items}" HasUnevenRows="True" ItemTapped="Handle_ItemTapped" CachingStrategy="RecycleElement">
         <!--Built in Cells-->
         <ListView.ItemTemplate>
             <DataTemplate>
-                <TextCell Text="{Binding EchoTogether}" />
+                <ViewCell>
+                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                            <Frame HorizontalOptions="FillAndExpand" Margin="10,10,10,10">
+                                <Grid VerticalOptions="CenterAndExpand" Padding="0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                     <StackLayout Grid.Row="0" Grid.Column="0">                           
+                     
+
+                                        <StackLayout Grid.Row="1" Grid.Column="1"  Orientation="Vertical">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Date :"/>
+                                                    <Label Text="{Binding Date}" HorizontalOptions="EndAndExpand"/>
+                                                </StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Details :"/>
+                                                    <Label Text="{Binding Details}" HorizontalOptions="EndAndExpand"/>
+                                                </StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                    <Label Text="C :"/>
+                                                    <Label Text="..." HorizontalOptions="EndAndExpand"/>
+                                                </StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Payment :"/>
+                                                    <Label Text="..." HorizontalOptions="EndAndExpand"/>
+                                                </StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Deposit :"/>
+                                                    <Label Text="..." HorizontalOptions="EndAndExpand"/>
+                                                </StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Balance :"/>
+                                                    <Label Text="{Binding Balance}" HorizontalOptions="EndAndExpand"/>
+                                                </StackLayout>
+                                            </StackLayout>
+
+                                     </StackLayout>
+                                </Grid>
+                            </Frame>
+
+                        </StackLayout>
+                </ViewCell>
             </DataTemplate>
-        </ListView.ItemTemplate>
-        
-    
+        </ListView.ItemTemplate>   
     
     </ListView>
 
 
-
+</StackLayout>
 
 
         
