@@ -24,7 +24,7 @@
   </ContentPage.ToolbarItems>  
 
     <StackLayout>
-        <ListView  x:Name="AccountList" ItemsSource="{Binding Test}" HasUnevenRows="True" ItemTapped="OnItemSelected" CachingStrategy="RecycleElement">
+        <ListView  x:Name="AccountList" ItemsSource="{Binding AccountsObs}" HasUnevenRows="True" ItemTapped="OnItemSelected" CachingStrategy="RecycleElement">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -42,10 +42,10 @@
                                         </Grid.ColumnDefinitions>
 
                                      <StackLayout Grid.Row="0" Grid.Column="0">                            
-                                                <Label Text="TITLE" />
+                                                <Label Text="{Binding Name}" />
                      
 
-                                        <StackLayout Grid.Row="1" Grid.Column="1"  Orientation="Vertical">
+                                        <!--<StackLayout Grid.Row="1" Grid.Column="1"  Orientation="Vertical">
                                                 <StackLayout Orientation="Horizontal">
                                                     <Label Text="Type :"/>
                                                     <Label Text="{Binding TestBindingString}" HorizontalOptions="EndAndExpand"/>
@@ -66,7 +66,7 @@
                                                     <Label Text="Total Value :"/>
                                                     <Label Text="{Binding TestBindingString}" HorizontalOptions="EndAndExpand"/>
                                                 </StackLayout>
-                                            </StackLayout>
+                                            </StackLayout>-->
 
                                      </StackLayout>
                                 </Grid>

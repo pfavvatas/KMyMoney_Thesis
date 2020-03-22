@@ -15,8 +15,12 @@
 
     <PackageReference Include="sqlite-net-pcl" Version="1.6.258-beta" />
     <PackageReference Include="Xamarin.Plugin.FilePicker" Version="2.1.34" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Include="data.txt" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="KmmFirstTime.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -41,5 +45,10 @@
     <Folder Include="FeedModel\" />
     <Folder Include="AccountsModel\" />
     <Folder Include="Details\" />
+    <Folder Include="Views\FileViews\" />
+    <Folder Include="DataStorage\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="data.txt" />
   </ItemGroup>
 </Project>

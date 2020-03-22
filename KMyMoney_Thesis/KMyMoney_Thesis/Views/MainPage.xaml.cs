@@ -23,6 +23,11 @@ namespace KMyMoney_Thesis.Views
             MasterBehavior = MasterBehavior.Popover;
 
             MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
+
+
+            new PrintDatabase();
+            
+
         }
 
         public async Task NavigateFromMenu(int id)

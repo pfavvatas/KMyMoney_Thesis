@@ -1,0 +1,10 @@
+﻿using System;
+namespace KMyMoney_Thesis
+{
+ public class data
+ {
+     public data()
+     {
+     }
+ }
+}

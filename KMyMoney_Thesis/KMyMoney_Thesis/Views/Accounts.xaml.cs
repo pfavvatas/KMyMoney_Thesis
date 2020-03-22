@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Collections.ObjectModel;
 using KMyMoney_Thesis.ViewModels;
+using SQLite;
 
 namespace KMyMoney_Thesis.Views
 {
@@ -18,19 +19,28 @@ namespace KMyMoney_Thesis.Views
         //ObservableCollection<TestBinding> testB = new ObservableCollection<TestBinding>();
         //public ObservableCollection<TestBinding> Employees { get { return testB; } }
 
-        public ObservableCollection<TestBinding> Test { get; set; }
+        public ObservableCollection<Account> AccountsObs { get; set; }
         public Accounts()
         {
             InitializeComponent();
 
-            Test = new ObservableCollection<TestBinding>
+            //Test = new ObservableCollection<TestBinding>
+            //{
+            //    new TestBinding { TestBindingString = "0"},
+            //    new TestBinding { TestBindingString = "1.1"},
+
+            //};
+
+            SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation);
+            var AccountsLIST = conn.Table<Account>().ToList();
+            conn.Close();
+
+            AccountsObs = new ObservableCollection<Account>();
+            foreach (var inst in AccountsLIST)
             {
-                new TestBinding { TestBindingString = "0"},
-                new TestBinding { TestBindingString = "1.1"},
-
-            };
-
-            AccountList.ItemsSource = Test;
+                AccountsObs.Add(new Account { Id = inst.Id, Name = inst.Name });
+            }
+            AccountList.ItemsSource = AccountsObs;
 
 
         }

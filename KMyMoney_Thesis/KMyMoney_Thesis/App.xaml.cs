@@ -2,8 +2,10 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using KMyMoney_Thesis.Views;
-
-
+using KMyMoney_Thesis.DataStorage;
+using System.Collections.Generic;
+using SQLite;
+using KMyMoney_Thesis.Model;
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace KMyMoney_Thesis
 {
@@ -11,13 +13,11 @@ namespace KMyMoney_Thesis
     {
         public static string DatabaseLocation = string.Empty;
 
+        
         public App()
         {
             InitializeComponent();
 
-
-            //MainPage = new MainPage();
-            //MainPage = new NavigationPage(new WelcomePage());
             MainPage = new NavigationPage(new Accounts());
         }
 
@@ -31,6 +31,8 @@ namespace KMyMoney_Thesis
 
             DatabaseLocation = databaseLocation;
             new SQLiteDb(DatabaseLocation);
+
+            
         }
 
         protected override void OnStart()

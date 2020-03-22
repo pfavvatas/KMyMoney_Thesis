@@ -128,6 +128,7 @@
     <BundleResource Include="Resources\gear7.png" />
     <BundleResource Include="Resources\pencil7.png" />
     <BundleResource Include="Resources\plussimple7.png" />
+    <BundleResource Include="Resources\kmymoney.db" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -151,5 +152,8 @@
       <Project>{F6629406-585B-4A1A-87FE-AC68564F5964}</Project>
       <Name>KMyMoney_Thesis</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\kmymoneyDB.xml" />
   </ItemGroup>
 </Project>

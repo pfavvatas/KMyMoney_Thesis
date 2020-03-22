@@ -44,8 +44,10 @@
                                 </ImageButton.BackgroundColor>
                             </ImageButton>
                         </FlexLayout>
-                        <Label Text="{Binding TestBindingString}" Margin="20,0,0,0" VerticalTextAlignment="Center"/>
-                        <Label Grid.Column="1" Text="Balance: $ 0.00" VerticalTextAlignment="Center"/>
+                        <Label Grid.Column="0" Text="{Binding Name}" Margin="20,0,0,0" VerticalTextAlignment="Center"/>
+                        <Label Grid.Column="1" Text="{Binding Id}" Margin="20,0,0,0" VerticalTextAlignment="Center"/>
+
+                        <!--<Label Grid.Column="1" Text="Balance: $ 0.00" VerticalTextAlignment="Center"/>-->
                     </Grid>
                 </ViewCell>
             </DataTemplate>

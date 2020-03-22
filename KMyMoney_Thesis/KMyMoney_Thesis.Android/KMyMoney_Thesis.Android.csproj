@@ -138,5 +138,9 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\kmymoneylogo.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\kmymoney.db" />
+    <AndroidAsset Include="Assets\kmymoneyDB.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
