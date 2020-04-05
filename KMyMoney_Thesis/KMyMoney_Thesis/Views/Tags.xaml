@@ -11,12 +11,12 @@
     <StackLayout>
         <StackLayout x:Name="LayoutUpdate" Orientation="Vertical" IsVisible="false">
             <Entry x:Name="UpdateNameEntry"/>
-            <Button Text="Update" Clicked="UpdateNameButton"/>
+            <Button Text="Update" />
         </StackLayout>
-            <ListView x:Name="lstMonkeys" ItemTapped="OnItemSelected">                 
+            <ListView x:Name="TagList" ItemsSource="{Binding TagsObs}" ItemTapped="OnItemSelected">                 
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding}" />
+                        <TextCell Text="{Binding name}" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

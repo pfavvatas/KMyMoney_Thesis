@@ -71,6 +71,14 @@
             <Frame>
                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
                     <StackLayout Orientation="Vertical" Padding="10">
+                        <Label Text="Tag Name: " />
+                        <Entry x:Name="TagName" />
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Padding="10">
+                        <Label Text="Tag Id: " />
+                        <Entry x:Name="TagId" />
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Padding="10">
                         <Label Text="Tag Color: " />
                         <Picker x:Name="pickerColor" Title="Select Tag Color" TitleColor="Red" ItemsSource="{Binding .}"/> 
                     </StackLayout>
@@ -82,7 +90,7 @@
                     </StackLayout>                   
                     <StackLayout Orientation="Vertical" Padding="10">
                         <Label Text="Notes" />
-                        <Editor Placeholder="Enter multi-line text here"                                
+                        <Editor x:Name="TagNotes" Placeholder="Enter multi-line text here"                                
                                 MaxLength="100"
                                  />
                     </StackLayout>

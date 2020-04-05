@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KMyMoney_Thesis.Model;
 using KMyMoney_Thesis.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -15,10 +16,19 @@ namespace KMyMoney_Thesis.Views
     {
         public ObservableCollection<TestBinding> Test2 { get; set; }
         public ObservableCollection<String> colors { get; set; }
+
+        public Tag _tag { get; set; }
         //public ObservableCollection<String> colors;
-        public TagMore()
+        public TagMore(Tag tag)
         {
             InitializeComponent();
+
+
+            Console.WriteLine("~/TagMore => "+tag.name+","+tag.id);
+            _tag = tag;
+            TagName.Text = tag.name;
+            TagId.Text = tag.id;
+            TagNotes.Text = tag.notes;
 
             Test2 = new ObservableCollection<TestBinding>
             {
