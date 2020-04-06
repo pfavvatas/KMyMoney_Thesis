@@ -111,6 +111,30 @@ namespace KMyMoney_Thesis
             {
                 string contents = System.Text.Encoding.UTF8.GetString(file.DataArray);
                 Application.Current.Properties["database"] = contents;
+
+
+
+
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////
+                //try to add contents to a file
+
+                //File name
+                string fileName = "MyFileXML.txt";
+
+                //Write data to Loal File using DependencyService  
+                DependencyService.Get<IFileReadWrite>().WriteData(fileName, contents);
+
+                //Read Loal File dat using DependencyService  
+                //string data = DependencyService.Get<IFileReadWrite>().ReadData("MyFileXML.txt");
+
+                //Print data
+                //System.Diagnostics.Debug.WriteLine(data);
+
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
                 //App.kmmdb.Add(new DataStorage.kmymoneyDB(contents));
 
                 //XmlSerializer ser = new XmlSerializer(typeof(KMyMoney_Thesis.DataStorage.KMYMONEYFILE));
@@ -392,15 +416,15 @@ namespace KMyMoney_Thesis
                     foreach (XmlNode tagNode in tagNodes)
                     {
                         Tag tag = new Tag();
-                        tag.tagcolor = tagNode.Attributes["tagcolor"].Value;
-                        tag.notes = tagNode.Attributes["notes"] == null ? "" : tagNode.Attributes["notes"].Value;
-                        tag.id = tagNode.Attributes["id"].Value;
-                        tag.closed = tagNode.Attributes["closed"].Value;
-                        tag.name = tagNode.Attributes["name"].Value;
+                        tag.Tagcolor = tagNode.Attributes["tagcolor"].Value;
+                        tag.Notes = tagNode.Attributes["notes"] == null ? "" : tagNode.Attributes["notes"].Value;
+                        tag.Id = tagNode.Attributes["id"].Value;
+                        tag.Closed = tagNode.Attributes["closed"].Value;
+                        tag.Name = tagNode.Attributes["name"].Value;
                         conn.Insert(tag);
                         tagList.Add(tag);
                         Console.WriteLine("tagcolor= " + tagNode.Attributes["tagcolor"].Value
-                            + " ,notes= " + tag.notes
+                            + " ,notes= " + tag.Notes
                             + " ,id= " + tagNode.Attributes["id"].Value
                             + " ,closed= " + tagNode.Attributes["closed"].Value
                             + " ,name= " + tagNode.Attributes["name"].Value);

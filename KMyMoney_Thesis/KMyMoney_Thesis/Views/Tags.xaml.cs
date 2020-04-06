@@ -19,104 +19,59 @@ namespace KMyMoney_Thesis.Views
         public Tags()
         {
             InitializeComponent();
-
-            //TestPayee = new ObservableCollection<String>();
-            //TestPayee.Add("ena");
-            //TestPayee.Add("duo");
-
-
-            //lstMonkeys.ItemsSource = TestPayee;
-
-
-
-            SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation);
-            var TagsLIST = conn.Table<Tag>().ToList();
-            conn.Close();
-
-            TagsObs = new ObservableCollection<Tag>();
-            foreach (var _tag in TagsLIST)
-            {
-                TagsObs.Add(new Tag {
-                    name = _tag.name,
-                    id = _tag.id,
-                    notes = _tag.notes
-                });
-            }
-            TagList.ItemsSource = TagsObs;
+            TagList.ItemsSource = new retrieveDataFromXML().GetTags();
         }
 
         private void New_Clicked(object sender, EventArgs e)
         {
-            //TestPayee.Add("new_" + TestPayee.Count);
+            ///akoma tpt....
         }
 
+        public class TagDetailsData
+        {
+            public Tag Tag { get; set; }
+            public List<Transaction> TagTransactionsList { get; set; }
+        }
+
+        ///Otan epileksei o xristis to tag pou thelei na dei
+        ///tote, se auti ti fasi, prin tou anoiksei h kartela me tis plirofories,
+        ///psaxnei sto xml arxeio se poio transaction uparxei to tag
+        ///kai to pernaei sti lista pou tha ta emfanizei.        
         async void OnItemSelected(Object sender, ItemTappedEventArgs e)
         {
-            ////LayoutUpdate.IsVisible = false;
+            ///Den mas polu endiaferoun oi parakatw 3 grammes kwdika
             if (e.Item == null)
                 return;
+            //Console.WriteLine("==========>sender: " + e.ItemIndex);
 
-            //var details = e.Item as String;
-            //String detail = e.Item as String;
+            ///Apo edw ksekiname
+            ///Exei ftiaxtei class wste na perasoun oi ksexwristes
+            ///plirofoies Tag kai Transaction se ena.
+            TagDetailsData tdd = new TagDetailsData();
+            tdd.Tag = e.Item as Tag; ///eisagwgh tou Tag
+
             
-            Console.WriteLine("==========>sender: " + e.ItemIndex);
-            await Navigation.PushAsync(new TagMore(e.Item as Tag));
+            ObservableCollection<Transaction> Transactions;
+            Transactions = new retrieveDataFromXML().GetTransactions();
+            List<Transaction> TransactionsWithTag = new List<Transaction>();
+            foreach (var trans in Transactions)
+            {
+                foreach (var splits in trans.Splits)
+                {
+                    foreach (var tags in splits.Tag)
+                    {
+                        if (tags.Id == tdd.Tag.Id)
+                        {
+                            TransactionsWithTag.Add(trans);
+                        }
+                    }
+                }
+            }
+            tdd.TagTransactionsList = TransactionsWithTag; ///eisagwgh tou Transaction
+            
 
-
-            //I chose that code because on iOS "delete" has red colour.
-            //On the other hand, android does not have colour, so it's looks better with that code.
-            //string action;
-            //switch (Device.RuntimePlatform)
-            //{
-            //    case Device.iOS:
-            //        Console.WriteLine("==========>Device: iOS");
-            //        action = await DisplayActionSheet("" + e.Item, "Cancel", "Delete", "Rename", "More");
-            //        Console.WriteLine("==========>Action: " + action);
-            //        _Action(action, e);
-            //        break;
-            //    case Device.Android:
-            //        Console.WriteLine("==========>Device: Android");
-            //        action = await DisplayActionSheet("" + e.Item, "Cancel", null, "Rename", "More", "Delete");
-            //        Console.WriteLine("==========>Action: " + action);
-            //        _Action(action, e);
-            //        break;
-            //    case Device.UWP:
-            //    default:
-            //        action = await DisplayActionSheet("", "Cancel", null, "More", "Delete");
-            //        _Action(action, e);
-            //        break;
-            //}
-
+            //await Navigation.PushAsync(new TagMore(e.Item as Tag));
+            await Navigation.PushAsync(new TagMore(tdd)); ///apostolh twn pliroforiwn stin selida
         }
-
-        //private async void _Action(string action, ItemTappedEventArgs e)
-        //{
-        //    if (action.Equals("Delete"))
-        //    {
-        //        TestPayee.RemoveAt(e.ItemIndex);
-        //    }
-        //    else if (action.Equals("Rename"))
-        //    {
-        //        LayoutUpdate.IsVisible = true;
-        //        UpdateNameEntry.Text = e.Item as String;
-        //        _id = e.ItemIndex;
-        //    }
-        //    else if (action.Equals("More"))
-        //    {
-        //        await Navigation.PushAsync(new TagMore());
-        //    }
-        //}
-
-        //async void UpdateNameButton(object sender, EventArgs e)
-        //{
-        //    //TestPayee.Insert(_id, UpdateNameEntry.Text);
-        //    TestPayee[_id] = UpdateNameEntry.Text;
-        //    LayoutUpdate.IsVisible = false;
-        //}
-
-        //async void OnButtonTappedListView(object sender, EventArgs e)
-        //{
-        //    //LayoutUpdate.IsVisible = false;
-        //}
     }
 }

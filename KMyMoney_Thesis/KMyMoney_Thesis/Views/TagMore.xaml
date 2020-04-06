@@ -4,7 +4,7 @@
     <!--Page Transaction-->
     <ContentPage Title="Transactions" >        
         <StackLayout>
-            <ListView  x:Name="AccountList2" ItemsSource="{Binding Test}" HasUnevenRows="True" CachingStrategy="RecycleElement">
+            <ListView  x:Name="TransactionsList" ItemsSource="{Binding Test}" HasUnevenRows="True" CachingStrategy="RecycleElement">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -27,6 +27,10 @@
 
                                             <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Vertical">
                                                 <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Id :" />
+                                                    <Label Text="{Binding Id}" HorizontalOptions="EndAndExpand" />
+                                                </StackLayout>
+                                                <!--<StackLayout Orientation="Horizontal">
                                                     <Label Text="Date :" />
                                                     <Label Text="{Binding TestBindingString}" HorizontalOptions="EndAndExpand" />
                                                 </StackLayout>
@@ -49,7 +53,7 @@
                                                 <StackLayout Orientation="Horizontal">
                                                     <Label Text="Deposit :" />
                                                     <Label Text="{Binding TestBindingString}" HorizontalOptions="EndAndExpand" />
-                                                </StackLayout>
+                                                </StackLayout>-->
                                             </StackLayout>
                                         </StackLayout>
                                     </Grid>
@@ -91,7 +95,7 @@
                     <StackLayout Orientation="Vertical" Padding="10">
                         <Label Text="Notes" />
                         <Editor x:Name="TagNotes" Placeholder="Enter multi-line text here"                                
-                                MaxLength="100"
+                                MaxLength="1000000"
                                  />
                     </StackLayout>
                     <Button Text="Update" BackgroundColor="Red" TextColor="White"/>

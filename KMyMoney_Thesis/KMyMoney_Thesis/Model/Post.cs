@@ -32,14 +32,44 @@ namespace KMyMoney_Thesis.Model
     [Table("Tags")]
     public class Tag
     {
-        public string tagcolor { get; set; }
-        public string notes { get; set; }
-        public string id { get; set; }
-        public string closed { get; set; }
-        public string name { get; set; }
+        public string Tagcolor { get; set; }
+        public string Notes { get; set; }
+        public string Id { get; set; }
+        public string Closed { get; set; }
+        public string Name { get; set; }
 
     }
     //Tags end
+
+    //Transactions
+    public class Transaction
+    {
+        public string Postdate { get; set; }
+        public string Commodity { get; set; }
+        public string Memo { get; set; }
+        public string Id { get; set; }
+        public string Entrydate { get; set; }
+        public List<Split> Splits { get; set; }
+    }
+    //Transactions end
+
+    //Splits
+    public class Split
+    {
+        public string Payee { get; set; }
+        public string Reconcileflag { get; set; }
+        public string Shares { get; set; }
+        public string Reconciledate { get; set; }
+        public string Action { get; set; }
+        public string Bankid { get; set; }
+        public string Account { get; set; }
+        public string Number { get; set; }
+        public string Value { get; set; }
+        public string Memo { get; set; }
+        public string Id { get; set; }
+        public List<Tag> Tag { get; set; }
+    }
+    //Splits end
 
     //Institution tag
     [Table("Institutions")]

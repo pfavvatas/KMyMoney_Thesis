@@ -16,7 +16,7 @@
             <ListView x:Name="TagList" ItemsSource="{Binding TagsObs}" ItemTapped="OnItemSelected">                 
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding name}" />
+                        <TextCell Text="{Binding Name}" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
