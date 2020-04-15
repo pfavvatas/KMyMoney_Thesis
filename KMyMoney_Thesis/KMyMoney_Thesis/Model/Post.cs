@@ -50,6 +50,7 @@ namespace KMyMoney_Thesis.Model
         public string Id { get; set; }
         public string Entrydate { get; set; }
         public List<Split> Splits { get; set; }
+        public string Details { get; set; }
     }
     //Transactions end
 
@@ -68,6 +69,7 @@ namespace KMyMoney_Thesis.Model
         public string Memo { get; set; }
         public string Id { get; set; }
         public List<Tag> Tag { get; set; }
+        public string AccountName { get; set; }
     }
     //Splits end
 

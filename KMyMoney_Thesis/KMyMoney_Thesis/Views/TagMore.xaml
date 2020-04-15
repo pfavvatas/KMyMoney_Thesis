@@ -4,7 +4,7 @@
     <!--Page Transaction-->
     <ContentPage Title="Transactions" >        
         <StackLayout>
-            <ListView  x:Name="TransactionsList" ItemsSource="{Binding Test}" HasUnevenRows="True" CachingStrategy="RecycleElement">
+            <ListView  x:Name="TransactionsList"  HasUnevenRows="True" CachingStrategy="RecycleElement">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -30,19 +30,23 @@
                                                     <Label Text="Id :" />
                                                     <Label Text="{Binding Id}" HorizontalOptions="EndAndExpand" />
                                                 </StackLayout>
-                                                <!--<StackLayout Orientation="Horizontal">
+                                                <StackLayout Orientation="Horizontal">
                                                     <Label Text="Date :" />
-                                                    <Label Text="{Binding TestBindingString}" HorizontalOptions="EndAndExpand" />
+                                                    <Label Text="{Binding Postdate}" HorizontalOptions="EndAndExpand" />
                                                 </StackLayout>
                                                 <StackLayout Orientation="Horizontal">
                                                     <Label Text="Account :" />
-                                                    <Label Text="{Binding TestBindingString}" HorizontalOptions="EndAndExpand" />
+                                                    <Label Text="{Binding Splits[0].AccountName}" HorizontalOptions="EndAndExpand" />
                                                 </StackLayout>
                                                 <StackLayout Orientation="Horizontal">
                                                     <Label Text="Details :" />
-                                                    <Label Text="{Binding TestBindingString}" HorizontalOptions="EndAndExpand" />
+                                                    <Label Text="{Binding Details}" HorizontalOptions="EndAndExpand" />
                                                 </StackLayout>
                                                 <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Deposit :" />
+                                                    <Label Text="{Binding Splits[0].Value}" HorizontalOptions="EndAndExpand" />
+                                                </StackLayout>
+                                                <!--<StackLayout Orientation="Horizontal">
                                                     <Label Text="C :" />
                                                     <Label Text="{Binding TestBindingString}" HorizontalOptions="EndAndExpand" />
                                                 </StackLayout>
@@ -64,12 +68,12 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Label Text="Balance: $ 0.00" FontSize="Large" HorizontalOptions="CenterAndExpand" />
+            <Label x:Name="Balance" FontSize="Large" HorizontalOptions="CenterAndExpand" />
         </StackLayout>
     </ContentPage>
 
     <!--Page Address-->
-    <ContentPage Title="Details">
+    <ContentPage Title="Details" IconImageSource="pencil7.png">
         <ScrollView>
         <StackLayout>
             <Frame>
@@ -77,10 +81,6 @@
                     <StackLayout Orientation="Vertical" Padding="10">
                         <Label Text="Tag Name: " />
                         <Entry x:Name="TagName" />
-                    </StackLayout>
-                    <StackLayout Orientation="Vertical" Padding="10">
-                        <Label Text="Tag Id: " />
-                        <Entry x:Name="TagId" />
                     </StackLayout>
                     <StackLayout Orientation="Vertical" Padding="10">
                         <Label Text="Tag Color: " />
@@ -98,7 +98,9 @@
                                 MaxLength="1000000"
                                  />
                     </StackLayout>
-                    <Button Text="Update" BackgroundColor="Red" TextColor="White"/>
+                    <Button Text="Update" BackgroundColor="Green" TextColor="White"/>
+                    <Button Text="Delete" BackgroundColor="Red" TextColor="White"/>
+
                 </StackLayout>
             </Frame>
         </StackLayout>

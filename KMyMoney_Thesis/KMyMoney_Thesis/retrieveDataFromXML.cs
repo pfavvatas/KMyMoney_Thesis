@@ -24,6 +24,12 @@ namespace KMyMoney_Thesis
             this.data = data;
         }
 
+
+        /// <summary>
+        /// Calling GetTags(), we're getting all details about tags we'd like to
+        /// show to application.
+        /// And we return an ObservableCollection<Tag>.
+        /// </summary>
         public Tag _tag { get; set; }
         public ObservableCollection<Tag> TagsObs { get; set; }
         public ObservableCollection<Tag> GetTags()
@@ -49,6 +55,11 @@ namespace KMyMoney_Thesis
             return TagsObs;
         }
 
+
+        /// <summary>
+        /// Calling GetTransactions(), we're retrieving all transactions.
+        /// Also we return an ObservableCollection<Transaction>.
+        /// </summary>
         public ObservableCollection<Transaction> TransactionsObs { get; set; }
         public ObservableCollection<Transaction> GetTransactions()
         {
@@ -62,12 +73,10 @@ namespace KMyMoney_Thesis
             {
                 Transaction _transaction = new Transaction();
                 _transaction.Id = transactionNode.Attributes["id"].Value;
-
-                //Console.WriteLine("postdate= " + transactionNode.Attributes["postdate"].Value);
-                //Console.WriteLine("commodity= " + transactionNode.Attributes["commodity"].Value);
-                //Console.WriteLine("memo= " + transactionNode.Attributes["memo"].Value);
-                //Console.WriteLine("id= " + transactionNode.Attributes["id"].Value);
-                //Console.WriteLine("entrydate= " + transactionNode.Attributes["entrydate"].Value);
+                _transaction.Postdate = transactionNode.Attributes["postdate"].Value;
+                _transaction.Commodity = transactionNode.Attributes["commodity"].Value;
+                _transaction.Memo = transactionNode.Attributes["memo"].Value;
+                _transaction.Entrydate = transactionNode.Attributes["entrydate"].Value;
 
                 ////SPLITS
                 XmlNodeList splitNodes = transactionNode.SelectNodes("SPLITS/SPLIT");
@@ -76,18 +85,18 @@ namespace KMyMoney_Thesis
                 {
                     Split _split = new Split();
                     _split.Id = splitNode.Attributes["id"].Value;
-                    //_transaction.Splits.Add(_split);
-                    //Console.Write("  - payee = " + splitNode.Attributes["payee"].Value);
-                    //Console.WriteLine(" ,reconcileflag = " + splitNode.Attributes["reconcileflag"].Value);
-                    //Console.WriteLine(" ,shares = " + splitNode.Attributes["shares"].Value);
-                    //Console.WriteLine(" ,reconciledate = " + splitNode.Attributes["reconciledate"].Value);
-                    //Console.WriteLine(" ,action = " + splitNode.Attributes["action"].Value);
-                    //Console.WriteLine(" ,bankid = " + splitNode.Attributes["bankid"].Value);
-                    //Console.WriteLine(" ,account = " + splitNode.Attributes["account"].Value);
-                    //Console.WriteLine(" ,number = " + splitNode.Attributes["number"].Value);
-                    //Console.WriteLine(" ,value = " + splitNode.Attributes["value"].Value);
-                    //Console.WriteLine(" ,memo = " + splitNode.Attributes["memo"].Value);
-                    //Console.WriteLine(" ,id = " + splitNode.Attributes["id"].Value);
+                    _split.Payee = splitNode.Attributes["payee"].Value;
+                    _split.Reconcileflag = splitNode.Attributes["reconcileflag"].Value;
+                    _split.Shares = splitNode.Attributes["shares"].Value;
+                    _split.Reconciledate = splitNode.Attributes["reconciledate"].Value;
+                    _split.Action = splitNode.Attributes["action"].Value;
+                    _split.Bankid = splitNode.Attributes["bankid"].Value;
+                    _split.Account = splitNode.Attributes["account"].Value;
+                    _split.Number = splitNode.Attributes["number"].Value;
+                    _split.Value = splitNode.Attributes["value"].Value;
+                    _split.Memo = splitNode.Attributes["memo"].Value;
+                    _split.AccountName = GetAccountName(doc, _split.Account);
+                                       
                     List<Tag> tagLists = new List<Tag>();
                     try
                     {
@@ -98,7 +107,6 @@ namespace KMyMoney_Thesis
                             Tag _tag = new Tag();
                             _tag.Id = SplitTagNode.Attributes["id"].Value;
                             tagLists.Add(_tag);
-                            //Console.WriteLine(" TAG ID => " + SplitTagNode.Attributes["id"].Value);
                         }
                         //End
                     }
@@ -111,10 +119,51 @@ namespace KMyMoney_Thesis
 
                 }
                 _transaction.Splits = splitLists;
+                // Fill Details from tag ids and searching to tags, to retrieve the names of each id
+                    string txt = "";
+                    foreach (Split test2 in _transaction.Splits)
+                    {
+                        foreach (Tag test3 in test2.Tag)
+                        {
+                            //  Search with this Id the tags and return the name.
+                            
+                            txt += " " + GetTagName(doc,test3.Id);
+                        }
+                    }
+                _transaction.Details = txt;
+                //
                 TransactionsObs.Add(_transaction);
             }
             return TransactionsObs;
 
+        }
+
+
+
+        public string GetTagName(XmlDocument doc,string Id)
+        {
+            XmlNodeList tagNodes = doc.DocumentElement.SelectNodes("/KMYMONEY-FILE/TAGS/TAG");
+            foreach (XmlNode tagNode in tagNodes)
+            {
+                if(tagNode.Attributes["id"].Value == Id)
+                {
+                    return tagNode.Attributes["name"].Value;
+                }
+            }
+            return "noname:(";
+        }
+
+        public string GetAccountName(XmlDocument doc, string Id)
+        {
+            XmlNodeList accountNodes = doc.DocumentElement.SelectNodes("/KMYMONEY-FILE/ACCOUNTS/ACCOUNT");
+            foreach (XmlNode accountNode in accountNodes)
+            {
+                if (accountNode.Attributes["id"].Value == Id)
+                {
+                    return accountNode.Attributes["name"].Value;
+                }
+            }
+            return "noname:(";
         }
     }
 }

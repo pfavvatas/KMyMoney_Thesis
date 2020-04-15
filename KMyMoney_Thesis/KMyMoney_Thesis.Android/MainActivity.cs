@@ -31,7 +31,9 @@ namespace KMyMoney_Thesis.Droid
             string fullPath = Path.Combine(folderPath, dbName);
 
 
-            LoadApplication(new App(fullPath));
+            //LoadApplication(new App(fullPath));
+            LoadApplication(new App());
+
         }
     }
 }

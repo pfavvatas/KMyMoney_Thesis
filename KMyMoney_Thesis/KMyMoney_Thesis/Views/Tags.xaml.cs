@@ -48,6 +48,7 @@ namespace KMyMoney_Thesis.Views
             ///Exei ftiaxtei class wste na perasoun oi ksexwristes
             ///plirofoies Tag kai Transaction se ena.
             TagDetailsData tdd = new TagDetailsData();
+            //  1)
             tdd.Tag = e.Item as Tag; ///eisagwgh tou Tag
 
             
@@ -60,6 +61,8 @@ namespace KMyMoney_Thesis.Views
                 {
                     foreach (var tags in splits.Tag)
                     {
+                        /// Using this if, we get the transactions
+                        /// with the tag, that we're looking for.
                         if (tags.Id == tdd.Tag.Id)
                         {
                             TransactionsWithTag.Add(trans);
@@ -67,11 +70,12 @@ namespace KMyMoney_Thesis.Views
                     }
                 }
             }
+            //  2)
             tdd.TagTransactionsList = TransactionsWithTag; ///eisagwgh tou Transaction
             
-
-            //await Navigation.PushAsync(new TagMore(e.Item as Tag));
+            /// Sending the data to a new Page.
             await Navigation.PushAsync(new TagMore(tdd)); ///apostolh twn pliroforiwn stin selida
         }
+
     }
 }

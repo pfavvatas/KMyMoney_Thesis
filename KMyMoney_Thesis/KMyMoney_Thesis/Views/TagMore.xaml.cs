@@ -14,59 +14,43 @@ namespace KMyMoney_Thesis.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TagMore : TabbedPage
     {
-        //public ObservableCollection<Transaction> Transactions;
         public ObservableCollection<String> colors { get; set; }
 
-        public ObservableCollection<Transaction> tt { get; set; }
-
-
         public Tag _tag { get; set; }
-        //public ObservableCollection<String> colors;
         public TagMore(Tags.TagDetailsData tdd)
         {
-            Tag tag = tdd.Tag;
             InitializeComponent();
-            ObservableCollection<Transaction> Transactions;
-            Transactions = new retrieveDataFromXML().GetTransactions();
-            //TransactionsList.ItemsSource = Transactions;
+            Title = tdd.Tag.Name;
+            Tag tag = tdd.Tag;
             ObservableCollection<Transaction> TransactionsWithTag = new ObservableCollection<Transaction>(tdd.TagTransactionsList);
-            //foreach (var trans in Transactions)
-            //{
-            //    foreach(var splits in trans.Splits)
-            //    {
-            //        Console.WriteLine("Split ID => " + splits.Id);
-            //        foreach(var tags in splits.Tag)
-            //        {
-            //            if(tags.Id == tag.Id)
-            //            {
-            //                TransactionsWithTag.Add(trans);
-            //                Console.WriteLine("prepei na emfanisi to transaction me id " + trans.Id);
-            //            }
-            //            //Console.WriteLine("Tag ID => " + tags.Id);
-            //        }
-            //    }
-            //}
+
+            double balanceD = 0.0;
+            foreach(var c in TransactionsWithTag)
+            {
+                
+                    string[] spl = c.Splits[0].Value.Split(new[] { "/" }, StringSplitOptions.None);
+                    balanceD += double.Parse(spl[0]);
+                
+            }
+            if(balanceD > 0)
+            {
+                Balance.Text = "+ " + balanceD + "$";
+                Balance.TextColor = Color.Green;
+            }
+            else
+            {
+                Balance.Text = "- " + balanceD + "$";
+                Balance.TextColor = Color.Red;
+            }
+            
             TransactionsList.ItemsSource = TransactionsWithTag;
 
-            Console.WriteLine("~/TagMore => "+tag.Name+","+tag.Id);
             _tag = tag;
             TagName.Text = tag.Name;
-            TagId.Text = tag.Id;
-            //TagNotes.Text = tag.notes;
+            //TagId.Text = tag.Id;
+            TagNotes.Text = tag.Notes;
 
-            //Test2 = new ObservableCollection<TestBinding>
-            //{
-            //    new TestBinding { TestBindingString = "0"},
-            //    new TestBinding { TestBindingString = "1.1"},
-            //    new TestBinding { TestBindingString = "1.2"},
-            //    new TestBinding { TestBindingString = "1.3"},
-            //    new TestBinding { TestBindingString = "1.4"},
-            //    new TestBinding { TestBindingString = "1.5"},
-            //    new TestBinding { TestBindingString = "1.6"},
-            //    new TestBinding { TestBindingString = "1.7"},
-            //    new TestBinding { TestBindingString = "1.8"}
 
-            //};
 
             colors = new ObservableCollection<String>();
             colors.Add("red");
@@ -75,14 +59,7 @@ namespace KMyMoney_Thesis.Views
             {
                 pickerColor.ItemsSource = colors;
             }
-            //AccountList2.ItemsSource = Test2;
-
-
-            ////Read Loal File dat using DependencyService  
-            //string data = DependencyService.Get<IFileReadWrite>().ReadData("MyFileXML.txt");
-            //TagNotes.Text = data;
-            ////Print data
-            //System.Diagnostics.Debug.WriteLine(data);
         }
+
     }
 }

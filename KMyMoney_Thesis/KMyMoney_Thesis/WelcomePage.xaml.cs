@@ -192,19 +192,19 @@ namespace KMyMoney_Thesis
                 //System.Diagnostics.Debug.WriteLine("KMYMONEY_FILE => " + kmm);
 
 
-                //SQLite
-                SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation);
-                //Account Table
-                conn.DropTable<Account>();
-                conn.CreateTable<Account>();
+                ////SQLite
+                //SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation);
+                ////Account Table
+                //conn.DropTable<Account>();
+                //conn.CreateTable<Account>();
 
-                //Institution
-                conn.DropTable<Institution>();
-                conn.CreateTable<Institution>();
+                ////Institution
+                //conn.DropTable<Institution>();
+                //conn.CreateTable<Institution>();
 
-                //Tag
-                conn.DropTable<Tag>();
-                conn.CreateTable<Tag>();
+                ////Tag
+                //conn.DropTable<Tag>();
+                //conn.CreateTable<Tag>();
 
                 //Set the validation settings.
                 XmlReaderSettings settings = new XmlReaderSettings();
@@ -351,14 +351,14 @@ namespace KMyMoney_Thesis
 
                         insts.Add(inst);
 
-                        try
-                        {
-                            conn.Insert(inst);
-                        }
-                        catch (SQLiteException sqle)
-                        {
-                            System.Diagnostics.Debug.WriteLine("SQL Exception: " + sqle);
-                        }
+                        //try
+                        //{
+                        //    conn.Insert(inst);
+                        //}
+                        //catch (SQLiteException sqle)
+                        //{
+                        //    System.Diagnostics.Debug.WriteLine("SQL Exception: " + sqle);
+                        //}
 
                         Console.WriteLine("Id= " + node.Attributes["id"].Value + " ,Name= " + node.Attributes["name"].Value + " ,Manager= " + node.Attributes["manager"].Value + " ,Sortcode= " + node.Attributes["sortcode"].Value);
 
@@ -421,7 +421,7 @@ namespace KMyMoney_Thesis
                         tag.Id = tagNode.Attributes["id"].Value;
                         tag.Closed = tagNode.Attributes["closed"].Value;
                         tag.Name = tagNode.Attributes["name"].Value;
-                        conn.Insert(tag);
+                        //conn.Insert(tag);
                         tagList.Add(tag);
                         Console.WriteLine("tagcolor= " + tagNode.Attributes["tagcolor"].Value
                             + " ,notes= " + tag.Notes
@@ -624,7 +624,7 @@ namespace KMyMoney_Thesis
                 //var accountsLIST = conn.Table<Account>().ToList();
                 //var InstitutionSLIST = conn.Table<Institution>().ToList();
 
-                conn.Close();
+                //conn.Close();
 
                 //foreach (var t in accountsLIST)
                 //{

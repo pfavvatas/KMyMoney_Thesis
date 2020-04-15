@@ -4,7 +4,8 @@
         <ToolbarItem
             Text="..."
             Order="Default"
-            Name="NEW"
+            Name="new"
+            IconImageSource="plussimple7.png"
             Clicked="New_Clicked"/>
     </ContentPage.ToolbarItems>
     <!--x:Name="MyListViewPayees" ItemsSource="{Binding PayeeItem}" ItemTapped="Handle_PayeeItemTapped" CachingStrategy="RecycleElement"-->
