@@ -3,15 +3,21 @@
     <!--Pages can be added as references or inline-->
     <!--Page Transaction-->
     <ContentPage Title="Transactions" >        
-        <StackLayout>
-            <ListView  x:Name="TransactionsList"  HasUnevenRows="True" CachingStrategy="RecycleElement">
+        <StackLayout Margin="10">
+            <StackLayout.Padding>
+                                    <OnPlatform x:TypeArguments="Thickness"  
+                                            iOS="0,0,0,0">  
+                                    </OnPlatform>
+                                </StackLayout.Padding>
+            <ListView  x:Name="TransactionsList"  HasUnevenRows="True" CachingStrategy="RecycleElement" SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
 
                             <!--<Account_local:AccountModel/>-->
-                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                                <Frame HorizontalOptions="FillAndExpand" Margin="10,10,10,10">
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" >
+                                
+                                <Frame HorizontalOptions="FillAndExpand" HasShadow="False" CornerRadius="25" Padding="20" BackgroundColor="#d9dbda">
                                     <Grid VerticalOptions="CenterAndExpand" Padding="0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*" />
@@ -79,12 +85,12 @@
             <Frame>
                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
                     <StackLayout Orientation="Vertical" Padding="10">
-                        <Label Text="Tag Name: " />
+                        <Label Text="Name: " />
                         <Entry x:Name="TagName" />
                     </StackLayout>
                     <StackLayout Orientation="Vertical" Padding="10">
-                        <Label Text="Tag Color: " />
-                        <Picker x:Name="pickerColor" Title="Select Tag Color" TitleColor="Red" ItemsSource="{Binding .}"/> 
+                        <Label Text="Color: " />
+                        <Picker IsEnabled="False" x:Name="pickerColor" Title="Select Tag Color" TitleColor="Red" ItemsSource="{Binding .}"/> 
                     </StackLayout>
                     <StackLayout Orientation="Vertical" Padding="10">
                         <FlexLayout>
@@ -98,7 +104,7 @@
                                 MaxLength="1000000"
                                  />
                     </StackLayout>
-                    <Button Text="Update" BackgroundColor="Green" TextColor="White"/>
+                    <Button Text="Update" BackgroundColor="Green" TextColor="White" Clicked="ClickedEdit"/>
                     <Button Text="Delete" BackgroundColor="Red" TextColor="White" Clicked="ClickedDelete2"/>
 
                 </StackLayout>

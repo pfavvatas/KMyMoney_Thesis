@@ -114,6 +114,27 @@ namespace KMyMoney_Thesis
             UpdateTheFile(doc.InnerXml);
         }
 
+        public void UpdateTag(Tag tag)
+        {
+            ReadTheFile();
+            XmlDocument doc = new XmlDocument();
+            doc.Load(new StringReader(data));
+
+            XmlNode updateNode = doc.SelectSingleNode("//TAGS/TAG[@id='" + tag.Id + "']");
+            updateNode.Attributes["name"].Value = tag.Name;
+            if(updateNode.Attributes["notes"] != null){
+                updateNode.Attributes["notes"].Value = tag.Notes;
+            }
+            else if (tag.Notes != null)
+            {
+                XmlAttribute newTagNotes = doc.CreateAttribute("notes");
+                newTagNotes.Value = tag.Notes;
+                updateNode.Attributes.Append(newTagNotes);
+            }
+
+            UpdateTheFile(doc.InnerXml);
+        }
+
 
         /// <summary>
         /// Calling GetTransactions(), we're retrieving all transactions.

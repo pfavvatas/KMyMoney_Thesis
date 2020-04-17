@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using KMyMoney_Thesis.Model;
@@ -14,6 +15,11 @@ namespace KMyMoney_Thesis.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TagMore : TabbedPage
     {
+
+        
+
+
+
         public ObservableCollection<String> colors { get; set; }
 
         public Tag _tag { get; set; }
@@ -59,13 +65,30 @@ namespace KMyMoney_Thesis.Views
             {
                 pickerColor.ItemsSource = colors;
             }
+
+
+            
         }
+
+        
 
         async void ClickedDelete2(object sender, EventArgs e)
         {
-            new retrieveDataFromXML().DeleteTag(_tag.Id);
-            await Navigation.PopAsync();
+            bool answer = await DisplayAlert("Delete " + _tag.Name + " ?", null, "Yes", "No");
+            if (answer)
+            {
+                new retrieveDataFromXML().DeleteTag(_tag.Id);
+                await Navigation.PopAsync();
+            }
         }
 
+        async void ClickedEdit(object sender, EventArgs e)
+        {
+            _tag.Name = TagName.Text;
+            _tag.Notes = TagNotes.Text;
+
+            new retrieveDataFromXML().UpdateTag(_tag);
+            await Navigation.PopAsync();
+        }
     }
 }

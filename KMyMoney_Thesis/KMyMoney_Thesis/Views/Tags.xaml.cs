@@ -60,12 +60,16 @@ namespace KMyMoney_Thesis.Views
             showMore(item);
         }
 
-        void ClickedDelete(object sender, EventArgs e)
+        async void ClickedDelete(object sender, EventArgs e)
         {
             var menu = sender as MenuItem;
             var item = menu.CommandParameter as Tag;
-            new retrieveDataFromXML().DeleteTag(item.Id);
-            TagList.ItemsSource = new retrieveDataFromXML().GetTags();
+            bool answer = await DisplayAlert("Delete " + item.Name + " ?", null, "Yes", "No");
+            if (answer)
+            {               
+                new retrieveDataFromXML().DeleteTag(item.Id);
+                TagList.ItemsSource = new retrieveDataFromXML().GetTags();
+            }
         }
 
         public class TagDetailsData
