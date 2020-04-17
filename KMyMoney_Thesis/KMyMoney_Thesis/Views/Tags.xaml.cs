@@ -49,6 +49,8 @@ namespace KMyMoney_Thesis.Views
         {
             string result = await DisplayPromptAsync("Add new Tag", "", initialValue: string.Empty);
             Console.WriteLine("result = " + result);
+            new retrieveDataFromXML().AddNewTag(result);
+            TagList.ItemsSource = new retrieveDataFromXML().GetTags();
         }
 
         void ClickedMore(object sender, EventArgs e)

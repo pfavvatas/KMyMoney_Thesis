@@ -47,11 +47,11 @@ namespace KMyMoney_Thesis
             foreach (XmlNode tagNode in tagNodes)
             {
                 Tag tag = new Tag();
-                tag.Tagcolor = tagNode.Attributes["tagcolor"].Value;
-                tag.Notes = tagNode.Attributes["notes"] == null ? "" : tagNode.Attributes["notes"].Value;
-                tag.Id = tagNode.Attributes["id"].Value;
-                tag.Closed = tagNode.Attributes["closed"].Value;
-                tag.Name = tagNode.Attributes["name"].Value;
+                tag.Tagcolor    = tagNode.Attributes["tagcolor"]    == null ? "" : tagNode.Attributes["tagcolor"].Value;
+                tag.Notes       = tagNode.Attributes["notes"]       == null ? "" : tagNode.Attributes["notes"].Value;
+                tag.Id          = tagNode.Attributes["id"]          == null ? "" : tagNode.Attributes["id"].Value;
+                tag.Closed      = tagNode.Attributes["closed"]      == null ? "" : tagNode.Attributes["closed"].Value;
+                tag.Name        = tagNode.Attributes["name"]        == null ? "" : tagNode.Attributes["name"].Value;
                 TagsObs.Add(tag);
             }
             return TagsObs;
@@ -73,6 +73,45 @@ namespace KMyMoney_Thesis
             UpdateTheFile(doc.InnerXml);
             //return GetTags();
             
+        }
+
+        public void AddNewTag(String name)
+        {
+            ReadTheFile();
+            XmlDocument doc = new XmlDocument();
+            doc.Load(new StringReader(data));
+
+            XmlNodeList findNodes = doc.SelectNodes("//TAGS/TAG");
+            Console.WriteLine("Tags count= " + findNodes.Count);
+            foreach (XmlNode findNode in findNodes)
+            {
+                Console.WriteLine("Tag= " + findNode.Attributes["id"].Value);
+            }
+
+            //Create new Tag
+            XmlNode newTag = doc.CreateNode(XmlNodeType.Element, "TAG", null);
+
+            XmlAttribute newTagName = doc.CreateAttribute("name");
+            XmlAttribute newTagId = doc.CreateAttribute("id");
+            XmlAttribute newTagColor = doc.CreateAttribute("tagcolor");
+            XmlAttribute newTagClosed = doc.CreateAttribute("closed");
+            XmlAttribute newTagNotes = doc.CreateAttribute("notes");
+
+            newTagName.Value = name;
+            newTagId.Value = "0000999";
+            newTagColor.Value = "#000000";
+            newTagClosed.Value = "0";
+            newTagNotes.Value = "";
+
+            newTag.Attributes.Append(newTagName);
+            newTag.Attributes.Append(newTagId);
+            newTag.Attributes.Append(newTagColor);
+            newTag.Attributes.Append(newTagClosed);
+            newTag.Attributes.Append(newTagNotes);
+
+            XmlNode toAdd = doc.SelectSingleNode("//TAGS");
+            toAdd.AppendChild(newTag);
+            UpdateTheFile(doc.InnerXml);
         }
 
 
