@@ -14,17 +14,20 @@ namespace KMyMoney_Thesis
         private string data;
         public retrieveDataFromXML()
         {
-            System.Console.WriteLine("mpike kai edw gia na kseroume.......");
         }
 
         private void ReadTheFile()
         {
-            //Read Loal File dat using DependencyService  
+            //Read Local File dat using DependencyService  
             string data = DependencyService.Get<IFileReadWrite>().ReadData(fileName);
             this.data = data;
         }
 
-
+        private void UpdateTheFile(string data)
+        {
+            DependencyService.Get<IFileReadWrite>().WriteData(fileName, data);
+        }
+      
         /// <summary>
         /// Calling GetTags(), we're getting all details about tags we'd like to
         /// show to application.
@@ -49,10 +52,27 @@ namespace KMyMoney_Thesis
                 tag.Id = tagNode.Attributes["id"].Value;
                 tag.Closed = tagNode.Attributes["closed"].Value;
                 tag.Name = tagNode.Attributes["name"].Value;
-                //tagList.Add(tag);
                 TagsObs.Add(tag);
             }
             return TagsObs;
+        }
+
+        public ObservableCollection<Tag> TagsAfterDelete { get; set; }
+        public void DeleteTag(string id)
+        {
+            ReadTheFile();
+            XmlDocument doc = new XmlDocument();
+            doc.Load(new StringReader(data));
+
+            XmlNodeList deleteNodes = doc.SelectNodes("//TAG[@id='" + id + "']");
+            foreach (XmlNode deleteNode in deleteNodes)
+            {
+                deleteNode.ParentNode.RemoveChild(deleteNode);
+            }
+
+            UpdateTheFile(doc.InnerXml);
+            //return GetTags();
+            
         }
 
 

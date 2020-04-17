@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
+using System.Xml;
 using KMyMoney_Thesis.Model;
 using SQLite;
 using Xamarin.Forms;
@@ -15,16 +17,53 @@ namespace KMyMoney_Thesis.Views
         private int _id;
 
         public ObservableCollection<Tag> TagsObs { get; set; }
+        public ObservableCollection<Tag> test666 { get; set; }
 
         public Tags()
         {
             InitializeComponent();
-            TagList.ItemsSource = new retrieveDataFromXML().GetTags();
+
+            //test
+            //string data = DependencyService.Get<IFileReadWrite>().ReadData("MyFileXML.txt");
+            //XmlDocument doc = new XmlDocument();
+            //doc.Load(new StringReader(data));
+            //XmlNodeList splitNodes = doc.SelectNodes("//TAG[@id='G000001']");
+            //Console.WriteLine("splits => " + splitNodes.Count);
+            //foreach(XmlNode s in splitNodes)
+            //{
+            //    Console.WriteLine("s=> " + s.ParentNode.ParentNode.InnerXml);
+            //}
+
         }
 
-        private void New_Clicked(object sender, EventArgs e)
+        protected override void OnAppearing()
         {
-            ///akoma tpt....
+            base.OnAppearing();
+            //your code here;
+            Console.WriteLine("Mpike sta tags OnAppearing...");
+            TagList.ItemsSource = new retrieveDataFromXML().GetTags();
+
+        }
+
+        async void AddNewTag(object sender, EventArgs e)
+        {
+            string result = await DisplayPromptAsync("Add new Tag", "", initialValue: string.Empty);
+            Console.WriteLine("result = " + result);
+        }
+
+        void ClickedMore(object sender, EventArgs e)
+        {
+            var menu = sender as MenuItem;
+            var item = menu.CommandParameter as Tag;
+            showMore(item);
+        }
+
+        void ClickedDelete(object sender, EventArgs e)
+        {
+            var menu = sender as MenuItem;
+            var item = menu.CommandParameter as Tag;
+            new retrieveDataFromXML().DeleteTag(item.Id);
+            TagList.ItemsSource = new retrieveDataFromXML().GetTags();
         }
 
         public class TagDetailsData
@@ -42,16 +81,20 @@ namespace KMyMoney_Thesis.Views
             ///Den mas polu endiaferoun oi parakatw 3 grammes kwdika
             if (e.Item == null)
                 return;
-            //Console.WriteLine("==========>sender: " + e.ItemIndex);
 
+            showMore(e.Item as Tag);
+        }
+
+        async private void showMore(Tag item)
+        {
             ///Apo edw ksekiname
             ///Exei ftiaxtei class wste na perasoun oi ksexwristes
             ///plirofoies Tag kai Transaction se ena.
             TagDetailsData tdd = new TagDetailsData();
             //  1)
-            tdd.Tag = e.Item as Tag; ///eisagwgh tou Tag
+            tdd.Tag = item; ///eisagwgh tou Tag
 
-            
+
             ObservableCollection<Transaction> Transactions;
             Transactions = new retrieveDataFromXML().GetTransactions();
             List<Transaction> TransactionsWithTag = new List<Transaction>();
@@ -72,8 +115,8 @@ namespace KMyMoney_Thesis.Views
             }
             //  2)
             tdd.TagTransactionsList = TransactionsWithTag; ///eisagwgh tou Transaction
-            
-            /// Sending the data to a new Page.
+
+                                                           /// Sending the data to a new Page.
             await Navigation.PushAsync(new TagMore(tdd)); ///apostolh twn pliroforiwn stin selida
         }
 

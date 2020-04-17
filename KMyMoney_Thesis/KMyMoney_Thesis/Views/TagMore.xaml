@@ -99,7 +99,7 @@
                                  />
                     </StackLayout>
                     <Button Text="Update" BackgroundColor="Green" TextColor="White"/>
-                    <Button Text="Delete" BackgroundColor="Red" TextColor="White"/>
+                    <Button Text="Delete" BackgroundColor="Red" TextColor="White" Clicked="ClickedDelete2"/>
 
                 </StackLayout>
             </Frame>

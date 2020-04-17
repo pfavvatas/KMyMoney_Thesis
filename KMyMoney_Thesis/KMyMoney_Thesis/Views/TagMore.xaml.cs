@@ -61,5 +61,11 @@ namespace KMyMoney_Thesis.Views
             }
         }
 
+        async void ClickedDelete2(object sender, EventArgs e)
+        {
+            new retrieveDataFromXML().DeleteTag(_tag.Id);
+            await Navigation.PopAsync();
+        }
+
     }
 }

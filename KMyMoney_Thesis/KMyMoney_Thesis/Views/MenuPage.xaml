@@ -4,14 +4,24 @@
              x:Class="KMyMoney_Thesis.Views.MenuPage"
              Title="Menu">
     <StackLayout VerticalOptions="FillAndExpand">
+        <StackLayout.Padding>
+            <OnPlatform x:TypeArguments="Thickness"  
+                    iOS="-20,0,0,0">  
+            </OnPlatform>
+        </StackLayout.Padding>
         <ListView x:Name="ListViewMenu"
                     HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Grid Padding="10">
+                        <StackLayout Margin="10">
+                            <StackLayout.Padding>
+                                <OnPlatform x:TypeArguments="Thickness"  
+                                        iOS="25,0,0,0">  
+                                </OnPlatform>
+                            </StackLayout.Padding>
                             <Label Text="{Binding Title}" FontSize="20"/>
-                        </Grid>
+                        </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

@@ -6,18 +6,36 @@
             Order="Default"
             Name="new"
             IconImageSource="plussimple7.png"
-            Clicked="New_Clicked"/>
+            Clicked="AddNewTag"/>
     </ContentPage.ToolbarItems>
-    <!--x:Name="MyListViewPayees" ItemsSource="{Binding PayeeItem}" ItemTapped="Handle_PayeeItemTapped" CachingStrategy="RecycleElement"-->
     <StackLayout>
-        <StackLayout x:Name="LayoutUpdate" Orientation="Vertical" IsVisible="false">
-            <Entry x:Name="UpdateNameEntry"/>
-            <Button Text="Update" />
-        </StackLayout>
-            <ListView x:Name="TagList" ItemsSource="{Binding TagsObs}" ItemTapped="OnItemSelected">                 
+        <StackLayout.Padding>
+            <OnPlatform x:TypeArguments="Thickness"  
+                    iOS="-20,0,0,0">  
+            </OnPlatform>
+        </StackLayout.Padding>
+            <ListView x:Name="TagList" ItemsSource="{Binding TagsObs}" ItemTapped="OnItemSelected" SeparatorVisibility="Default">                 
                 <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextCell Text="{Binding Name}" />
+                    <DataTemplate>           
+                          <ViewCell>
+                             <ViewCell.ContextActions>
+                                <MenuItem Clicked="ClickedMore"
+                                          CommandParameter="{Binding .}"
+                                          Text="More" />
+                                <MenuItem Clicked="ClickedDelete"
+                                          CommandParameter="{Binding .}"
+                                          Text="Delete" IsDestructive="True" />
+                             </ViewCell.ContextActions>
+                             <StackLayout Margin="10">
+                                    <StackLayout.Padding>
+                                        <OnPlatform x:TypeArguments="Thickness"  
+                                                iOS="25,0,0,0">  
+                                        </OnPlatform>
+                                    </StackLayout.Padding>
+                                    <Label Text="{Binding Name}" />
+                             </StackLayout>
+                          </ViewCell>
+                        <!--<TextCell Text="{Binding Name}" />-->
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
