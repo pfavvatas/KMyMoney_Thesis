@@ -22,35 +22,22 @@ namespace KMyMoney_Thesis.Views
         public Tags()
         {
             InitializeComponent();
-
-            //test
-            //string data = DependencyService.Get<IFileReadWrite>().ReadData("MyFileXML.txt");
-            //XmlDocument doc = new XmlDocument();
-            //doc.Load(new StringReader(data));
-            //XmlNodeList splitNodes = doc.SelectNodes("//TAG[@id='G000001']");
-            //Console.WriteLine("splits => " + splitNodes.Count);
-            //foreach(XmlNode s in splitNodes)
-            //{
-            //    Console.WriteLine("s=> " + s.ParentNode.ParentNode.InnerXml);
-            //}
-
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            //your code here;
-            Console.WriteLine("Mpike sta tags OnAppearing...");
             TagList.ItemsSource = new retrieveDataFromXML().GetTags();
-
         }
 
         async void AddNewTag(object sender, EventArgs e)
         {
             string result = await DisplayPromptAsync("Add new Tag", "", initialValue: string.Empty);
-            Console.WriteLine("result = " + result);
-            new retrieveDataFromXML().AddNewTag(result);
-            TagList.ItemsSource = new retrieveDataFromXML().GetTags();
+            if (result != null)
+            {
+                new retrieveDataFromXML().AddNewTag(result);
+                TagList.ItemsSource = new retrieveDataFromXML().GetTags();
+            }            
         }
 
         void ClickedMore(object sender, EventArgs e)

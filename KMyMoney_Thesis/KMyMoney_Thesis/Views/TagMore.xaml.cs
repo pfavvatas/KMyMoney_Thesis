@@ -16,9 +16,6 @@ namespace KMyMoney_Thesis.Views
     public partial class TagMore : TabbedPage
     {
 
-        
-
-
 
         public ObservableCollection<String> colors { get; set; }
 
@@ -53,9 +50,15 @@ namespace KMyMoney_Thesis.Views
 
             _tag = tag;
             TagName.Text = tag.Name;
-            //TagId.Text = tag.Id;
             TagNotes.Text = tag.Notes;
-
+            if(tag.Closed == "1")
+            {
+                TagCheckBox1.IsChecked = true;
+            }
+            else
+            {
+                TagCheckBox1.IsChecked = false;
+            }
 
 
             colors = new ObservableCollection<String>();
@@ -70,7 +73,6 @@ namespace KMyMoney_Thesis.Views
             
         }
 
-        
 
         async void ClickedDelete2(object sender, EventArgs e)
         {
@@ -86,7 +88,7 @@ namespace KMyMoney_Thesis.Views
         {
             _tag.Name = TagName.Text;
             _tag.Notes = TagNotes.Text;
-
+            _tag.Closed = TagCheckBox1.IsChecked ? "1" : "0";
             new retrieveDataFromXML().UpdateTag(_tag);
             await Navigation.PopAsync();
         }

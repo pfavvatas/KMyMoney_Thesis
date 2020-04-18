@@ -82,11 +82,6 @@ namespace KMyMoney_Thesis
             doc.Load(new StringReader(data));
 
             XmlNodeList findNodes = doc.SelectNodes("//TAGS/TAG");
-            Console.WriteLine("Tags count= " + findNodes.Count);
-            foreach (XmlNode findNode in findNodes)
-            {
-                Console.WriteLine("Tag= " + findNode.Attributes["id"].Value);
-            }
 
             //Create new Tag
             XmlNode newTag = doc.CreateNode(XmlNodeType.Element, "TAG", null);
@@ -98,7 +93,7 @@ namespace KMyMoney_Thesis
             XmlAttribute newTagNotes = doc.CreateAttribute("notes");
 
             newTagName.Value = name;
-            newTagId.Value = "0000999";
+            newTagId.Value = String.Format("G{0:000000}", int.Parse(findNodes[findNodes.Count-1].Attributes["id"].Value.Replace("G", "0")) + 1); //Create the Id format.
             newTagColor.Value = "#000000";
             newTagClosed.Value = "0";
             newTagNotes.Value = "";
@@ -131,6 +126,7 @@ namespace KMyMoney_Thesis
                 newTagNotes.Value = tag.Notes;
                 updateNode.Attributes.Append(newTagNotes);
             }
+            updateNode.Attributes["closed"].Value = tag.Closed;
 
             UpdateTheFile(doc.InnerXml);
         }

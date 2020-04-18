@@ -26,13 +26,13 @@
                                           CommandParameter="{Binding .}"
                                           Text="Delete" IsDestructive="True" />
                              </ViewCell.ContextActions>
-                             <StackLayout Margin="10">
+                             <StackLayout>
                                     <StackLayout.Padding>
                                         <OnPlatform x:TypeArguments="Thickness"  
                                                 iOS="25,0,0,0">  
                                         </OnPlatform>
                                     </StackLayout.Padding>
-                                    <Label Text="{Binding Name}" />
+                                        <Label Text="{Binding Name}" FontSize="25" Margin="10"/>
                              </StackLayout>
                           </ViewCell>
                         <!--<TextCell Text="{Binding Name}" />-->
