@@ -10,7 +10,7 @@ namespace KMyMoney_Thesis.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Payees : ContentPage
     {
-        public ObservableCollection<String> TestPayee { get; set; }
+        public ObservableCollection<Payee> Payee { get; set; }
         private int _id;
         public Payees()
         {
@@ -20,7 +20,13 @@ namespace KMyMoney_Thesis.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            PayeeList.ItemsSource = new retrieveDataFromXML().GetPayees();
+            Payee = new retrieveDataFromXML().GetPayees();
+            foreach (var cl in Payee)
+            {
+                Console.WriteLine(cl.ToString());
+                //or print the property of your class
+            }
+            PayeeList.ItemsSource = Payee;
         }
 
         async void AddNewPayee(object sender, EventArgs e)

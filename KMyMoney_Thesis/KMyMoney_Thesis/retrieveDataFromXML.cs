@@ -150,9 +150,7 @@ namespace KMyMoney_Thesis
                 payee.Email = payeeNode.Attributes["email"] == null ? "" : payeeNode.Attributes["email"].Value;
                 payee.Reference = payeeNode.Attributes["reference"] == null ? "" : payeeNode.Attributes["reference"].Value;
                 payee.Notes = payeeNode.Attributes["notes"] == null ? "" : payeeNode.Attributes["notes"].Value;
-                //payee.AddressInfo = GetAddress(payeeNode);
-
-
+                payee.AddressInfo = GetAddress(payeeNode);
                 PayeesObs.Add(payee);
             }
             return PayeesObs;
@@ -162,7 +160,14 @@ namespace KMyMoney_Thesis
         {
             Address address = new Address();
             XmlNode addressNode = node.SelectSingleNode("ADDRESS");
-
+            address.Street = addressNode.Attributes["street"] == null ? "" : addressNode.Attributes["street"].Value;
+            address.Telephone = addressNode.Attributes["telephone"] == null ? "" : addressNode.Attributes["telephone"].Value;
+            address.Country = addressNode.Attributes["country"] == null ? "" : addressNode.Attributes["country"].Value;
+            address.City = addressNode.Attributes["city"] == null ? "" : addressNode.Attributes["city"].Value;
+            address.Zip = addressNode.Attributes["zip"] == null ? "" : addressNode.Attributes["zip"].Value;
+            address.Zipcode = addressNode.Attributes["zipcode"] == null ? "" : addressNode.Attributes["zipcode"].Value;
+            address.Postcode = addressNode.Attributes["postcode"] == null ? "" : addressNode.Attributes["postcode"].Value;
+            address.State = addressNode.Attributes["state"] == null ? "" : addressNode.Attributes["state"].Value;
             return address;
         }
 

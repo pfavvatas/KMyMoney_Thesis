@@ -58,6 +58,11 @@ namespace KMyMoney_Thesis.Model
         public string Reference { get; set; }
 
         public Address AddressInfo { get; set; }
+
+        public override string ToString()
+        {
+            return "Id: " + Id + " ,Name:" + Name + " ,Matchingenabled:" + Matchingenabled + " ,Email:" + Email + " ,Notes:" + Notes + " ,Reference:" + Reference + AddressInfo.ToString();
+        }
     }
     //Payees end
 
@@ -149,6 +154,18 @@ namespace KMyMoney_Thesis.Model
         public string Postcode { get; set; }
 
         public string State { get; set; }
+
+        public override string ToString()
+        {
+            return " ,Street = " + Street
+                + " ,Telephone = " + Telephone
+                + " ,Country = " + Country
+                + " ,City = " + City
+                + " ,Zip = " + Zip
+                + " ,Zipcode = " + Zipcode
+                + " ,Postcode = " + Postcode
+                + " ,State = " + State;
+        }
     }
 
     class Account
