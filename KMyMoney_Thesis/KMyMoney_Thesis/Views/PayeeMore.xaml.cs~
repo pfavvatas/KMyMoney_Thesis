@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using KMyMoney_Thesis.Models;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace KMyMoney_Thesis.Views
+{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class PayeeMore : TabbedPage
+    {
+        public ObservableCollection<TestBinding> Test2 { get; set; }
+        public PayeeMore()
+        {
+            InitializeComponent();
+
+            Test2 = new ObservableCollection<TestBinding>
+            {
+                new TestBinding { TestBindingString = "0"},
+                new TestBinding { TestBindingString = "1.1"},
+
+            };
+
+            AccountList2.ItemsSource = Test2;
+        }
+    }
+}

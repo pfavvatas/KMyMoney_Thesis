@@ -2,10 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="KMyMoney_Thesis.Views.Tags" Title="Tags">
     <ContentPage.ToolbarItems>
         <ToolbarItem
+            IconImageSource="plussimple7.png"
             Text="..."
             Order="Default"
-            Name="new"
-            IconImageSource="plussimple7.png"
+            Name="NEW"
             Clicked="AddNewTag"/>
     </ContentPage.ToolbarItems>
     <StackLayout>
@@ -35,10 +35,8 @@
                                         <Label Text="{Binding Name}" FontSize="25" Margin="10"/>
                              </StackLayout>
                           </ViewCell>
-                        <!--<TextCell Text="{Binding Name}" />-->
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
     </StackLayout>
-
 </ContentPage>

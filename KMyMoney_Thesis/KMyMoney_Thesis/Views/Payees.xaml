@@ -1,30 +1,42 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="KMyMoney_Thesis.Views.Payees">
-    <!--<ContentPage.Content>
-    </ContentPage.Content>-->
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="KMyMoney_Thesis.Views.Payees" Title="Payees">
     <ContentPage.ToolbarItems>
         <ToolbarItem
             IconImageSource="plussimple7.png"
             Text="..."
             Order="Default"
             Name="NEW"
-            Clicked="New_Clicked"/>
+            Clicked="AddNewPayee"/>
     </ContentPage.ToolbarItems>
-    <!--x:Name="MyListViewPayees" ItemsSource="{Binding PayeeItem}" ItemTapped="Handle_PayeeItemTapped" CachingStrategy="RecycleElement"-->
     <StackLayout>
-        <StackLayout x:Name="LayoutUpdate" Orientation="Vertical" IsVisible="false">
-            <Entry x:Name="UpdateNameEntry"/>
-            <Button Text="Update" Clicked="UpdateNameButton"/>
-        </StackLayout>
-            <ListView x:Name="lstMonkeys" ItemTapped="OnItemSelected">                 
+        <StackLayout.Padding>
+            <OnPlatform x:TypeArguments="Thickness"  
+                    iOS="-20,0,0,0">  
+            </OnPlatform>
+        </StackLayout.Padding>
+            <ListView x:Name="PayeeList" ItemsSource="{Binding PayeesObs}" ItemTapped="OnItemSelected" SeparatorVisibility="Default">                 
                 <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextCell Text="{Binding}" />
+                    <DataTemplate>           
+                          <ViewCell>
+                             <ViewCell.ContextActions>
+                                <MenuItem Clicked="ClickedMore"
+                                          CommandParameter="{Binding .}"
+                                          Text="More" />
+                                <MenuItem Clicked="ClickedDelete"
+                                          CommandParameter="{Binding .}"
+                                          Text="Delete" IsDestructive="True" />
+                             </ViewCell.ContextActions>
+                             <StackLayout>
+                                    <StackLayout.Padding>
+                                        <OnPlatform x:TypeArguments="Thickness"  
+                                                iOS="25,0,0,0">  
+                                        </OnPlatform>
+                                    </StackLayout.Padding>
+                                        <Label Text="{Binding Name}" FontSize="25" Margin="10"/>
+                             </StackLayout>
+                          </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
     </StackLayout>
-
-
-
 </ContentPage>

@@ -1,0 +1,23 @@
+﻿using System;
+using System.Xml.Serialization;
+namespace KMyMoney_Thesis.DataStorage
+{
+    [XmlRoot("KMYMONEY-FILE")]
+    public class KMYMONEY_FILE
+    {
+        [XmlElement("FILEINFO")]
+        public FILEINFO FILEINFO { get; set; }
+    }
+
+    public class FILEINFO
+    {
+        [XmlElement("CREATION_DATE")]
+        public CREATION_DATE CREATION_DATE { get;set;}
+    }
+
+    public class CREATION_DATE
+    {
+        [XmlAttribute("CREATION_DATE")]
+        public string date { get; set; }
+    }
+}

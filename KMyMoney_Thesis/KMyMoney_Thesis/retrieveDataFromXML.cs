@@ -131,6 +131,40 @@ namespace KMyMoney_Thesis
             UpdateTheFile(doc.InnerXml);
         }
 
+        public ObservableCollection<Payee> PayeesObs { get; set; }
+        public ObservableCollection<Payee> GetPayees()
+        {
+            ReadTheFile();
+            XmlDocument doc = new XmlDocument();
+            doc.Load(new StringReader(data));
+
+            XmlNodeList payeeNodes = doc.DocumentElement.SelectNodes("/KMYMONEY-FILE/PAYEES/PAYEE");
+            List<Payee> payeeList = new List<Payee>();
+            PayeesObs = new ObservableCollection<Payee>();
+            foreach (XmlNode payeeNode in payeeNodes)
+            {
+                Payee payee = new Payee();
+                payee.Id = payeeNode.Attributes["id"] == null ? "" : payeeNode.Attributes["id"].Value;
+                payee.Name = payeeNode.Attributes["name"] == null ? "" : payeeNode.Attributes["name"].Value;
+                payee.Matchingenabled = payeeNode.Attributes["matchingenabled"] == null ? "" : payeeNode.Attributes["matchingenabled"].Value;
+                payee.Email = payeeNode.Attributes["email"] == null ? "" : payeeNode.Attributes["email"].Value;
+                payee.Reference = payeeNode.Attributes["reference"] == null ? "" : payeeNode.Attributes["reference"].Value;
+                payee.Notes = payeeNode.Attributes["notes"] == null ? "" : payeeNode.Attributes["notes"].Value;
+                //payee.AddressInfo = GetAddress(payeeNode);
+
+
+                PayeesObs.Add(payee);
+            }
+            return PayeesObs;
+        }
+
+        public Address GetAddress(XmlNode node)
+        {
+            Address address = new Address();
+            XmlNode addressNode = node.SelectSingleNode("ADDRESS");
+
+            return address;
+        }
 
         /// <summary>
         /// Calling GetTransactions(), we're retrieving all transactions.

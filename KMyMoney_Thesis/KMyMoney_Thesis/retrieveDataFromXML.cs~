@@ -1,0 +1,51 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
+using System.Xml;
+using KMyMoney_Thesis.Model;
+using Xamarin.Forms;
+
+namespace KMyMoney_Thesis
+{
+    public class retrieveDataFromXML
+    {
+        private String fileName = "MyFileXML.txt";
+        private string data;
+        public retrieveDataFromXML()
+        {  
+        }
+
+        private void ReadTheFile()
+        {
+            //Read Loal File dat using DependencyService  
+            string data = DependencyService.Get<IFileReadWrite>().ReadData(fileName);
+            this.data = data;
+        }
+
+        public Tag _tag { get; set; }
+        public ObservableCollection<Tag> TagsObs { get; set; }
+        public ObservableCollection<Tag> GetTags()
+        {
+            ReadTheFile();
+            XmlDocument doc = new XmlDocument();
+            doc.Load(new StringReader(data));
+
+            XmlNodeList tagNodes = doc.DocumentElement.SelectNodes("/KMYMONEY-FILE/TAGS/TAG");
+            List<Tag> tagList = new List<Tag>();
+            TagsObs = new ObservableCollection<Tag>();
+            foreach (XmlNode tagNode in tagNodes)
+            {
+                Tag tag = new Tag();
+                tag.tagcolor = tagNode.Attributes["tagcolor"].Value;
+                tag.notes = tagNode.Attributes["notes"] == null ? "" : tagNode.Attributes["notes"].Value;
+                tag.id = tagNode.Attributes["id"].Value;
+                tag.closed = tagNode.Attributes["closed"].Value;
+                tag.name = tagNode.Attributes["name"].Value;
+                //tagList.Add(tag);
+                TagsObs.Add(tag);
+            }
+            return TagsObs;
+        }
+    }
+}

@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using KMyMoney_Thesis.Models;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+
+namespace KMyMoney_Thesis.Views
+{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class Accounts : ContentPage
+    {
+        ObservableCollection<TestBinding> test = new ObservableCollection<TestBinding>();
+        public Accounts()
+        {
+            InitializeComponent();
+
+            AccountList.ItemsSource = test;
+
+            test.Add(new TestBinding { TestBindingString = "1" });
+            test.Add(new TestBinding { TestBindingString = "2" });
+            test.Add(new TestBinding { TestBindingString = "3" });
+            test.Add(new TestBinding { TestBindingString = "4" });
+            test.Add(new TestBinding { TestBindingString = "5" });
+        }
+    }
+}

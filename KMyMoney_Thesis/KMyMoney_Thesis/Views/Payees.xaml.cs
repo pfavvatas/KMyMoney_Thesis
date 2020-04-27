@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using KMyMoney_Thesis.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,86 +15,91 @@ namespace KMyMoney_Thesis.Views
         public Payees()
         {
             InitializeComponent();
-
-            TestPayee = new ObservableCollection<String>();
-            TestPayee.Add("ena");
-            TestPayee.Add("duo");
-
-
-            lstMonkeys.ItemsSource = TestPayee;
         }
 
-        private void New_Clicked(object sender, EventArgs e)
+        protected override void OnAppearing()
         {
-            TestPayee.Add("new_" + TestPayee.Count);
+            base.OnAppearing();
+            PayeeList.ItemsSource = new retrieveDataFromXML().GetPayees();
+        }
+
+        async void AddNewPayee(object sender, EventArgs e)
+        {
+            string result = await DisplayPromptAsync("Add new Payee", "", initialValue: string.Empty);
+            if (result != null)
+            {
+                new retrieveDataFromXML().AddNewTag(result);
+                PayeeList.ItemsSource = new retrieveDataFromXML().GetPayees();
+            }
+        }
+
+        void ClickedMore(object sender, EventArgs e)
+        {
+            var menu = sender as MenuItem;
+            var item = menu.CommandParameter as Payee;
+            showMore(item);
+        }
+
+        async void ClickedDelete(object sender, EventArgs e)
+        {
+            var menu = sender as MenuItem;
+            var item = menu.CommandParameter as Payee;
+            bool answer = await DisplayAlert("Delete " + item.Name + " ?", null, "Yes", "No");
+            if (answer)
+            {
+                new retrieveDataFromXML().DeleteTag(item.Id);
+                PayeeList.ItemsSource = new retrieveDataFromXML().GetPayees();
+            }
+        }
+
+        public class PayeeDetailsData
+        {
+            //public Tag Tag { get; set; }
+            //public List<Transaction> TagTransactionsList { get; set; }
         }
 
         async void OnItemSelected(Object sender, ItemTappedEventArgs e)
         {
-            //LayoutUpdate.IsVisible = false;
+            ///Den mas polu endiaferoun oi parakatw 3 grammes kwdika
             if (e.Item == null)
                 return;
 
-            var details = e.Item as String;
-            String detail = e.Item as String;
-
-            Console.WriteLine("==========>sender: " + e.ItemIndex);
-
-
-            //I chose that code because on iOS "delete" has red colour.
-            //On the other hand, android does not have colour, so it's looks better with that code.
-            string action;
-            switch (Device.RuntimePlatform)
-            {
-                case Device.iOS:
-                    Console.WriteLine("==========>Device: iOS");
-                     action = await DisplayActionSheet("" + e.Item, "Cancel", "Delete","Rename", "More");
-                    Console.WriteLine("==========>Action: " + action);
-                    _Action(action,e);
-                    break;
-                case Device.Android:
-                    Console.WriteLine("==========>Device: Android");
-                     action = await DisplayActionSheet(""+e.Item, "Cancel", null,"Rename", "More", "Delete");
-                    Console.WriteLine("==========>Action: " + action);
-                    _Action(action,e);
-                    break;
-                case Device.UWP:
-                default:
-                    action = await DisplayActionSheet("", "Cancel", null, "More", "Delete");
-                    _Action(action,e);
-                    break;
-            }
-            
+            showMore(e.Item as Payee);
         }
 
-        private async void _Action(string action, ItemTappedEventArgs e)
+        async private void showMore(Payee item)
         {
-            if (action.Equals("Delete"))
-            {
-                TestPayee.RemoveAt(e.ItemIndex);
-            }
-            else if(action.Equals("Rename"))
-            {
-                LayoutUpdate.IsVisible = true;
-                UpdateNameEntry.Text = e.Item as String;
-                _id = e.ItemIndex;
-            }
-            else if (action.Equals("More"))
-            {
-                await Navigation.PushAsync(new PayeeMore());
-            }
-        }
+            ///Apo edw ksekiname
+            ///Exei ftiaxtei class wste na perasoun oi ksexwristes
+            ///plirofoies Tag kai Transaction se ena.
+            PayeeDetailsData tdd = new PayeeDetailsData();
+            //  1)
+            //tdd.Tag = item; ///eisagwgh tou Tag
 
-        async void UpdateNameButton(object sender, EventArgs e)
-        {
-            //TestPayee.Insert(_id, UpdateNameEntry.Text);
-            TestPayee[_id] = UpdateNameEntry.Text;
-            LayoutUpdate.IsVisible = false;
-        }
 
-        //async void OnButtonTappedListView(object sender, EventArgs e)
-        //{
-        //    //LayoutUpdate.IsVisible = false;
-        //}
+            //ObservableCollection<Transaction> Transactions;
+            //Transactions = new retrieveDataFromXML().GetTransactions();
+            //List<Transaction> TransactionsWithTag = new List<Transaction>();
+            //foreach (var trans in Transactions)
+            //{
+            //    foreach (var splits in trans.Splits)
+            //    {
+            //        foreach (var tags in splits.Tag)
+            //        {
+            //            /// Using this if, we get the transactions
+            //            /// with the tag, that we're looking for.
+            //            if (tags.Id == tdd.Tag.Id)
+            //            {
+            //                TransactionsWithTag.Add(trans);
+            //            }
+            //        }
+            //    }
+            //}
+            ////  2)
+            //tdd.TagTransactionsList = TransactionsWithTag; ///eisagwgh tou Transaction
+
+            /// Sending the data to a new Page.
+            //await Navigation.PushAsync(new TagMore(tdd)); ///apostolh twn pliroforiwn stin selida
+        }
     }
 }

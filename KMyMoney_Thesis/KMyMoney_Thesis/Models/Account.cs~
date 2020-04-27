@@ -1,0 +1,15 @@
+﻿using System;
+
+
+namespace KMyMoney_Thesis.Models
+{
+    public class Account
+    {
+        public string Name { get; set; }
+        public string id { get; set; }
+        public string type { get; set; }
+        public string opened { get; set; }
+        public string currency { get; set; }
+    }
+}
+

@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace KMyMoney_Thesis.Views
+{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class Payees : ContentPage
+    {
+        public Payees()
+        {
+            InitializeComponent();
+        }
+    }
+}

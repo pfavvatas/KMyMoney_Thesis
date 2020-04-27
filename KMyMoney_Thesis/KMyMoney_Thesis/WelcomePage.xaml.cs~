@@ -1,0 +1,53 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+using System.Diagnostics;
+using KMyMoney;
+
+namespace KMyMoney_Thesis
+{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class WelcomePage : ContentPage
+    {
+        MyKMyMoney myKMyMoney;
+        public WelcomePage()
+        {
+            InitializeComponent();
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            //Application.Current.MainPage = new NavigationPage(new SetupPage());
+            Application.Current.MainPage = new SetupPage();
+        }
+
+        private void TestKMyMoney()
+        {
+            var numberA = 1;
+            var numberB = 2;
+
+            var addResult = myKMyMoney.Add(numberA, numberB);
+
+            Debug.WriteLine($"{numberA} + {numberB} = {addResult}");
+        }
+
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            myKMyMoney = new MyKMyMoney();
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            myKMyMoney.Dispose();
+        }
+    }
+}

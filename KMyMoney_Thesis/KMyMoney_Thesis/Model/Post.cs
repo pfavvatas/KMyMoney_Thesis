@@ -41,6 +41,26 @@ namespace KMyMoney_Thesis.Model
     }
     //Tags end
 
+    //Payees
+    [Table("Payees")]
+    public class Payee
+    {
+        public string Id { get; set; }
+
+        public string Name { get; set; }
+
+        public string Matchingenabled { get; set; }
+
+        public string Email { get; set; }
+
+        public string Notes { get; set; }
+
+        public string Reference { get; set; }
+
+        public Address AddressInfo { get; set; }
+    }
+    //Payees end
+
     //Transactions
     public class Transaction
     {
@@ -126,7 +146,9 @@ namespace KMyMoney_Thesis.Model
 
         public string Zipcode { get; set; }
 
+        public string Postcode { get; set; }
 
+        public string State { get; set; }
     }
 
     class Account
