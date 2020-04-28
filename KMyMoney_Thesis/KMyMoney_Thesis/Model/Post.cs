@@ -51,6 +51,8 @@ namespace KMyMoney_Thesis.Model
 
         public string Matchingenabled { get; set; }
 
+        public string Defaultaccountid { get; set; }
+
         public string Email { get; set; }
 
         public string Notes { get; set; }
@@ -61,7 +63,7 @@ namespace KMyMoney_Thesis.Model
 
         public override string ToString()
         {
-            return "Id: " + Id + " ,Name:" + Name + " ,Matchingenabled:" + Matchingenabled + " ,Email:" + Email + " ,Notes:" + Notes + " ,Reference:" + Reference + AddressInfo.ToString();
+            return "Id: " + Id + " ,Name:" + Name + " ,Matchingenabled:" + Matchingenabled + " ,Defaultaccountid:" + Defaultaccountid + " ,Email:" + Email + " ,Notes:" + Notes + " ,Reference:" + Reference + AddressInfo.ToString();
         }
     }
     //Payees end

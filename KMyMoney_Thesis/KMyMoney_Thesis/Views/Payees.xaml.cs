@@ -105,7 +105,7 @@ namespace KMyMoney_Thesis.Views
             //tdd.TagTransactionsList = TransactionsWithTag; ///eisagwgh tou Transaction
 
             /// Sending the data to a new Page.
-            //await Navigation.PushAsync(new TagMore(tdd)); ///apostolh twn pliroforiwn stin selida
+            await Navigation.PushAsync(new PayeeMore()); ///apostolh twn pliroforiwn stin selida
         }
     }
 }
