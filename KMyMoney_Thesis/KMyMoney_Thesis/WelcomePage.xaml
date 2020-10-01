@@ -21,7 +21,6 @@
                  <Button BackgroundColor="#0E7DD9" Text="Open file!" TextColor="White" FontSize="Medium" Clicked="Button_ClickedFile"/>
                 <Button BackgroundColor="#0E7DD9" Text="Get started!" TextColor="White" FontSize="Medium" Clicked="Button_Clicked"/>
                 <ScrollView><Label x:Name="msg1" /></ScrollView>
-                <Label Text="123..."/>
             </StackLayout>
 
         </Grid>

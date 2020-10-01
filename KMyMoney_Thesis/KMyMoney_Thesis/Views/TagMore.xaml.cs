@@ -92,5 +92,15 @@ namespace KMyMoney_Thesis.Views
             new retrieveDataFromXML().UpdateTag(_tag);
             await Navigation.PopAsync();
         }
+
+        async void OnItemTapped(Object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item == null)
+                return;
+            Transaction item = e.Item as Transaction;
+            System.Console.WriteLine(item);
+            System.Console.WriteLine(item.Id);
+
+        }
     }
 }

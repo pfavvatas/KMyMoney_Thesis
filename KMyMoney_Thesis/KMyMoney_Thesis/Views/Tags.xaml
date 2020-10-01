@@ -14,7 +14,7 @@
                     iOS="-20,0,0,0">  
             </OnPlatform>
         </StackLayout.Padding>
-            <ListView x:Name="TagList" ItemsSource="{Binding TagsObs}" ItemTapped="OnItemSelected" SeparatorVisibility="Default">                 
+            <ListView x:Name="TagList" ItemsSource="{Binding TagsObs}" ItemTapped="OnItemTapped" SeparatorVisibility="Default">                 
                 <ListView.ItemTemplate>
                     <DataTemplate>           
                           <ViewCell>

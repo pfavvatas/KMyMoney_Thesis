@@ -20,11 +20,6 @@ using KMyMoney_Thesis.Model;
 using SQLite;
 using System.Xml.Linq;
 
-
-using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Linq;
-
 namespace KMyMoney_Thesis
 {
    
@@ -37,19 +32,58 @@ namespace KMyMoney_Thesis
         public WelcomePage()
         {
             InitializeComponent();
+
+            //string XmlString = "";
+            //string[] files = File.ReadAllLines("/Users/panagiotisfavvatas/pfavvatas/KMyMoney_Thesis.git/KMyMoney_Thesis/KMyMoney_Thesis/DummyXmlFile.xml");
+            //System.Diagnostics.Debug.WriteLine("======Try 1. Read Dummy XML======");
+            //foreach (string file in files)
+            //{
+            //    XmlString += Environment.NewLine + file;
+            //}
+            //System.Diagnostics.Debug.WriteLine(XmlString);
+
+            XDocument xdoc = XDocument.Load("/Users/panagiotisfavvatas/pfavvatas/KMyMoney_Thesis.git/KMyMoney_Thesis/KMyMoney_Thesis/DummyXmlFile.xml");
+
+
+            //var result = xdoc.Element("catalog").Descendants("book");
+
+            var test = from test1 in xdoc.Descendants("BOOKS") select test1;
+            //select new
+            //{
+            //    Author = test1.Element("author").Value
+            //};
+
+
+            xdoc.Descendants("book").Where(x => x.Attribute("id").Value == "bk101").Remove();
+
+            var var1 = from test11 in xdoc.Descendants("BOOKS").Descendants("book")
+                       select new
+                       {
+                           Author = test11.Element("author").Value
+                       };
+
+            foreach (var t in var1)
+            {
+                System.Diagnostics.Debug.WriteLine(t.Author);
+            }
+
+
+
+
+            System.Diagnostics.Debug.WriteLine("======End of Try 1.======");
             //Post post = new Post()
             //{
             //    Test1 = DateTime.Now + "\n"
             //};
 
-            
+
 
             //SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation);
             //conn.CreateTable<Post>();
             //var i = conn.Insert(post);
             //if (i > 0)
             //{
-            //    System.Diagnostics.Debug.WriteLine("mpikan dedomena");
+            //    ç
 
             //}
             //else
@@ -92,7 +126,7 @@ namespace KMyMoney_Thesis
 
         }
 
-        
+
 
         private void Button_Clicked(object sender, EventArgs e)
         {

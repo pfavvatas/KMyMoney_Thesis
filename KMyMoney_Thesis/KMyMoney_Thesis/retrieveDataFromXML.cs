@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Xml;
+using System.Xml.Linq;
 using KMyMoney_Thesis.Model;
 using Xamarin.Forms;
 
@@ -27,40 +29,41 @@ namespace KMyMoney_Thesis
         {
             DependencyService.Get<IFileReadWrite>().WriteData(fileName, data);
         }
-      
+
         /// <summary>
         /// Calling GetTags(), we're getting all details about tags we'd like to
         /// show to application.
         /// And we return an ObservableCollection<Tag>.
-        /// </summary>
-        public Tag _tag { get; set; }
-        public ObservableCollection<Tag> TagsObs { get; set; }
+        /// </summary
+        public ObservableCollection<Tag> TagListCollection { get; set; }
         public ObservableCollection<Tag> GetTags()
         {
             ReadTheFile();
+
             XmlDocument doc = new XmlDocument();
             doc.Load(new StringReader(data));
-
             XmlNodeList tagNodes = doc.DocumentElement.SelectNodes("/KMYMONEY-FILE/TAGS/TAG");
             List<Tag> tagList = new List<Tag>();
-            TagsObs = new ObservableCollection<Tag>();
+            TagListCollection = new ObservableCollection<Tag>();
             foreach (XmlNode tagNode in tagNodes)
             {
                 Tag tag = new Tag();
-                tag.Tagcolor    = tagNode.Attributes["tagcolor"]    == null ? "" : tagNode.Attributes["tagcolor"].Value;
-                tag.Notes       = tagNode.Attributes["notes"]       == null ? "" : tagNode.Attributes["notes"].Value;
-                tag.Id          = tagNode.Attributes["id"]          == null ? "" : tagNode.Attributes["id"].Value;
-                tag.Closed      = tagNode.Attributes["closed"]      == null ? "" : tagNode.Attributes["closed"].Value;
-                tag.Name        = tagNode.Attributes["name"]        == null ? "" : tagNode.Attributes["name"].Value;
-                TagsObs.Add(tag);
+                tag.Tagcolor = tagNode.Attributes["tagcolor"] == null ? "" : tagNode.Attributes["tagcolor"].Value;
+                tag.Notes = tagNode.Attributes["notes"] == null ? "" : tagNode.Attributes["notes"].Value;
+                tag.Id = tagNode.Attributes["id"] == null ? "" : tagNode.Attributes["id"].Value;
+                tag.Closed = tagNode.Attributes["closed"] == null ? "" : tagNode.Attributes["closed"].Value;
+                tag.Name = tagNode.Attributes["name"] == null ? "" : tagNode.Attributes["name"].Value;
+                TagListCollection.Add(tag);
             }
-            return TagsObs;
+            return TagListCollection;
+
         }
 
         public ObservableCollection<Tag> TagsAfterDelete { get; set; }
         public void DeleteTag(string id)
         {
             ReadTheFile();
+
             XmlDocument doc = new XmlDocument();
             doc.Load(new StringReader(data));
 
@@ -69,10 +72,9 @@ namespace KMyMoney_Thesis
             {
                 deleteNode.ParentNode.RemoveChild(deleteNode);
             }
+            System.Console.WriteLine(doc.InnerXml);
 
             UpdateTheFile(doc.InnerXml);
-            //return GetTags();
-            
         }
 
         public void AddNewTag(String name)
@@ -93,7 +95,7 @@ namespace KMyMoney_Thesis
             XmlAttribute newTagNotes = doc.CreateAttribute("notes");
 
             newTagName.Value = name;
-            newTagId.Value = String.Format("G{0:000000}", int.Parse(findNodes[findNodes.Count-1].Attributes["id"].Value.Replace("G", "0")) + 1); //Create the Id format.
+            newTagId.Value = String.Format("G{0:000000}", int.Parse(findNodes[findNodes.Count - 1].Attributes["id"].Value.Replace("G", "0")) + 1); //Create the Id format.
             newTagColor.Value = "#000000";
             newTagClosed.Value = "0";
             newTagNotes.Value = "";
@@ -117,7 +119,8 @@ namespace KMyMoney_Thesis
 
             XmlNode updateNode = doc.SelectSingleNode("//TAGS/TAG[@id='" + tag.Id + "']");
             updateNode.Attributes["name"].Value = tag.Name;
-            if(updateNode.Attributes["notes"] != null){
+            if (updateNode.Attributes["notes"] != null)
+            {
                 updateNode.Attributes["notes"].Value = tag.Notes;
             }
             else if (tag.Notes != null)
@@ -211,7 +214,7 @@ namespace KMyMoney_Thesis
                     _split.Value = splitNode.Attributes["value"].Value;
                     _split.Memo = splitNode.Attributes["memo"].Value;
                     _split.AccountName = GetAccountName(doc, _split.Account);
-                                       
+
                     List<Tag> tagLists = new List<Tag>();
                     try
                     {
@@ -235,16 +238,16 @@ namespace KMyMoney_Thesis
                 }
                 _transaction.Splits = splitLists;
                 // Fill Details from tag ids and searching to tags, to retrieve the names of each id
-                    string txt = "";
-                    foreach (Split test2 in _transaction.Splits)
+                string txt = "";
+                foreach (Split test2 in _transaction.Splits)
+                {
+                    foreach (Tag test3 in test2.Tag)
                     {
-                        foreach (Tag test3 in test2.Tag)
-                        {
-                            //  Search with this Id the tags and return the name.
-                            
-                            txt += " " + GetTagName(doc,test3.Id);
-                        }
+                        //  Search with this Id the tags and return the name.
+
+                        txt += " " + GetTagName(doc, test3.Id);
                     }
+                }
                 _transaction.Details = txt;
                 //
                 TransactionsObs.Add(_transaction);
@@ -255,12 +258,12 @@ namespace KMyMoney_Thesis
 
 
 
-        public string GetTagName(XmlDocument doc,string Id)
+        public string GetTagName(XmlDocument doc, string Id)
         {
             XmlNodeList tagNodes = doc.DocumentElement.SelectNodes("/KMYMONEY-FILE/TAGS/TAG");
             foreach (XmlNode tagNode in tagNodes)
             {
-                if(tagNode.Attributes["id"].Value == Id)
+                if (tagNode.Attributes["id"].Value == Id)
                 {
                     return tagNode.Attributes["name"].Value;
                 }
