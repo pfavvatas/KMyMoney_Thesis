@@ -27,24 +27,7 @@ namespace KMyMoney_Thesis.Views
             Tag tag = tdd.Tag;
             ObservableCollection<Transaction> TransactionsWithTag = new ObservableCollection<Transaction>(tdd.TagTransactionsList);
 
-            double balanceD = 0.0;
-            foreach(var c in TransactionsWithTag)
-            {
-                
-                    string[] spl = c.Splits[0].Value.Split(new[] { "/" }, StringSplitOptions.None);
-                    balanceD += double.Parse(spl[0]);
-                
-            }
-            if(balanceD > 0)
-            {
-                Balance.Text = "+ " + balanceD + "$";
-                Balance.TextColor = Color.Green;
-            }
-            else
-            {
-                Balance.Text = "- " + balanceD + "$";
-                Balance.TextColor = Color.Red;
-            }
+            setBalance(TransactionsWithTag);
             
             TransactionsList.ItemsSource = TransactionsWithTag;
 
@@ -101,6 +84,28 @@ namespace KMyMoney_Thesis.Views
             System.Console.WriteLine(item);
             System.Console.WriteLine(item.Id);
 
+        }
+
+        private void setBalance(ObservableCollection<Transaction> TransactionsWithTag)
+        {
+            double balanceD = 0.0;
+            foreach (var c in TransactionsWithTag)
+            {
+
+                string[] spl = c.Splits[0].Value.Split(new[] { "/" }, StringSplitOptions.None);
+                balanceD += double.Parse(spl[0]);
+
+            }
+            if (balanceD > 0)
+            {
+                Balance.Text = "+ " + balanceD + "$";
+                Balance.TextColor = Color.Green;
+            }
+            else
+            {
+                Balance.Text = "- " + balanceD + "$";
+                Balance.TextColor = Color.Red;
+            }
         }
     }
 }
