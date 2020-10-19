@@ -159,6 +159,60 @@ namespace KMyMoney_Thesis
             return PayeesObs;
         }
 
+        public void DeletePayee(string id,string newid)
+        {
+            ReadTheFile();
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load(new StringReader(data));
+
+            XmlNodeList deleteNodes = doc.SelectNodes("//PAYEE[@id='" + id + "']");
+            foreach (XmlNode deleteNode in deleteNodes)
+            {
+                deleteNode.ParentNode.RemoveChild(deleteNode);
+            }
+            
+            //Set new Payee 
+            XmlNodeList xnList = doc.SelectNodes("//SCHEDULES/SCHEDULED_TX/TRANSACTION/SPLITS/SPLIT[@payee='P000001']");
+            foreach (XmlNode xn in xnList)
+            {
+                xn.Attributes["payee"].Value = newid;
+                //Console.WriteLine("//SCHEDULES/SCHEDULED_TX/TRANSACTION/SPLITS/SPLIT[@payee='P000001'] = ", xn.InnerText);
+            }
+            XmlNodeList xnList2 = doc.SelectNodes("//TRANSACTIONS/TRANSACTION/SPLITS/SPLIT[@payee='P000001']");
+            foreach (XmlNode xn in xnList2)
+            {
+                xn.Attributes["payee"].Value = newid;
+                //Console.WriteLine("//TRANSACTIONS/TRANSACTION/SPLITS/SPLIT[@payee='P000001'] = ", xn.InnerText);
+            }
+
+            System.Console.WriteLine(doc.InnerXml);
+            UpdateTheFile(doc.InnerXml);
+        }
+
+        public void UpdatePayee(Tag tag)
+        {
+            //ReadTheFile();
+            //XmlDocument doc = new XmlDocument();
+            //doc.Load(new StringReader(data));
+
+            //XmlNode updateNode = doc.SelectSingleNode("//PAYESS/PAYEE[@id='" + tag.Id + "']");
+            //updateNode.Attributes["name"].Value = tag.Name;
+            //if (updateNode.Attributes["notes"] != null)
+            //{
+            //    updateNode.Attributes["notes"].Value = tag.Notes;
+            //}
+            //else if (tag.Notes != null)
+            //{
+            //    XmlAttribute newTagNotes = doc.CreateAttribute("notes");
+            //    newTagNotes.Value = tag.Notes;
+            //    updateNode.Attributes.Append(newTagNotes);
+            //}
+            //updateNode.Attributes["closed"].Value = tag.Closed;
+
+            //UpdateTheFile(doc.InnerXml);
+        }
+
         public Address GetAddress(XmlNode node)
         {
             Address address = new Address();

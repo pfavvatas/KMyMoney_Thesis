@@ -63,5 +63,24 @@ namespace KMyMoney_Thesis.Views
                 Balance.TextColor = Color.Red;
             }
         }
+
+        async void ClickedDelete2(object sender, EventArgs e)
+        {
+            bool answer = await DisplayAlert("Delete " + _payee.Name + " ?", null, "Yes", "No");
+            if (answer)
+            {
+                new retrieveDataFromXML().DeletePayee(_payee.Id,"");
+                await Navigation.PopAsync();
+            }
+        }
+
+        async void ClickedEdit(object sender, EventArgs e)
+        {
+            _payee.Name = PayeeName.Text;
+            //_tag.Notes = TagNotes.Text;
+            //_tag.Closed = TagCheckBox1.IsChecked ? "1" : "0";
+            //new retrieveDataFromXML().UpdateTag(_tag);
+            await Navigation.PopAsync();
+        }
     }
 }

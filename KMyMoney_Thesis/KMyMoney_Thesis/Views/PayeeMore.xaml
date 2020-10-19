@@ -66,20 +66,20 @@
     </ContentPage>
 
     <!--Page Address-->
-    <!--<ContentPage Title="Details" IconImageSource="pencil7.png">
+    <ContentPage Title="Details" IconImageSource="pencil7.png">
         <ScrollView>
         <StackLayout>
             <Frame>
                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
                     <StackLayout Orientation="Vertical" Padding="10">
                         <Label Text="Name: " />
-                        <Entry x:Name="TagName" />
+                        <Entry x:Name="PayeeName" />
                     </StackLayout>
-                    <StackLayout Orientation="Vertical" Padding="10">
+                     <!--<StackLayout Orientation="Vertical" Padding="10">
                         <Label Text="Color: " />
                         <Picker IsEnabled="False" x:Name="pickerColor" Title="Select Tag Color" TitleColor="Red" ItemsSource="{Binding .}"/> 
                     </StackLayout>
-                    <StackLayout Orientation="Vertical" Padding="10">
+                   <StackLayout Orientation="Vertical" Padding="10">
                         <FlexLayout>
                             <Label Text="Closed"  VerticalTextAlignment="Center"/>
                             <CheckBox x:Name="TagCheckBox1" Color="Red"/>
@@ -90,7 +90,7 @@
                         <Editor x:Name="TagNotes" Placeholder="Enter multi-line text here"                                
                                 MaxLength="1000000"
                                  />
-                    </StackLayout>
+                    </StackLayout>-->
                     <Button Text="Update" BackgroundColor="Green" TextColor="White" Clicked="ClickedEdit"/>
                     <Button Text="Delete" BackgroundColor="Red" TextColor="White" Clicked="ClickedDelete2"/>
 
@@ -98,7 +98,7 @@
             </Frame>
         </StackLayout>
             </ScrollView>
-    </ContentPage>-->
+    </ContentPage>
 
     <!--Page Extra-->
     <!--<ContentPage Title="Extra">

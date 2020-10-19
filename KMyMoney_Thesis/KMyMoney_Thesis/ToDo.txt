@@ -1,0 +1,5 @@
+﻿1) PAYEE
+    1.1) Na ftiaksw to delete
+        1.1.1) Na ftiaksw to popup pou tha dialegei prin to delete to payee pou
+               tha to kanei antikatastasi
+    1.2) Na ftiaksw to update
