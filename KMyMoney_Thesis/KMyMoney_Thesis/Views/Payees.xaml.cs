@@ -21,11 +21,11 @@ namespace KMyMoney_Thesis.Views
         {
             base.OnAppearing();
             Payee = new retrieveDataFromXML().GetPayees();
-            foreach (var cl in Payee)
-            {
-                Console.WriteLine(cl.ToString());
-                //or print the property of your class
-            }
+            //foreach (var cl in Payee)
+            //{
+            //    Console.WriteLine(cl.ToString());
+            //    //or print the property of your class
+            //}
             PayeeList.ItemsSource = Payee;
         }
 
@@ -50,11 +50,15 @@ namespace KMyMoney_Thesis.Views
         {
             var menu = sender as MenuItem;
             var item = menu.CommandParameter as Payee;
-            bool answer = await DisplayAlert("Delete " + item.Name + " ?", null, "Yes", "No");
+
+            bool answer = await DisplayAlert("Question?", "Do you really want to remove the payee " + item.Name + "?", "Yes", "No");
+
+            //bool answer = await DisplayAlert("Delete " + item.Name + " ?", null, "Yes", "No");
             if (answer)
             {
-                new retrieveDataFromXML().DeleteTag(item.Id);
-                PayeeList.ItemsSource = new retrieveDataFromXML().GetPayees();
+                await Navigation.PushAsync(new PayeePicker(item));
+                //    new retrieveDataFromXML().DeleteTag(item.Id);
+                //    PayeeList.ItemsSource = new retrieveDataFromXML().GetPayees();
             }
         }
 
@@ -67,13 +71,13 @@ namespace KMyMoney_Thesis.Views
 
             public override string ToString()
             {
-                return "Payee=["+ Payee.ToString() + "], PayeeTransactionsList=[" + ToStringListItem(PayeeTransactionsList) + "]";
+                return "Payee=[" + Payee.ToString() + "], PayeeTransactionsList=[" + ToStringListItem(PayeeTransactionsList) + "]";
             }
 
             public string ToStringListItem(List<Transaction> items)
             {
                 var output = "";
-                foreach(var item in items)
+                foreach (var item in items)
                 {
                     output += item.ToString();
                 }
