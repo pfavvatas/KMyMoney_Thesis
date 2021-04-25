@@ -65,7 +65,7 @@
         </StackLayout>
     </ContentPage>
 
-    <!--Page Address-->
+    <!--Page Details-->
     <ContentPage Title="Details" IconImageSource="pencil7.png">
         <ScrollView>
         <StackLayout>
@@ -100,6 +100,45 @@
             </ScrollView>
     </ContentPage>
 
+    <!--Page Address-->
+    <ContentPage Title="Address" IconImageSource="">
+        <ScrollView>
+        <StackLayout>
+            <Frame>
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
+                    <StackLayout Orientation="Vertical" Padding="10">
+                        <Label Text="Address" />
+                        <Editor x:Name="PayeeAddress" Placeholder="Enter multi-line text here"                                
+                                MaxLength="1000000"
+                                AutoSize="TextChanges"
+                                 />
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Padding="10">
+                        <Label Text="PostalCode: " />
+                        <Entry x:Name="PayeePostalCode" />
+                    </StackLayout>
+                     <StackLayout Orientation="Vertical" Padding="10">
+                        <Label Text="Telephone/Fax: " />
+                        <Entry x:Name="PayeeTelephoneFax" />
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical" Padding="10">
+                        <Label Text="Email: " />
+                        <Entry x:Name="PayeeEmail" />
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Padding="10">
+                        <Label Text="Notes" />
+                        <Editor x:Name="PayeeNotes" Placeholder="Enter multi-line text here"                                
+                                MaxLength="1000000"
+                                AutoSize="TextChanges"
+                                 />
+                    </StackLayout>
+                    <Button Text="Update" BackgroundColor="Green" TextColor="White" Clicked="UpdateAddress"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+            </ScrollView>
+    </ContentPage>
     <!--Page Extra-->
     <!--<ContentPage Title="Extra">
     </ContentPage>-->

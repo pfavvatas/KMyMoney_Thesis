@@ -23,7 +23,6 @@
     <feed_local2:Payments/>
     <feed_local3:PaymentAccounts/>
     <feed_local4:DayForecast/>
-    <feed_local4:DayForecast/>
 
     </StackLayout>
         </ScrollView>

@@ -29,7 +29,20 @@ namespace KMyMoney_Thesis.Views
 
             _payee = payee;
 
+            setData();
             //AccountList2.ItemsSource = Test2;
+        }
+
+        private void setData()
+        {
+            PayeeName.Text = _payee.Name;
+
+            PayeeAddress.Text = _payee.AddressInfo.State;
+            PayeePostalCode.Text = _payee.AddressInfo.Postcode;
+            PayeeTelephoneFax.Text = _payee.AddressInfo.Telephone;
+            PayeeEmail.Text = _payee.Email;
+            PayeeNotes.Text = _payee.Notes;
+            
         }
 
         async void OnItemTapped(Object sender, ItemTappedEventArgs e)
@@ -81,6 +94,16 @@ namespace KMyMoney_Thesis.Views
             //_tag.Closed = TagCheckBox1.IsChecked ? "1" : "0";
             //new retrieveDataFromXML().UpdateTag(_tag);
             await Navigation.PopAsync();
+        }
+
+        async void UpdateAddress(object sender, EventArgs e)
+        {
+            //bool answer = await DisplayAlert("Delete " + _payee.Name + " ?", null, "Yes", "No");
+            //if (answer)
+            //{
+            //    new retrieveDataFromXML().DeletePayee(_payee.Id, "");
+            //    await Navigation.PopAsync();
+            //}
         }
     }
 }

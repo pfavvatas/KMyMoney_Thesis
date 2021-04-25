@@ -21,30 +21,24 @@
                             <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-
-                        <StackLayout Grid.Row="0" Grid.Column="0">                            
-                                <Label Text="Payment Accoiunts" FontSize="Title" FontAttributes="Italic" TextDecorations="Underline"/>
+                        <StackLayout Grid.Row="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center">                            
+                                <Label Text="Payment Accounts" FontSize="Title" FontAttributes="Italic" TextDecorations="Underline" VerticalTextAlignment="Center"/>
                         </StackLayout>
-
-
-                        <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical">
+                        <StackLayout Grid.Row="1" Grid.ColumnSpan="2" Orientation="Vertical">
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="takis3" FontSize="Large" />
-                                <Label Text="takis3.1" FontSize="Large" />
+                                <Label Text="Account 1" FontSize="Large" />
+                                <Label Text="1.00$" FontSize="Large" HorizontalOptions="EndAndExpand"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="takis4" FontSize="Large" />
-                                <Label Text="takis4.1" FontSize="Large" />
-
+                                <Label Text="Account 2" FontSize="Large" />
+                                <Label Text="1.00$" FontSize="Large" HorizontalOptions="EndAndExpand"/>
                             </StackLayout>
                         </StackLayout>
-
                         <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Padding="10">
                             <StackLayout HorizontalOptions="FillAndExpand" >
-                              <Button Text="More" TextColor="Black" Clicked="ButtonClicked" BackgroundColor="IndianRed" CornerRadius="15"/>
+                              <Button Text="More" TextColor="Black" Clicked="ButtonClicked" BackgroundColor="#4297ec" CornerRadius="15"/>
                             </StackLayout>
                         </StackLayout>
-
                     </Grid>
                 </Frame>
             </StackLayout>

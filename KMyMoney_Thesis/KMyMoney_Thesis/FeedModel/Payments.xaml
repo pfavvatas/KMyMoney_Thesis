@@ -12,7 +12,7 @@
             </Frame.Margin>
             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                 <!--<BoxView Color="Red" WidthRequest="5"/>-->
-                <Frame HorizontalOptions="FillAndExpand" Margin="0,0,0,0" HasShadow="False" BorderColor="Gainsboro"  >
+                <Frame HorizontalOptions="FillAndExpand" Margin="0,0,0,0" HasShadow="False" BorderColor="Gainsboro" >
                     <Grid VerticalOptions="CenterAndExpand" Padding="0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
@@ -21,30 +21,24 @@
                             <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-
-                        <StackLayout Grid.Row="0" Grid.Column="0">                            
+                        <StackLayout Grid.Row="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center">                            
                                 <Label Text="Payments" FontSize="Title" FontAttributes="Italic" TextDecorations="Underline"/>
                         </StackLayout>
-
-
-                        <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical">
+                        <StackLayout Grid.Row="1" Grid.ColumnSpan="2" Orientation="Vertical">
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="takis3" FontSize="Large" />
-                                <Label Text="takis3.1" FontSize="Large" />
+                                <Label Text="Overdue payments" FontSize="Large" TextColor="Red"/>
+                                <Label Text="Total: " FontSize="Large" HorizontalOptions="EndAndExpand"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="takis4" FontSize="Large" />
-                                <Label Text="takis4.1" FontSize="Large" />
-
+                                <Label Text="Future " FontSize="Large" />
+                                <Label Text="Total: " FontSize="Large" HorizontalOptions="EndAndExpand"/>
                             </StackLayout>
                         </StackLayout>
-
                         <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Padding="10">
                             <StackLayout HorizontalOptions="FillAndExpand" >
-                              <Button Text="More" TextColor="Black" Clicked="ButtonClicked" BackgroundColor="IndianRed" CornerRadius="15"/>
+                              <Button Text="More" TextColor="Black" Clicked="ButtonClicked" BackgroundColor="#4297ec" CornerRadius="15"/>
                             </StackLayout>
                         </StackLayout>
-
                     </Grid>
                 </Frame>
             </StackLayout>
