@@ -18,11 +18,21 @@
                        FontSize="Medium" />
             </StackLayout>
             <StackLayout Grid.Row="2" Padding="24,0" VerticalOptions="Center">
-                 <Button BackgroundColor="#0E7DD9" Text="Open file!" TextColor="White" FontSize="Medium" Clicked="Button_ClickedFile"/>
-                <Button BackgroundColor="#0E7DD9" Text="Get started!" TextColor="White" FontSize="Medium" Clicked="Button_Clicked"/>
+                 <Button BackgroundColor="#0E7DD9" Text="Open file!" TextColor="White" FontSize="Medium" Clicked="Button_Clicked_Open_File"/>
+                <Button BackgroundColor="#0E7DD9" Text="Get started!" TextColor="White" FontSize="Medium" Clicked="Button_Clicked_Get_Started"/>
                 <ScrollView><Label x:Name="msg1" /></ScrollView>
-                <Label Text="123..."/>
             </StackLayout>
+
+            <!--Popup Loading-->
+            <ContentView x:Name="popupLoadingView" BackgroundColor="White" Padding="10, 0" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" Grid.Row="1" VerticalOptions="Center">  
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">  
+                    <StackLayout Orientation="Vertical" HeightRequest="150" WidthRequest="200" BackgroundColor="White">  
+  
+                        <ActivityIndicator x:Name="activityIndicator" Margin="0,50,0,0" VerticalOptions="Center" HorizontalOptions="Center" Color="Black" WidthRequest="30" HeightRequest="30" ></ActivityIndicator>  
+                        <Label x:Name="lblLoadingText" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Center" VerticalTextAlignment="Center" Text="Loading..."></Label>  
+                    </StackLayout>  
+                </StackLayout>  
+            </ContentView> 
 
         </Grid>
     </ContentPage.Content>

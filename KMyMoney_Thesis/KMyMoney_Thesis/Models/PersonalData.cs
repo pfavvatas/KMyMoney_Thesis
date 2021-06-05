@@ -16,6 +16,7 @@ namespace KMyMoney_Thesis.Models
         public string Currency { get; set; }
 
         //Select Accounts
+        public bool Enable_Checking_Account { get; set; }
         public string Name_Of_The_Account { get; set; }
         public string Number_Of_The_Account { get; set; }
         public string Opening_Date { get; set; }
@@ -23,7 +24,7 @@ namespace KMyMoney_Thesis.Models
         public string Name_Of_The_Institution { get; set; }
         public string Routing_Number { get; set; }
         public string Account_Type { get; set; }
-        //
+        
 
         public override string ToString()
         {
@@ -33,7 +34,17 @@ namespace KMyMoney_Thesis.Models
                 $" Country= {Country}," +
                 $" Postal Code= {Postal_code}," +
                 $" Telephone= {Telephone}," +
-                $" Email= {Email},";
+                $" Email= {Email},"+
+                $" Currency= {Currency},"+
+                $" Enable_Checking_Account= {Enable_Checking_Account}," +
+                $" Name_Of_The_Account= {Name_Of_The_Account}," +
+                $" Number_Of_The_Account= {Number_Of_The_Account}," +
+                $" Opening_Date= {Opening_Date}," +
+                $" Opening_Balance= {Opening_Balance}," +
+                $" Name_Of_The_Institution= {Name_Of_The_Institution}," +
+                $" Routing_Number= {Routing_Number}," +
+                $" Account_Type= {Account_Type}," 
+                ;
         }
     }
 }

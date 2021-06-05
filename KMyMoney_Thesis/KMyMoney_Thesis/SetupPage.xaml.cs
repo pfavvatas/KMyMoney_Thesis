@@ -44,45 +44,6 @@ namespace KMyMoney_Thesis
             }
         }
 
-        /*
-        private void CheckingAccountCheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-
-            if (!CheckingAccountCheckBox.IsChecked)
-            {
-                SelectAccountsFalse();
-                SetupPageTable.Root.Remove(SelectAccountsTableSection);
-            }
-            else
-            {
-                SelectAccountsTrue();
-                SetupPageTable.Root.Add(SelectAccountsTableSelection);
-                //SetupPageTable.Root.Insert(SelectAccountsPosition, SelectAccountsTableSelection);
-            }         
-
-        }
-
-        public void SelectAccountsFalse()
-        {
-            AccountName.IsEnabled = false;
-            NumberOfTheAccount.IsEnabled = false;
-            OpeningDate.IsEnabled = false;
-            OpeningBalance.IsEnabled = false;
-            NameOfTheInstitution.IsEnabled = false;
-            RoutingNumber.IsEnabled = false;
-        }
-
-        public void SelectAccountsTrue()
-        {
-            AccountName.IsEnabled = true;
-            NumberOfTheAccount.IsEnabled = true;
-            OpeningDate.IsEnabled = true;
-            OpeningBalance.IsEnabled = true;
-            NameOfTheInstitution.IsEnabled = true;
-            RoutingNumber.IsEnabled = true;
-        }
-        */
-
         private async void Button_Clicked_To_SetupPage2(object sender, EventArgs e)
         {
             PersonalData.Name = Entry_Name.Text;
@@ -97,24 +58,79 @@ namespace KMyMoney_Thesis
             //await Navigation.PushAsync(new SetupPage2(PersonalData));
         }
 
-        private void Picker_SelectedIndexChanged(object sender, EventArgs e)
+        
+        //Account Switch
+        private void CheckingAccountSwitch_Toggled(object sender, ToggledEventArgs e)
         {
-
+            //Toggle StackLayout_CheckingAccountDataMoreInfo
+            if (StackLayout_CheckingAccountDataMoreInfo.IsVisible)
+            {
+                StackLayout_CheckingAccountDataMoreInfo.IsVisible = false;
+            }
+            else
+            {
+                StackLayout_CheckingAccountDataMoreInfo.IsVisible = true;
+            }
         }
 
-        private void XamlSwitch_Toggled(object sender, ToggledEventArgs e)
+        //Currency Picker
+        private void Picker_Currency_SelectedIndexChanged(object sender, EventArgs e)
         {
+            var picker = (Picker)sender;
+            int selectedIndex = picker.SelectedIndex;
 
+            if (selectedIndex != -1)
+            {
+                //PersonalData.Currency = picker.Items[selectedIndex];
+            }
         }
 
-        private void Picker_SelectedIndexChanged_1(object sender, EventArgs e)
+        //Account type Picker
+        private void Picker_Select_Account_Type_SelectedIndexChanged(object sender, EventArgs e)
         {
+            var picker = (Picker)sender;
+            int selectedIndex = picker.SelectedIndex;
 
+            if (selectedIndex != -1)
+            {
+                //PersonalData.Currency = picker.Items[selectedIndex];
+                Debug.WriteLine("->Picker_Select_Account_Type_SelectedIndexChanged: " + picker.Items[selectedIndex]);
+            }
         }
 
-        private  void Button_Clicked(object sender, EventArgs e)
+        //Submit Button
+        private  void Button_Submit_Clicked(object sender, EventArgs e)
         {
-            Application.Current.MainPage = new MainPage();
+            bool isEntryValid = true;
+            //Check required Entry data
+            //
+            //Entry_Name
+            if (string.IsNullOrEmpty(Entry_Name.Text) || string.IsNullOrWhiteSpace(Entry_Name.Text))
+            {
+                isEntryValid = false;
+                Entry_Name.PlaceholderColor = Color.Red;
+            }
+            else
+            {
+                PersonalData.Name = Entry_Name.Text;
+            }
+
+            //Entry_Street
+            if (string.IsNullOrEmpty(Entry_Street.Text) || string.IsNullOrWhiteSpace(Entry_Street.Text))
+            {
+                isEntryValid = false;
+                Entry_Street.PlaceholderColor = Color.Red;
+            }
+            else
+            {
+                PersonalData.Street = Entry_Street.Text;
+            }
+
+            //ToDo
+            //Continue above and chech is isEntryValid or not to contintue.
+
+
+            //Application.Current.MainPage = new MainPage();
         }
     }
 }
