@@ -21,11 +21,11 @@ namespace KMyMoney_Thesis.Views
         {
             base.OnAppearing();
             Payee = new retrieveDataFromXML().GetPayees();
-            foreach (var cl in Payee)
-            {
-                Console.WriteLine(cl.ToString());
-                //or print the property of your class
-            }
+            //foreach (var cl in Payee)
+            //{
+            //    Console.WriteLine(cl.ToString());
+            //    //or print the property of your class
+            //}
             PayeeList.ItemsSource = Payee;
         }
 
@@ -50,11 +50,15 @@ namespace KMyMoney_Thesis.Views
         {
             var menu = sender as MenuItem;
             var item = menu.CommandParameter as Payee;
-            bool answer = await DisplayAlert("Delete " + item.Name + " ?", null, "Yes", "No");
+
+            bool answer = await DisplayAlert("Question?", "Do you really want to remove the payee " + item.Name + "?", "Yes", "No");
+
+            //bool answer = await DisplayAlert("Delete " + item.Name + " ?", null, "Yes", "No");
             if (answer)
             {
-                new retrieveDataFromXML().DeleteTag(item.Id);
-                PayeeList.ItemsSource = new retrieveDataFromXML().GetPayees();
+                await Navigation.PushAsync(new PayeePicker(item));
+                //    new retrieveDataFromXML().DeleteTag(item.Id);
+                //    PayeeList.ItemsSource = new retrieveDataFromXML().GetPayees();
             }
         }
 
@@ -62,6 +66,23 @@ namespace KMyMoney_Thesis.Views
         {
             //public Tag Tag { get; set; }
             //public List<Transaction> TagTransactionsList { get; set; }
+            public Payee Payee { get; set; }
+            public List<Transaction> PayeeTransactionsList { get; set; }
+
+            public override string ToString()
+            {
+                return "Payee=[" + Payee.ToString() + "], PayeeTransactionsList=[" + ToStringListItem(PayeeTransactionsList) + "]";
+            }
+
+            public string ToStringListItem(List<Transaction> items)
+            {
+                var output = "";
+                foreach (var item in items)
+                {
+                    output += item.ToString();
+                }
+                return output;
+            }
         }
 
         async void OnItemSelected(Object sender, ItemTappedEventArgs e)
@@ -78,34 +99,37 @@ namespace KMyMoney_Thesis.Views
             ///Apo edw ksekiname
             ///Exei ftiaxtei class wste na perasoun oi ksexwristes
             ///plirofoies Tag kai Transaction se ena.
-            PayeeDetailsData tdd = new PayeeDetailsData();
+            PayeeDetailsData pdd = new PayeeDetailsData();
             //  1)
-            //tdd.Tag = item; ///eisagwgh tou Tag
+            pdd.Payee = item; ///eisagwgh tou Payee
 
 
-            //ObservableCollection<Transaction> Transactions;
-            //Transactions = new retrieveDataFromXML().GetTransactions();
-            //List<Transaction> TransactionsWithTag = new List<Transaction>();
-            //foreach (var trans in Transactions)
-            //{
-            //    foreach (var splits in trans.Splits)
-            //    {
-            //        foreach (var tags in splits.Tag)
-            //        {
-            //            /// Using this if, we get the transactions
-            //            /// with the tag, that we're looking for.
-            //            if (tags.Id == tdd.Tag.Id)
-            //            {
-            //                TransactionsWithTag.Add(trans);
-            //            }
-            //        }
-            //    }
-            //}
-            ////  2)
-            //tdd.TagTransactionsList = TransactionsWithTag; ///eisagwgh tou Transaction
+            ObservableCollection<Transaction> Transactions;
+            Transactions = new retrieveDataFromXML().GetTransactions();
+            List<Transaction> PayeeTransactions = new List<Transaction>();
+            Console.WriteLine("Transactions =>" + Transactions.Count);
+            foreach (var trans in Transactions)
+            {
+                Console.WriteLine("trans.Splits =>" + trans.Splits.Count);
+                foreach (var splits in trans.Splits)
+                {
+                    /// Using if, we get the transaction
+                    //  with the payee id that we're looking for.
+                    //  Once we find it, get the transaction
+                    //  and go to the next one (NOT Payee)
+                    if (splits.Payee == item.Id)
+                    {
+                        PayeeTransactions.Add(trans);
+                        break;
+                    }
+                }
+            }
+            //  2)
+            pdd.PayeeTransactionsList = PayeeTransactions; ///eisagwgh tou Transaction
 
-            /// Sending the data to a new Page.
-            await Navigation.PushAsync(new PayeeMore()); ///apostolh twn pliroforiwn stin selida
+            //Console.WriteLine("pdd =>" + pdd.ToString());
+            // Sending the data to a new Page.
+            await Navigation.PushAsync(new PayeeMore(pdd)); ///apostolh twn pliroforiwn stin selida
         }
     }
 }
