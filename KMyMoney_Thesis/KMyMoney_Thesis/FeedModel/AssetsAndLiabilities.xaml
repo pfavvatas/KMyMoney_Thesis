@@ -21,13 +21,10 @@
                             <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-
-                        <StackLayout Grid.Row="0" Grid.Column="0">                            
+                        <StackLayout Grid.Row="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center">                            
                                 <Label Text="Assets and Liabilities" FontSize="Title" FontAttributes="Italic" TextDecorations="Underline"/>
                         </StackLayout>
-
-
-                        <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical">
+                        <StackLayout Grid.Row="1" Grid.ColumnSpan="2" Orientation="Vertical">
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Total Assets " FontSize="Large" />
                                 <Label Text="$ 0.00" FontSize="Large" HorizontalOptions="EndAndExpand"/>
@@ -35,16 +32,13 @@
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Total Liabilities" FontSize="Large" />
                                 <Label Text="$ 0.00" FontSize="Large" HorizontalOptions="EndAndExpand"/>
-
                             </StackLayout>
                         </StackLayout>
-
                         <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Padding="10">
                             <StackLayout HorizontalOptions="FillAndExpand">
-                              <Button Text="More" TextColor="Black" Clicked="ButtonClicked" BackgroundColor="IndianRed" />
+                              <Button Text="More" TextColor="Black" Clicked="ButtonClicked" BackgroundColor="#4297ec" CornerRadius="15"/>
                             </StackLayout>
                         </StackLayout>
-
                     </Grid>
                 </Frame>
             </StackLayout>

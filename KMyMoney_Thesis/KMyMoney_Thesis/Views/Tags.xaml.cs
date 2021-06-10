@@ -69,7 +69,7 @@ namespace KMyMoney_Thesis.Views
         ///tote, se auti ti fasi, prin tou anoiksei h kartela me tis plirofories,
         ///psaxnei sto xml arxeio se poio transaction uparxei to tag
         ///kai to pernaei sti lista pou tha ta emfanizei.        
-        async void OnItemSelected(Object sender, ItemTappedEventArgs e)
+        void OnItemTapped(Object sender, ItemTappedEventArgs e)
         {
             ///Den mas polu endiaferoun oi parakatw 3 grammes kwdika
             if (e.Item == null)

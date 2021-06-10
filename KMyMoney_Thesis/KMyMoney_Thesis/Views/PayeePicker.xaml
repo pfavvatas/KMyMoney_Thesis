@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="KMyMoney_Thesis.Views.PayeePicker" Title="Payees Picker">
+
+    <StackLayout>
+        <StackLayout Margin="20"
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="StartAndExpand">
+            <Label x:Name="PayeeInfo"
+                   Text="Loading content..."
+                   HorizontalOptions="CenterAndExpand"
+                   />
+            <Picker x:Name="pickerPayee"
+                    ItemDisplayBinding="{Binding Name}"
+                    HorizontalOptions="CenterAndExpand">
+            </Picker>
+
+            <Button Text="OK" BackgroundColor="Green" TextColor="White" Clicked="ClickedOK"/>
+            <Button Text="CANCEL" BackgroundColor="Red" TextColor="White" Clicked="ClickedCANCEL"/>
+        </StackLayout>
+
+    </StackLayout>
+
+</ContentPage>

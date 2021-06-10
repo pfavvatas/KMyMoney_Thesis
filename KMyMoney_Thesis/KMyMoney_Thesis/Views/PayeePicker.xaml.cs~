@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+
+using Xamarin.Forms;
+
+namespace KMyMoney_Thesis.Views
+{
+    public partial class PayeePicker : ContentPage
+    {
+        public PayeePicker()
+        {
+            PayeeInfo.Text = "The transactions associated with the selected payees need to be re-assigned to a different payee before the selected payees can be deleted. Please select a payee from the list below.";
+            InitializeComponent();
+        }
+    }
+}

@@ -78,6 +78,11 @@ namespace KMyMoney_Thesis.Model
         public string Entrydate { get; set; }
         public List<Split> Splits { get; set; }
         public string Details { get; set; }
+
+        public override string ToString()
+        {
+            return "Id: " + Id + " ,Postdate:" + Postdate + " ,Commodity:" + Commodity + " ,Memo:" + Memo + " ,Entrydate:" + Entrydate + " ,Details:" + Details;
+        }
     }
     //Transactions end
 
