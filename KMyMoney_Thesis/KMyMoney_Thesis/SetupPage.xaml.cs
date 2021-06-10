@@ -2,10 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Xml;
+using System.Xml.Serialization;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,22 +17,52 @@ namespace KMyMoney_Thesis
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SetupPage : ContentPage
     {
+        public Model.XML.KMYMONEY_FILE NewXML { get; set; }
         public Models.PersonalData PersonalData { get; set; }
         public TableSection SelectAccountsTableSelection;
         public int SelectAccountsPosition;
         public SetupPage()
         {
-            InitializeComponent();
-
-            
+            InitializeComponent();            
 
             PersonalData = new Models.PersonalData();
-
+            setTestData();
             //SelectAccountsPosition = SetupPageTable.Root.IndexOf(SelectAccountsTableSection);
             //SelectAccountsTableSelection = SetupPageTable.Root[SetupPageTable.Root.IndexOf(SelectAccountsTableSection)];
             //SelectAccountsFalse();
             //SetupPageTable.Root.Remove(SelectAccountsTableSection);
 
+        }
+
+        public void setTestData()
+        {
+            Entry_Name.Text = "Entry_Name";
+
+            Entry_Street.Text = "Entry_Street";
+
+            Entry_Town.Text = "Entry_Town";
+
+            Entry_Country.Text = "Entry_Country";
+
+            Entry_Postal_Code.Text = "Entry_Postal_Code";
+
+            Entry_Telephone.Text = "Entry_Telephone";
+
+            Entry_Email.Text = "Entry_Email";
+
+            //Entry_Currency.PlaceholderColor = Color.Black;
+
+            Entry_NameOfTheAccount.Text = "Entry_NameOfTheAccount";
+
+            Entry_NumberOfTheAccount.Text = "Entry_NumberOfTheAccount";
+
+            Entry_Street.Text = "Entry_Street";
+
+            Entry_OpeningBalance.Text = "Entry_OpeningBalance";
+
+            Entry_NumberOfTheInstitution.Text = "Entry_NumberOfTheInstitution";
+
+            Entry_RoutingNumber.Text = "Entry_RoutingNumber";
         }
 
         void Picker_Currency2(object sender, EventArgs e)
@@ -307,7 +339,7 @@ namespace KMyMoney_Thesis
                     Debug.WriteLine("->PersonalData: " + PersonalData.Routing_Number);
 
                     //Write data to xml
-
+                    createXML(PersonalData);
                     //Application.Current.MainPage = new MainPage();
                 }
                 else
@@ -356,6 +388,140 @@ namespace KMyMoney_Thesis
 
             Entry_RoutingNumber.PlaceholderColor = Color.Black;
 
+        }
+
+        private void createXML(Models.PersonalData PersonalData)
+        {
+            //Create XML            
+            XmlSerializer serializer = new XmlSerializer(typeof(Model.XML.KMYMONEY_FILE));
+            TextWriter writer = new StreamWriter("test.xml");
+            NewXML = new Model.XML.KMYMONEY_FILE();
+
+            ///////////////////////////////////////////////////////////////////
+            //1) Create FILEINFO
+            Model.XML.FileInfo newFileInfo = new Model.XML.FileInfo();
+
+            //1.1) Create CREATION_DATE
+            Model.XML.CreationDate NewCreationDate = new Model.XML.CreationDate();
+            NewCreationDate.date = DateTime.Now.ToString("MM/dd/yyyy");
+            newFileInfo.CREATION_DATE = NewCreationDate;
+
+            //1.2) Create LAST_MODIFIED_DATE
+            Model.XML.LastModifiedDate NewLastModifiedDate = new Model.XML.LastModifiedDate();
+            NewLastModifiedDate.date = DateTime.Now.ToString("MM/dd/yyyy");
+            newFileInfo.LAST_MODIFIED_DATE = NewLastModifiedDate;
+
+            //1.3) Create VERSION
+            Model.XML.Version NewVersion = new Model.XML.Version();
+            NewVersion.id = "1";
+            newFileInfo.VERSION = NewVersion;
+
+            //1.4) Create FIXVERSION
+            Model.XML.FixVersion NewFixVersion = new Model.XML.FixVersion();
+            NewFixVersion.id = "1";
+            newFileInfo.FIXVERSION = NewFixVersion;
+
+            NewXML.FILEINFO = newFileInfo;
+            ///////////////////////////////////////////////////////////////////
+            //2) Create USER
+            Model.XML.User newUser = new Model.XML.User();
+
+            //2.1) Create email
+            newUser.email = PersonalData.Email;
+            //2.2) Create name
+            newUser.name = PersonalData.Name;
+            //2.3) Create ADDRESS
+            Model.XML.Address newAddress = new Model.XML.Address();
+            newAddress.street = PersonalData.Street;
+            newAddress.telephone = PersonalData.Telephone;
+            newAddress.county = PersonalData.Country;
+            newAddress.city = PersonalData.Town;
+            newAddress.zipcode = PersonalData.Postal_code;
+            newUser.ADDRESS = newAddress;
+
+            NewXML.USER = newUser;
+            ///////////////////////////////////////////////////////////////////
+            //3) Create INSTITUTIONS
+            Model.XML.Institutions newInstitutions = new Model.XML.Institutions();
+
+            //3.1) Create count
+            //newInstitutions.count = "1";
+
+            //3.2) Create INSTITUTION
+            Model.XML.Institution newInstitution = new Model.XML.Institution();
+            newInstitution.manager = null;
+            newInstitution.id = "I000001";
+            newInstitution.name = PersonalData.Number_Of_The_Institution; //Number_Of_The_Institution
+            newInstitution.sortcode = PersonalData.Routing_Number; //Routing_Number
+
+            //3.2.1) Create ADDRESS
+            Model.XML.Address2 newAddress2 = new Model.XML.Address2();
+            newAddress2.street = "street1";
+            newAddress2.telephone = "telephone1";
+            newAddress2.city = "city1";
+            newAddress2.zip = "zip1";
+            newInstitution.ADDRESS = newAddress2;
+
+            //3.2.2) Create ACCOUNTIDS
+            Model.XML.ACCOUNTID newAccountId = new Model.XML.ACCOUNTID();
+            newAccountId.id = "A000001";            
+            //Model.XML.ACCOUNTID[] newAccountIdItems = { newAccountId , newAccountId2 };
+            List<Model.XML.ACCOUNTID> newAccountIdItems = new List<Model.XML.ACCOUNTID>();
+            newAccountIdItems.Add(newAccountId);
+            Model.XML.ACCOUNTIDS accountidsItem = new Model.XML.ACCOUNTIDS();
+            accountidsItem.ACCOUNTID = newAccountIdItems;
+            newInstitution.ACCOUNTIDS = accountidsItem;
+
+            //Model.XML.Institution[] institutionsItems = { newInstitution };
+            //newInstitutions.INSTITUTION = institutionsItems;
+            List<Model.XML.Institution> institutionsItemsList = new List<Model.XML.Institution>();
+            institutionsItemsList.Add(newInstitution);
+            institutionsItemsList.Add(newInstitution);
+            newInstitutions.INSTITUTION = institutionsItemsList;
+            newInstitutions.setCount(); //update count value
+            NewXML.INSTITUTIONS = newInstitutions;
+            ///////////////////////////////////////////////////////////////////
+            //4) Create PAYEES
+            Model.XML.Payees payeesItem = new Model.XML.Payees();
+            payeesItem.PAYEE = null;
+            payeesItem.setCount();
+            NewXML.PAYEES = payeesItem;
+            ///////////////////////////////////////////////////////////////////
+            //...
+            ///////////////////////////////////////////////////////////////////
+            //9) Create KEYVALUEPAIRS
+            //kmm-id
+            Model.XML.Pair newPair = new Model.XML.Pair();
+            newPair.key = "kmm-baseCurrency";
+            newPair.Value = "EUR";
+            Model.XML.Pair newPair2 = new Model.XML.Pair();
+            newPair2.key = "kmm-id";
+            newPair2.Value = "{" + Guid.NewGuid() + "}";
+            Model.XML.KeyValuePairs keyValuePairsItems = new Model.XML.KeyValuePairs();
+            List<Model.XML.Pair> pairsList = new List<Model.XML.Pair>();
+            pairsList.Add(newPair);
+            pairsList.Add(newPair2);
+            keyValuePairsItems.PAIR = pairsList;
+            NewXML.KEYVALUEPAIRS = keyValuePairsItems;
+            ///////////////////////////////////////////////////////////////////
+            //16) Create ONLINEJOBS
+            Model.XML.OnlineJobs onlineJobs = new Model.XML.OnlineJobs();
+            List<Model.XML.OnlineJob> onlineJobItems = new List<Model.XML.OnlineJob>();
+            onlineJobs.ONLINEJOB = onlineJobItems;
+            onlineJobs.setCount();
+            NewXML.ONLINEJOBS = onlineJobs;
+
+            // Serializes the purchase order, and closes the TextWriter.
+            serializer.Serialize(writer, NewXML);
+            writer.Close();
+
+            //Test print data
+            XmlDocument xmlDoc = new XmlDocument();
+            string filename = @"test.xml";
+            xmlDoc.Load(filename);
+            xmlDoc.Save(Console.Out);
+            //
+            //End of xml
         }
     }
 }
