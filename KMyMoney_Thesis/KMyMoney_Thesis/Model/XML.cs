@@ -22,6 +22,12 @@ namespace KMyMoney_Thesis.Model
             //....
             [XmlElement(ElementName = "KEYVALUEPAIRS")]
             public KeyValuePairs KEYVALUEPAIRS { get; set; }
+            [XmlElement(ElementName = "PRICES")]
+            public Prices PRICES { get; set; }
+            [XmlElement(ElementName = "REPORTS")]
+            public Reports REPORTS { get; set; }
+            [XmlElement(ElementName = "BUDGETS")]
+            public Budgets BUDGETS { get; set; }
             [XmlElement(ElementName = "ONLINEJOBS")]
             public OnlineJobs ONLINEJOBS { get; set; }
         }
@@ -223,6 +229,113 @@ namespace KMyMoney_Thesis.Model
             public string Value { get; set; }
         }
 
+        [XmlRoot(ElementName = "PRICES")]
+        public class Prices
+        {
+            [XmlAttribute(AttributeName = "count")]
+            public string count { get; set; }
+            [XmlElement(ElementName = "PRICE")]
+            public List<Price> PRICE { get; set; } //multy
+
+            public void setCount()
+            {
+                try
+                {
+                    count = PRICE.Count.ToString();
+                }
+                catch (Exception error)
+                {
+                    count = "0";
+                }
+            }
+        }
+
+        [XmlRoot(ElementName = "PRICE")]
+        public class Price
+        {
+            
+        }
+
+        [XmlRoot(ElementName = "REPORTS")]
+        public class Reports
+        {
+            [XmlAttribute(AttributeName = "count")]
+            public string count { get; set; }
+            [XmlElement(ElementName = "REPORT")]
+            public List<Report> REPORT { get; set; } //multy
+
+            public void setCount()
+            {
+                try
+                {
+                    count = REPORT.Count.ToString();
+                }
+                catch (Exception error)
+                {
+                    count = "0";
+                }
+            }
+        }
+
+        [XmlRoot(ElementName = "REPORT")]
+        public class Report
+        {
+            [XmlAttribute(AttributeName = "id")]
+            public string id { get; set; }
+            [XmlAttribute(AttributeName = "name")]
+            public string name { get; set; }
+            [XmlAttribute(AttributeName = "start")]
+            public string start { get; set; }
+            [XmlAttribute(AttributeName = "version")]
+            public string version { get; set; }
+            [XmlAttribute(AttributeName = "budgetlevel")]
+            public string budgetlevel { get; set; }
+            [XmlAttribute(AttributeName = "budgetsubaccounts")]
+            public string budgetsubaccounts { get; set; }
+            [XmlAttribute(AttributeName = "amount")]
+            public string amount { get; set; }
+        }
+
+        [XmlRoot(ElementName = "BUDGETS")]
+        public class Budgets
+        {
+            [XmlAttribute(AttributeName = "count")]
+            public string count { get; set; }
+            [XmlElement(ElementName = "BUDGET")]
+            public List<Budget> BUDGET { get; set; } //multy
+
+            public void setCount()
+            {
+                try
+                {
+                    count = BUDGET.Count.ToString();
+                }
+                catch (Exception error)
+                {
+                    count = "0";
+                }
+            }
+        }
+
+        [XmlRoot(ElementName = "BUDGET")]
+        public class Budget
+        {
+            [XmlAttribute(AttributeName = "id")]
+            public string id { get; set; }
+            [XmlAttribute(AttributeName = "name")]
+            public string name { get; set; }
+            [XmlAttribute(AttributeName = "start")]
+            public string start { get; set; }
+            [XmlAttribute(AttributeName = "version")]
+            public string version { get; set; }
+            [XmlAttribute(AttributeName = "budgetlevel")]
+            public string budgetlevel { get; set; }
+            [XmlAttribute(AttributeName = "budgetsubaccounts")]
+            public string budgetsubaccounts { get; set; }
+            [XmlAttribute(AttributeName = "amount")]
+            public string amount { get; set; }
+        }
+
         [XmlRoot(ElementName = "ONLINEJOBS")]
         public class OnlineJobs
         {
@@ -264,6 +377,8 @@ namespace KMyMoney_Thesis.Model
             [XmlAttribute(AttributeName = "sendingError")]
             public string sendingError { get; set; }
         }
+
+        
     }
 
 }

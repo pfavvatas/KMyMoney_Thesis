@@ -504,13 +504,35 @@ namespace KMyMoney_Thesis
             keyValuePairsItems.PAIR = pairsList;
             NewXML.KEYVALUEPAIRS = keyValuePairsItems;
             ///////////////////////////////////////////////////////////////////
+            //14) Create PRICES
+            Model.XML.Prices prices = new Model.XML.Prices();
+            List<Model.XML.Price> pricesItems = new List<Model.XML.Price>();
+            prices.PRICE = pricesItems;
+            prices.setCount();
+            NewXML.PRICES = prices;
+            ///////////////////////////////////////////////////////////////////
+            //14) Create REPORTS
+            Model.XML.Reports reports = new Model.XML.Reports();
+            List<Model.XML.Report> reportsItems = new List<Model.XML.Report>();
+            reports.REPORT = reportsItems;
+            reports.setCount();
+            NewXML.REPORTS = reports;
+            ///////////////////////////////////////////////////////////////////
+            //15) Create BUDGETS
+            Model.XML.Budgets budgets = new Model.XML.Budgets();
+            List<Model.XML.Budget> budgetsItems = new List<Model.XML.Budget>();
+            budgets.BUDGET = budgetsItems;
+            budgets.setCount();
+            NewXML.BUDGETS = budgets;
+            ///////////////////////////////////////////////////////////////////
             //16) Create ONLINEJOBS
             Model.XML.OnlineJobs onlineJobs = new Model.XML.OnlineJobs();
             List<Model.XML.OnlineJob> onlineJobItems = new List<Model.XML.OnlineJob>();
             onlineJobs.ONLINEJOB = onlineJobItems;
             onlineJobs.setCount();
             NewXML.ONLINEJOBS = onlineJobs;
-
+            ///////////////////////////////////////////////////////////////////
+            
             // Serializes the purchase order, and closes the TextWriter.
             serializer.Serialize(writer, NewXML);
             writer.Close();
