@@ -149,6 +149,9 @@
     <PackageReference Include="Xamarin.Plugin.FilePicker">
       <Version>2.1.44-beta</Version>
     </PackageReference>
+    <PackageReference Include="Microcharts">
+      <Version>0.9.5.9</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
