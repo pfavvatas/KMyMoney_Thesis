@@ -11,7 +11,7 @@
 
   <ItemGroup>
     
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1931" />  
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />  
 
     <PackageReference Include="sqlite-net-pcl" Version="1.8.0-beta" />
     <PackageReference Include="Xamarin.Plugin.FilePicker" Version="2.1.44-beta" />
@@ -50,10 +50,12 @@
     <Folder Include="Details\" />
     <Folder Include="Views\FileViews\" />
     <Folder Include="DataStorage\" />
+    <Folder Include="Charts\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="data.txt" />
     <None Remove="Microcharts" />
     <None Remove="Microcharts.Forms" />
+    <None Remove="Charts\" />
   </ItemGroup>
 </Project>

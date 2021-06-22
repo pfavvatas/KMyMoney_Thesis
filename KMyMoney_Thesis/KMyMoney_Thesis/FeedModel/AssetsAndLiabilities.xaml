@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="KMyMoney_Thesis.FeedModel.AssetsAndLiabilities">
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms" x:Class="KMyMoney_Thesis.FeedModel.AssetsAndLiabilities" xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms">
     <ContentView.Content>
         <Frame IsClippedToBounds="True"
                HasShadow="True"
@@ -11,7 +11,7 @@
                             iOS="10"/>
             </Frame.Margin>
             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                <!--<BoxView Color="Red" WidthRequest="5"/>-->
+                <!--<BoxView Color="Red" WidthRequest="5"/>
                 <Frame HorizontalOptions="FillAndExpand" Margin="0,0,0,0" HasShadow="False" BorderColor="Gainsboro" >
                     <Grid VerticalOptions="CenterAndExpand" Padding="0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
                         <Grid.RowDefinitions>
@@ -40,7 +40,11 @@
                             </StackLayout>
                         </StackLayout>
                     </Grid>
-                </Frame>
+                </Frame>-->
+                <microcharts:ChartView x:Name="chartView"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand"
+                                       />
             </StackLayout>
         </Frame>
     </ContentView.Content>

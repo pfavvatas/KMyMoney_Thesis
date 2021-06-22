@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace KMyMoney_Thesis.Models
+﻿namespace KMyMoney_Thesis.Models
 {
     public class PersonalData
     {

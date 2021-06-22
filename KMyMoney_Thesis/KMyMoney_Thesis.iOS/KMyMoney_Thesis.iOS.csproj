@@ -144,12 +144,15 @@
     <PackageReference Include="sqlite-net-pcl">
       <Version>1.8.0-beta</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1931" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
 
     <PackageReference Include="Xamarin.Plugin.FilePicker">
       <Version>2.1.44-beta</Version>
     </PackageReference>
     <PackageReference Include="Microcharts">
+      <Version>0.9.5.9</Version>
+    </PackageReference>
+    <PackageReference Include="Microcharts.Forms">
       <Version>0.9.5.9</Version>
     </PackageReference>
   </ItemGroup>
