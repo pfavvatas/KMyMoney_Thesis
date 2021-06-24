@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms" x:Class="KMyMoney_Thesis.FeedModel.AssetsAndLiabilities" xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms">
     <ContentView.Content>
-        <Frame IsClippedToBounds="True"
+        <!--<Frame IsClippedToBounds="True"
                HasShadow="True"
                Padding="0"
                BackgroundColor="White">
@@ -11,7 +11,7 @@
                             iOS="10"/>
             </Frame.Margin>
             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                <!--<BoxView Color="Red" WidthRequest="5"/>
+                <BoxView Color="Red" WidthRequest="5"/>
                 <Frame HorizontalOptions="FillAndExpand" Margin="0,0,0,0" HasShadow="False" BorderColor="Gainsboro" >
                     <Grid VerticalOptions="CenterAndExpand" Padding="0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
                         <Grid.RowDefinitions>
@@ -34,17 +34,43 @@
                                 <Label Text="$ 0.00" FontSize="Large" HorizontalOptions="EndAndExpand"/>
                             </StackLayout>
                         </StackLayout>
-                        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Padding="10">
+                        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Padding="0">
                             <StackLayout HorizontalOptions="FillAndExpand">
                               <Button Text="More" TextColor="Black" Clicked="ButtonClicked" BackgroundColor="#4297ec" CornerRadius="15"/>
                             </StackLayout>
                         </StackLayout>
                     </Grid>
-                </Frame>-->
+                </Frame>
                 <microcharts:ChartView x:Name="chartView"
                                        HorizontalOptions="CenterAndExpand"
                                        VerticalOptions="CenterAndExpand"
                                        />
+            </StackLayout>
+        </Frame>-->
+
+        <!--<StackLayout>
+            <microcharts:ChartView x:Name="chartView"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand"
+                                       />
+        </StackLayout>-->
+        <Frame IsClippedToBounds="True"
+               HasShadow="True"
+               Padding="0"
+               BackgroundColor="White">
+            <Frame.Margin>
+                <OnPlatform x:TypeArguments="Thickness"
+                            Android="10"
+                            iOS="10"/>
+            </Frame.Margin>
+            <StackLayout>
+                <Label Text="Assets and Liabilities" FontSize="Large" FontAttributes="Italic"  HorizontalTextAlignment="Center"/>
+                <BoxView Color="Gray" HeightRequest="1" HorizontalOptions="Fill" Margin="0 50"/>
+                <microcharts:ChartView x:Name="chartView"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand"
+                                       />
+                <Button Text="More" TextColor="White" Clicked="ButtonClicked" BackgroundColor="#4297ec" CornerRadius="20" Margin="10 50"/>
             </StackLayout>
         </Frame>
     </ContentView.Content>

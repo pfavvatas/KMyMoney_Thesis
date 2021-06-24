@@ -12,31 +12,31 @@ namespace KMyMoney_Thesis.FeedModel
         {
             new ChartEntry(100)
             {
-                Color = SKColor.Parse("#FF1493"),
+                Color = SKColor.Parse("#000000"),
                 Label = "Label1",
                 ValueLabel = "100"
             },
             new ChartEntry(200)
             {
-                Color = SKColor.Parse("#10BFFF"),
+                Color = SKColor.Parse("#111111"),
                 Label = "Label2",
                 ValueLabel = "200"
             },
             new ChartEntry(300)
             {
-                Color = SKColor.Parse("#20BFFF"),
+                Color = SKColor.Parse("#333333"),
                 Label = "Label3",
                 ValueLabel = "300"
             },
             new ChartEntry(400)
             {
-                Color = SKColor.Parse("#30BFFF"),
+                Color = SKColor.Parse("#555555"),
                 Label = "Label4",
                 ValueLabel = "400"
             },
             new ChartEntry(500)
             {
-                Color = SKColor.Parse("#40BFFF"),
+                Color = SKColor.Parse("#888888"),
                 Label = "Label5",
                 ValueLabel = "500"
             }
@@ -48,7 +48,7 @@ namespace KMyMoney_Thesis.FeedModel
             InitializeComponent();
 
 
-            var chart = new RadarChart()
+            var chart = new DonutChart()
             {
                 //LabelMode = LabelMode.LeftAndRight,
                 LabelTextSize = 50f, // here
