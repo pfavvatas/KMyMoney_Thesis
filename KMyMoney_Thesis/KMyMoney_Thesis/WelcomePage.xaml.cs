@@ -43,35 +43,35 @@ namespace KMyMoney_Thesis
             //}
             //System.Diagnostics.Debug.WriteLine(XmlString);
 
-            XDocument xdoc = XDocument.Load("/Users/panagiotisfavvatas/pfavvatas/KMyMoney_Thesis.git/KMyMoney_Thesis/KMyMoney_Thesis/DummyXmlFile.xml");
+            //XDocument xdoc = XDocument.Load("/Users/panagiotisfavvatas/pfavvatas/KMyMoney_Thesis.git/KMyMoney_Thesis/KMyMoney_Thesis/DummyXmlFile.xml");
 
 
             //var result = xdoc.Element("catalog").Descendants("book");
 
-            var test = from test1 in xdoc.Descendants("BOOKS") select test1;
+            //var test = from test1 in xdoc.Descendants("BOOKS") select test1;
             //select new
             //{
             //    Author = test1.Element("author").Value
             //};
 
 
-            xdoc.Descendants("book").Where(x => x.Attribute("id").Value == "bk101").Remove();
+            //xdoc.Descendants("book").Where(x => x.Attribute("id").Value == "bk101").Remove();
 
-            var var1 = from test11 in xdoc.Descendants("BOOKS").Descendants("book")
-                       select new
-                       {
-                           Author = test11.Element("author").Value
-                       };
+            //var var1 = from test11 in xdoc.Descendants("BOOKS").Descendants("book")
+            //           select new
+            //           {
+            //               Author = test11.Element("author").Value
+            //           };
 
-            foreach (var t in var1)
-            {
-                System.Diagnostics.Debug.WriteLine(t.Author);
-            }
-
-
+            //foreach (var t in var1)
+            //{
+            //    System.Diagnostics.Debug.WriteLine(t.Author);
+            //}
 
 
-            System.Diagnostics.Debug.WriteLine("======End of Try 1.======");
+
+
+            //System.Diagnostics.Debug.WriteLine("======End of Try 1.======");
             //Post post = new Post()
             //{
             //    Test1 = DateTime.Now + "\n"
