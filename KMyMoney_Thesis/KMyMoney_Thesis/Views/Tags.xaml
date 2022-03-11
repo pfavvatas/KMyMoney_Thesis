@@ -11,9 +11,35 @@
     <StackLayout>
         <StackLayout.Padding>
             <OnPlatform x:TypeArguments="Thickness"  
-                    iOS="-20,0,0,0">  
+                    iOS="0,0,0,0">  
             </OnPlatform>
         </StackLayout.Padding>
+        <!--https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/searchbar-->
+        <!--https://www.youtube.com/watch?v=nFYwvZnDrcY-->
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+            <SearchBar                
+               Placeholder="Search items..."
+               CancelButtonColor="Orange"
+               PlaceholderColor="Orange"
+               TextColor="Orange"
+               TextTransform="Lowercase"
+               HorizontalTextAlignment="Center"
+               FontSize="Medium"
+               FontAttributes="Italic"
+               Grid.Row="0" Grid.Column="0" 
+             />
+             <Button
+                Text="search"
+                Grid.Row="0" Grid.Column="1"
+              /> 
+        </Grid>            
             <ListView x:Name="TagList" ItemsSource="{Binding TagsObs}" ItemTapped="OnItemTapped" SeparatorVisibility="Default">                 
                 <ListView.ItemTemplate>
                     <DataTemplate>           
@@ -29,10 +55,10 @@
                              <StackLayout>
                                     <StackLayout.Padding>
                                         <OnPlatform x:TypeArguments="Thickness"  
-                                                iOS="25,0,0,0">  
+                                                iOS="10,0,0,0">  
                                         </OnPlatform>
                                     </StackLayout.Padding>
-                                        <Label Text="{Binding Name}" FontSize="25" Margin="10"/>
+                                        <Label Text="{Binding Name}" FontSize="18" Margin="10"/>
                              </StackLayout>
                           </ViewCell>
                     </DataTemplate>
