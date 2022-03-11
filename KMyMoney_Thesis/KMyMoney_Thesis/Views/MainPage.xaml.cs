@@ -18,7 +18,7 @@ namespace KMyMoney_Thesis.Views
 
             MasterBehavior = MasterBehavior.Popover;
 
-            MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
+            MenuPages.Add((int)MenuItemType.Home, (NavigationPage)Detail);
 
 
             //new PrintDatabase();
@@ -32,27 +32,27 @@ namespace KMyMoney_Thesis.Views
             {
                 switch (id)
                 {
-                    case (int)MenuItemType.Browse:
+                    //case (int)MenuItemType.Browse:
+                    //    MenuPages.Add(id, new NavigationPage(new ItemsPage()));
+                    //    break;
+                    //case (int)MenuItemType.About:
+                    //    MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                    //    break;
+                    case (int)MenuItemType.Home:
                         MenuPages.Add(id, new NavigationPage(new ItemsPage()));
                         break;
-                    case (int)MenuItemType.About:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
-                        break;
-                    case (int)MenuItemType.Home:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
-                        break;
-                    case (int)MenuItemType.Institutions:
-                        MenuPages.Add(id, new NavigationPage(new Institutions()));
-                        break;
-                    case (int)MenuItemType.Accounts:
-                        MenuPages.Add(id, new NavigationPage(new Accounts()));
-                        break;
-                    case (int)MenuItemType.Sheduled_transactions:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
-                        break;
-                    case (int)MenuItemType.Categories:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
-                        break;
+                    //case (int)MenuItemType.Institutions:
+                    //    MenuPages.Add(id, new NavigationPage(new Institutions()));
+                    //    break;
+                    //case (int)MenuItemType.Accounts:
+                    //    MenuPages.Add(id, new NavigationPage(new Accounts()));
+                    //    break;
+                    //case (int)MenuItemType.Sheduled_transactions:
+                    //    MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                    //    break;
+                    //case (int)MenuItemType.Categories:
+                    //    MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                    //    break;
                     case (int)MenuItemType.Tags:
                         MenuPages.Add(id, new NavigationPage(new Tags()));
                         break;
@@ -62,21 +62,21 @@ namespace KMyMoney_Thesis.Views
                     case (int)MenuItemType.Ledgers:
                         MenuPages.Add(id, new NavigationPage(new Ledgers()));
                         break;
-                    case (int)MenuItemType.Investments:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
-                        break;
-                    case (int)MenuItemType.Reports:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
-                        break;
-                    case (int)MenuItemType.Budgets:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
-                        break;
-                    case (int)MenuItemType.Forecast:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
-                        break;
-                    case (int)MenuItemType.Outbox:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
-                        break;
+                    //case (int)MenuItemType.Investments:
+                    //    MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                    //    break;
+                    //case (int)MenuItemType.Reports:
+                    //    MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                    //    break;
+                    //case (int)MenuItemType.Budgets:
+                    //    MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                    //    break;
+                    //case (int)MenuItemType.Forecast:
+                    //    MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                    //    break;
+                    //case (int)MenuItemType.Outbox:
+                    //    MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                    //    break;
                 }
             }
 

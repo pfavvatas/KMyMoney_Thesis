@@ -6,21 +6,21 @@ namespace KMyMoney_Thesis.Models
 {
     public enum MenuItemType
     {
-        Browse,
-        About,
+        //Browse,
+        //About,
         Home,
-        Institutions,
-        Accounts,
-        Sheduled_transactions,
-        Categories,
+        //Institutions,
+        //Accounts,
+        //Sheduled_transactions,
+        //Categories,
         Tags,
         Payees,
         Ledgers,
-        Investments,
-        Reports,
-        Budgets,
-        Forecast,
-        Outbox
+        //Investments,
+        //Reports,
+        //Budgets,
+        //Forecast,
+        //Outbox
     }
     public class HomeMenuItem
     {
