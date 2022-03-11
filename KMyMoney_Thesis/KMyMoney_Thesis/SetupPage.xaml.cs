@@ -340,7 +340,8 @@ namespace KMyMoney_Thesis
 
                     //Write data to xml
                     createXML(PersonalData);
-                    //Application.Current.MainPage = new MainPage();
+                    //Uncomment bellow to continue
+                    Application.Current.MainPage = new MainPage();
                 }
                 else
                 {
