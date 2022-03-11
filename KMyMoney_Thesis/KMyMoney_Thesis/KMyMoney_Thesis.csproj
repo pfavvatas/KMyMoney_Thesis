@@ -19,6 +19,7 @@
     <PackageReference Include="SQLiteNetExtensions" Version="2.1.0" />
     <PackageReference Include="Microcharts" Version="0.9.5.9" />
     <PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
+    <PackageReference Include="log4net" Version="2.0.14" />
   </ItemGroup>
 
   <ItemGroup>
@@ -57,5 +58,6 @@
     <None Remove="Microcharts" />
     <None Remove="Microcharts.Forms" />
     <None Remove="Charts\" />
+    <None Remove="log4net" />
   </ItemGroup>
 </Project>
