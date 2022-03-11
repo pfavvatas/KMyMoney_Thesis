@@ -28,6 +28,21 @@ namespace KMyMoney_Thesis.Views
         {
             base.OnAppearing();
             TagList.ItemsSource = new retrieveDataFromXML().GetTags();
+
+            var tagPickerList = new List<string>();
+            tagPickerList.Add("All");
+            tagPickerList.Add("Used");
+            tagPickerList.Add("Unused");
+            tagPickerList.Add("Opened");
+            tagPickerList.Add("Closed");
+
+            TagPicker.ItemsSource = tagPickerList;
+            TagPicker.SelectedIndex = 0;
+        }
+
+        void TagPickerSelected(object sender, EventArgs e)
+        {
+            Console.WriteLine("*******TagPickerSelected*******");
         }
 
         async void AddNewTag(object sender, EventArgs e)

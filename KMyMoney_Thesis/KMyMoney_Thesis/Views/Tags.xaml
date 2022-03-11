@@ -19,9 +19,10 @@
         <Grid>
           <Grid.RowDefinitions>
             <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
           </Grid.RowDefinitions>
           <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*" />
             <ColumnDefinition Width="*" />
           </Grid.ColumnDefinitions>
             <SearchBar                
@@ -33,14 +34,34 @@
                HorizontalTextAlignment="Center"
                FontSize="Medium"
                FontAttributes="Italic"
-               Grid.Row="0" Grid.Column="0" 
+               Grid.Row="0" Grid.Column="0"
+               BackgroundColor="White"
              />
-             <Button
-                Text="search"
-                Grid.Row="0" Grid.Column="1"
-              /> 
-        </Grid>            
-            <ListView x:Name="TagList" ItemsSource="{Binding TagsObs}" ItemTapped="OnItemTapped" SeparatorVisibility="Default">                 
+            <StackLayout
+                Grid.Row="1" Grid.Column="0">
+                <StackLayout.Padding>
+                    <OnPlatform x:TypeArguments="Thickness"  
+                            iOS="5,0,5,0">  
+                    </OnPlatform>
+                </StackLayout.Padding>
+                <!--https://www.c-sharpcorner.com/article/picker-control-in-xamarin-forms-application-for-android-and-uwp/-->
+                <Picker
+                    x:Name="TagPicker"
+                    HorizontalTextAlignment="Center"
+                    TitleColor="Black"
+                    SelectedItem="All"
+                    SelectedIndexChanged="TagPickerSelected"
+                >                    
+                </Picker>
+            </StackLayout>  
+            <ListView
+                Grid.Row="2" Grid.Column="0"
+                Margin="0,0,0,0"
+                x:Name="TagList"
+                ItemsSource="{Binding TagsObs}"
+                ItemTapped="OnItemTapped"
+                SeparatorVisibility="Default"
+                >                 
                 <ListView.ItemTemplate>
                     <DataTemplate>           
                           <ViewCell>
@@ -58,11 +79,12 @@
                                                 iOS="10,0,0,0">  
                                         </OnPlatform>
                                     </StackLayout.Padding>
-                                        <Label Text="{Binding Name}" FontSize="18" Margin="10"/>
+                                    <Label Text="{Binding Name}" FontSize="18" Margin="10"/>
                              </StackLayout>
                           </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            </Grid>
     </StackLayout>
 </ContentPage>
