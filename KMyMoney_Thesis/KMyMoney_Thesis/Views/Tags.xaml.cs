@@ -8,12 +8,15 @@ using KMyMoney_Thesis.Model;
 using SQLite;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using log4net;
 
 namespace KMyMoney_Thesis.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Tags : ContentPage
     {
+        ILog log = log4net.LogManager.GetLogger(typeof(Tags));        
+
         public ObservableCollection<String> TestPayee { get; set; }
         private int _id;
 
@@ -24,16 +27,24 @@ namespace KMyMoney_Thesis.Views
 
         public Tags()
         {
+            Console.WriteLine("*******InitializeComponent()*******");
             InitializeComponent();
+            InitializePickertags();
         }
 
         protected override void OnAppearing()
         {
+            Console.WriteLine("*******OnAppearing()*******");
             base.OnAppearing();
             //TagList.ItemsSource = new retrieveDataFromXML().GetTags();
             tempdata = new retrieveDataFromXML().GetTags();
-            TagList.ItemsSource = tempdata;
+            //TagList.ItemsSource = tempdata;
+            OnTextChanged(null, null);            
+        }
 
+        void InitializePickertags()
+        {
+            Console.WriteLine("*******InitializePickertags()*******");
             var tagPickerList = new List<string>();
             tagPickerList.Add("All");
             tagPickerList.Add("Used");
@@ -47,21 +58,29 @@ namespace KMyMoney_Thesis.Views
 
         void OnTextChanged(object sender, EventArgs e)
         {
-            Console.WriteLine("*******OnTextChanged*******");
-            Console.WriteLine("*******searchBar: " + TagSearchBar);
-
-            TagList.ItemsSource = !string.IsNullOrEmpty(TagSearchBar.Text) 
+            Console.WriteLine("*******OnTextChanged()*******");
+            log.Info("*******OnTextChanged*******");
+            try
+            {
+                TagList.ItemsSource = !string.IsNullOrEmpty(TagSearchBar.Text)
                 ? tempdata.Where(item => item.Name.ToLower().Contains(TagSearchBar.Text.ToLower()))
                 : tempdata;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error Message: " + ex.Message.ToString(), ex);
+                log.Error("Error Message: " + ex.Message.ToString(), ex);
+            }            
         }
 
         void TagPickerSelected(object sender, EventArgs e)
         {
-            Console.WriteLine("*******TagPickerSelected*******");
+            Console.WriteLine("*******TagPickerSelected()*******");
         }
 
         async void AddNewTag(object sender, EventArgs e)
         {
+            Console.WriteLine("*******AddNewTag()*******");
             string result = await DisplayPromptAsync("Add new Tag", "", initialValue: string.Empty);
             if (result != null)
             {
@@ -72,6 +91,7 @@ namespace KMyMoney_Thesis.Views
 
         void ClickedMore(object sender, EventArgs e)
         {
+            Console.WriteLine("*******ClickedMore()*******");
             var menu = sender as MenuItem;
             var item = menu.CommandParameter as Tag;
             showMore(item);
@@ -79,6 +99,7 @@ namespace KMyMoney_Thesis.Views
 
         async void ClickedDelete(object sender, EventArgs e)
         {
+            Console.WriteLine("*******ClickedDelete()*******");
             var menu = sender as MenuItem;
             var item = menu.CommandParameter as Tag;
             bool answer = await DisplayAlert("Delete " + item.Name + " ?", null, "Yes", "No");
@@ -101,6 +122,7 @@ namespace KMyMoney_Thesis.Views
         ///kai to pernaei sti lista pou tha ta emfanizei.        
         void OnItemTapped(Object sender, ItemTappedEventArgs e)
         {
+            Console.WriteLine("*******OnItemTapped()*******");
             ///Den mas polu endiaferoun oi parakatw 3 grammes kwdika
             if (e.Item == null)
                 return;
@@ -110,6 +132,7 @@ namespace KMyMoney_Thesis.Views
 
         async private void showMore(Tag item)
         {
+            Console.WriteLine("*******showMore()*******");
             ///Apo edw ksekiname
             ///Exei ftiaxtei class wste na perasoun oi ksexwristes
             ///plirofoies Tag kai Transaction se ena.
