@@ -76,6 +76,10 @@ namespace KMyMoney_Thesis.Views
         void TagPickerSelected(object sender, EventArgs e)
         {
             Console.WriteLine("*******TagPickerSelected()*******");
+            //ToDo: prepei na dw sto object an prepei na mpei extra
+            //    pliroforia gia na mpei sto .Where, wste na gurnaei
+            //    swsta thn anazhthsh.
+            
         }
 
         async void AddNewTag(object sender, EventArgs e)
