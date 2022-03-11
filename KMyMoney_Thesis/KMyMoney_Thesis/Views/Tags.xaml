@@ -25,17 +25,19 @@
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
           </Grid.ColumnDefinitions>
-            <SearchBar                
-               Placeholder="Search items..."
-               CancelButtonColor="Orange"
-               PlaceholderColor="Orange"
-               TextColor="Orange"
-               TextTransform="Lowercase"
-               HorizontalTextAlignment="Center"
-               FontSize="Medium"
-               FontAttributes="Italic"
-               Grid.Row="0" Grid.Column="0"
-               BackgroundColor="White"
+            <SearchBar
+                x:Name="TagSearchBar"
+                Placeholder="Search items..."
+                CancelButtonColor="Orange"
+                PlaceholderColor="Orange"
+                TextColor="Orange"
+                TextTransform="Lowercase"
+                HorizontalTextAlignment="Center"
+                FontSize="Medium"
+                FontAttributes="Italic"
+                Grid.Row="0" Grid.Column="0"
+                BackgroundColor="White"
+                TextChanged="OnTextChanged"
              />
             <StackLayout
                 Grid.Row="1" Grid.Column="0">
@@ -56,7 +58,6 @@
             </StackLayout>  
             <ListView
                 Grid.Row="2" Grid.Column="0"
-                Margin="0,0,0,0"
                 x:Name="TagList"
                 ItemsSource="{Binding TagsObs}"
                 ItemTapped="OnItemTapped"

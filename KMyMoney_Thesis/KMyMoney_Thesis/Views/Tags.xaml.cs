@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Xml;
+using System.Linq;
 using KMyMoney_Thesis.Model;
 using SQLite;
 using Xamarin.Forms;
@@ -18,6 +19,8 @@ namespace KMyMoney_Thesis.Views
 
         public ObservableCollection<Tag> TagsObs { get; set; }
         public ObservableCollection<Tag> test666 { get; set; }
+        public ObservableCollection<Tag> tempdata;
+        public IEnumerable<Tag> tempdataSearch;
 
         public Tags()
         {
@@ -27,7 +30,9 @@ namespace KMyMoney_Thesis.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            TagList.ItemsSource = new retrieveDataFromXML().GetTags();
+            //TagList.ItemsSource = new retrieveDataFromXML().GetTags();
+            tempdata = new retrieveDataFromXML().GetTags();
+            TagList.ItemsSource = tempdata;
 
             var tagPickerList = new List<string>();
             tagPickerList.Add("All");
@@ -38,6 +43,16 @@ namespace KMyMoney_Thesis.Views
 
             TagPicker.ItemsSource = tagPickerList;
             TagPicker.SelectedIndex = 0;
+        }
+
+        void OnTextChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine("*******OnTextChanged*******");
+            Console.WriteLine("*******searchBar: " + TagSearchBar);
+
+            TagList.ItemsSource = !string.IsNullOrEmpty(TagSearchBar.Text) 
+                ? tempdata.Where(item => item.Name.ToLower().Contains(TagSearchBar.Text.ToLower()))
+                : tempdata;
         }
 
         void TagPickerSelected(object sender, EventArgs e)
