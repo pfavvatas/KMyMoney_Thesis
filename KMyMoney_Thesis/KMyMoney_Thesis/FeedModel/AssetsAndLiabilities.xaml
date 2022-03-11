@@ -41,19 +41,8 @@
                         </StackLayout>
                     </Grid>
                 </Frame>
-                <microcharts:ChartView x:Name="chartView"
-                                       HorizontalOptions="CenterAndExpand"
-                                       VerticalOptions="CenterAndExpand"
-                                       />
             </StackLayout>
         </Frame>-->
-
-        <!--<StackLayout>
-            <microcharts:ChartView x:Name="chartView"
-                                       HorizontalOptions="CenterAndExpand"
-                                       VerticalOptions="CenterAndExpand"
-                                       />
-        </StackLayout>-->
         <Frame IsClippedToBounds="True"
                HasShadow="True"
                Padding="0"
@@ -64,13 +53,18 @@
                             iOS="10"/>
             </Frame.Margin>
             <StackLayout>
-                <Label Text="Assets and Liabilities" FontSize="Large" FontAttributes="Italic"  HorizontalTextAlignment="Center"/>
-                <BoxView Color="Gray" HeightRequest="1" HorizontalOptions="Fill" Margin="0 50"/>
-                <microcharts:ChartView x:Name="chartView"
+                <StackLayout>
+                    <Label Text="Assets and Liabilities" FontSize="Large" FontAttributes="Bold"  HorizontalTextAlignment="Center" TextDecorations="Underline"/>
+                    <!--<BoxView Color="Gray" HeightRequest="1" HorizontalOptions="Fill" Margin="50,0"/>-->
+                </StackLayout>
+                <StackLayout>
+                    <microcharts:ChartView x:Name="chartView"
                                        HorizontalOptions="CenterAndExpand"
-                                       VerticalOptions="CenterAndExpand"
-                                       />
-                <Button Text="More" TextColor="White" Clicked="ButtonClicked" BackgroundColor="#4297ec" CornerRadius="20" Margin="10 50"/>
+                                       VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+                <StackLayout x:Name="StackLayoutData1">                  
+                </StackLayout>
+                <Button Text="More" TextColor="White" Clicked="ButtonClicked" BackgroundColor="#4297ec" CornerRadius="20" Margin="10,50"/>
             </StackLayout>
         </Frame>
     </ContentView.Content>
